@@ -392,86 +392,260 @@ h1{
 
 
 
-
-
-
-
-
-
+```html
 <section class="case-study">
-    <h1>01 — Retail Sales Performance Dashboard</h1>
 
-    <div class="case-study-content">
-
-        <div class="section">
-            <h2>1. Executive Summary</h2>
-            <p>
-                Short project introduction highlighting the objectives,
-                business context, and expected outcomes of the dashboard.
-            </p>
-        </div>
-
-        <div class="section">
-            <h2>2. Business Challenge</h2>
-            <p>
-                Understanding the key business problem, reporting gaps,
-                and decision-making challenges faced by stakeholders.
-            </p>
-        </div>
-
-        <div class="section">
-            <h2>3. Solution Approach</h2>
-            <p>
-                Strategic plan and methodology used to address the business
-                requirements through data analytics and visualization.
-            </p>
-        </div>
-
-        <div class="section">
-            <h2>4. Implementation</h2>
-            <ul>
-                <li>ETL Process</li>
-                <li>Data Modeling</li>
-                <li>DAX Calculations</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>5. Dashboard &amp; Reporting</h2>
-            <p>
-                Interactive dashboard featuring KPIs, trends, performance
-                metrics, and business-focused visualizations.
-            </p>
-        </div>
-
-        <div class="section">
-            <h2>6. Key Insights</h2>
-            <p>
-                Important findings, trends, opportunities, and actionable
-                recommendations derived from the analysis.
-            </p>
-        </div>
-
-        <div class="section">
-            <h2>7. Technology Stack</h2>
-            <ul>
-                <li>Power BI</li>
-                <li>Power Query</li>
-                <li>DAX</li>
-                <li>Excel</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>8. Results</h2>
-            <p>
-                Measurable business impact, improvements in reporting
-                efficiency, and enhanced decision-making capabilities.
-            </p>
-        </div>
-
+    <div class="hero-section">
+        <span class="project-tag">Case Study #01</span>
+        <h1>Retail Sales Performance Dashboard</h1>
+        <p class="hero-description">
+            End-to-end Business Intelligence solution developed in Power BI to transform
+            raw retail transaction data into actionable insights for sales monitoring,
+            customer analysis, and executive decision-making.
+        </p>
     </div>
+
+    <!-- Executive Summary -->
+    <section class="content-block">
+        <h2>📌 Executive Summary</h2>
+        <p>
+            This project demonstrates the complete development lifecycle of a Retail
+            Sales Performance Dashboard using Power BI. The solution converts over
+            500,000 retail transactions into interactive analytics that help
+            stakeholders monitor performance, identify trends, and support strategic
+            business decisions.
+        </p>
+    </section>
+
+    <!-- Business Objective -->
+    <section class="content-block">
+        <h2>🎯 Business Objective</h2>
+        <p>
+            Retail organizations generate thousands of transactions daily. Without
+            centralized reporting, it becomes challenging to evaluate sales trends,
+            customer behavior, product performance, and revenue growth.
+        </p>
+
+        <div class="highlight-box">
+            <h3>Project Goals</h3>
+            <ul>
+                <li>Track overall sales performance</li>
+                <li>Analyze customer purchasing behavior</li>
+                <li>Monitor product profitability</li>
+                <li>Identify revenue trends and seasonality</li>
+                <li>Deliver executive-level KPI reporting</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Dataset -->
+    <section class="content-block">
+        <h2>📊 Dataset Information</h2>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h4>Source</h4>
+                <p>UCI Machine Learning Repository</p>
+            </div>
+
+            <div class="info-card">
+                <h4>Dataset</h4>
+                <p>Online Retail Dataset</p>
+            </div>
+
+            <div class="info-card">
+                <h4>Records</h4>
+                <p>500,000+ Transactions</p>
+            </div>
+        </div>
+
+        <h3>Key Fields</h3>
+        <ul>
+            <li>Invoice Number</li>
+            <li>Customer ID</li>
+            <li>Country</li>
+            <li>Stock Code</li>
+            <li>Description</li>
+            <li>Quantity</li>
+            <li>Unit Price</li>
+            <li>Invoice Date</li>
+        </ul>
+    </section>
+
+    <!-- ETL -->
+    <section class="content-block">
+        <h2>⚙️ Data Preparation & ETL</h2>
+
+        <p>
+            Data transformation and cleansing were performed using Power Query to
+            ensure reporting accuracy and consistency.
+        </p>
+
+        <ol>
+            <li>Import raw retail dataset</li>
+            <li>Remove null and invalid records</li>
+            <li>Exclude cancelled transactions</li>
+            <li>Standardize data types</li>
+            <li>Create calendar attributes</li>
+            <li>Generate Month, Quarter, and Year dimensions</li>
+            <li>Create Revenue calculations</li>
+            <li>Prepare analytical model for reporting</li>
+        </ol>
+    </section>
+
+    <!-- Data Model -->
+    <section class="content-block">
+        <h2>🗄️ Data Modeling</h2>
+
+        <p>
+            A star-schema-inspired data model was designed to optimize report
+            performance and analytical flexibility.
+        </p>
+
+        <div class="model-grid">
+            <div>
+                <h4>Fact Table</h4>
+                <ul>
+                    <li>Sales Transactions</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Dimension Tables</h4>
+                <ul>
+                    <li>Date</li>
+                    <li>Product</li>
+                    <li>Customer</li>
+                    <li>Country</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- DAX -->
+    <section class="content-block">
+        <h2>🧮 DAX Measures</h2>
+
+        <div class="code-block">
+            <strong>Total Revenue</strong><br>
+            SUM(Revenue)
+        </div>
+
+        <div class="code-block">
+            <strong>Total Orders</strong><br>
+            DISTINCTCOUNT(Invoice)
+        </div>
+
+        <div class="code-block">
+            <strong>Total Customers</strong><br>
+            DISTINCTCOUNT(Customer ID)
+        </div>
+
+        <div class="code-block">
+            <strong>Total Products</strong><br>
+            DISTINCTCOUNT(StockCode)
+        </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section class="content-block">
+        <h2>📈 Dashboard & Reporting</h2>
+
+        <p>
+            The final dashboard provides an executive-level view of retail
+            performance through interactive visualizations and KPI monitoring.
+        </p>
+
+        <ul>
+            <li>KPI Cards</li>
+            <li>Revenue Trend Analysis</li>
+            <li>Quarterly Performance Analysis</li>
+            <li>Revenue by Country</li>
+            <li>Top Products by Revenue</li>
+            <li>Interactive Slicers & Filters</li>
+        </ul>
+    </section>
+
+    <!-- Insights -->
+    <section class="content-block">
+        <h2>💡 Key Insights</h2>
+
+        <ul>
+            <li>Revenue reached its highest levels during Q4.</li>
+            <li>Strong seasonal purchasing patterns were identified.</li>
+            <li>A limited number of products generated a majority of revenue.</li>
+            <li>Customer activity was concentrated within specific geographic regions.</li>
+        </ul>
+    </section>
+
+    <!-- Impact -->
+    <section class="content-block">
+        <h2>🚀 Business Impact</h2>
+
+        <ul>
+            <li>Improved sales visibility across the organization</li>
+            <li>Faster reporting and decision-making</li>
+            <li>Identification of growth opportunities</li>
+            <li>Enhanced executive reporting capabilities</li>
+        </ul>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="content-block">
+        <h2>🛠️ Technology Stack</h2>
+
+        <div class="tech-stack">
+            <span>Power BI</span>
+            <span>Power Query</span>
+            <span>DAX</span>
+            <span>Excel</span>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="content-block">
+        <h2>🖼️ Dashboard Preview Gallery</h2>
+        <p>Dashboard screenshots and reporting visuals displayed below.</p>
+<img
+src="assets/retail-sales-dashboard.png"
+alt="Retail Sales Performance Dashboard"
+style="width:100%; border-radius:10px;">
+
+       
+    </section>
+
+    <!-- Conclusion -->
+    <section class="content-block">
+        <h2>📋 Conclusion</h2>
+
+        <p>
+            This project demonstrates a complete Business Intelligence workflow,
+            covering data preparation, modeling, analytics, visualization, and
+            executive reporting using Microsoft Power BI.
+        </p>
+    </section>
+
+    <!-- Consultation -->
+    <section class="consultation-box">
+        <h2>🤝 Project Demonstration</h2>
+
+        <p>
+            The complete implementation, data model, dashboard logic, and
+            development process can be demonstrated during a complimentary
+            consultation session via screen sharing.
+        </p>
+
+        <p>
+            Project files are not publicly distributed. Live demonstrations are
+            available upon request through DeTLeng consultation channels.
+        </p>
+    </section>
+
 </section>
+```
+
+
+
 
 
 
