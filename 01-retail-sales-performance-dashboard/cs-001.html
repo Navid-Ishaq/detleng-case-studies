@@ -392,291 +392,116 @@ h1{
 
 
 
+<!-- ========================================================= -->
+<!-- LAYER 0 START : CASE STUDY INTRODUCTION -->
+<!-- ========================================================= -->
 
-<section class="case-study">
+<section class="case-study-introduction">
 
-    <div class="hero-section">
-        <span class="project-tag">Case Study #01</span>
-        <h1>Retail Sales Performance Dashboard</h1>
-        <p class="hero-description">
-            End-to-end Business Intelligence solution developed in Power BI to transform
-            raw retail transaction data into actionable insights for sales monitoring,
-            customer analysis, and executive decision-making.
-        </p>
-    </div>
+<div style="margin-bottom:20px;">
+<span style="
+background:#0d6efd;
+color:white;
+padding:8px 14px;
+border-radius:25px;
+font-size:14px;
+font-weight:600;
+">
+CASE STUDY #001
+</span>
+</div>
 
-    <!-- Executive Summary -->
-    <section class="content-block">
-        <h2>📌 Executive Summary</h2>
-        <p>
-            This project demonstrates the complete development lifecycle of a Retail
-            Sales Performance Dashboard using Power BI. The solution converts over
-            500,000 retail transactions into interactive analytics that help
-            stakeholders monitor performance, identify trends, and support strategic
-            business decisions.
-        </p>
-    </section>
+<h1>
+Retail Sales Performance Dashboard
+</h1>
 
-    <!-- Business Objective -->
-    <section class="content-block">
-        <h2>🎯 Business Objective</h2>
-        <p>
-            Retail organizations generate thousands of transactions daily. Without
-            centralized reporting, it becomes challenging to evaluate sales trends,
-            customer behavior, product performance, and revenue growth.
-        </p>
+<p>
+End-to-end Business Intelligence solution developed by DeTLeng to transform
+large-scale retail transaction data into actionable business insights using
+Power BI, Power Query, and DAX.
+</p>
 
-        <div class="highlight-box">
-            <h3>Project Goals</h3>
-            <ul>
-                <li>Track overall sales performance</li>
-                <li>Analyze customer purchasing behavior</li>
-                <li>Monitor product profitability</li>
-                <li>Identify revenue trends and seasonality</li>
-                <li>Deliver executive-level KPI reporting</li>
-            </ul>
-        </div>
-    </section>
+<p>
+This case study demonstrates the complete project lifecycle including
+business understanding, data engineering, ETL processing, analytics
+engineering, dashboard development, and executive reporting.
+</p>
 
-    <!-- Dataset -->
-    <section class="content-block">
-        <h2>📊 Dataset Information</h2>
+<div style="
+background:#f8f9fa;
+padding:20px;
+border-left:5px solid #0d6efd;
+margin:30px 0;
+">
 
-        <div class="info-grid">
-            <div class="info-card">
-                <h4>Source</h4>
-                <p>UCI Machine Learning Repository</p>
-            </div>
+<h3>📌 Project Overview</h3>
 
-            <div class="info-card">
-                <h4>Dataset</h4>
-                <p>Online Retail Dataset</p>
-            </div>
+<ul>
+<li><strong>Domain:</strong> Retail Analytics</li>
+<li><strong>Project Type:</strong> Business Intelligence Dashboard</li>
+<li><strong>Technology:</strong> Power BI, Power Query, DAX</li>
+<li><strong>Dataset:</strong> Online Retail Dataset (UCI Repository)</li>
+<li><strong>Records Processed:</strong> 1M+ Transactions</li>
+<li><strong>Primary Deliverable:</strong> Executive Performance Dashboard</li>
+</ul>
 
-            <div class="info-card">
-                <h4>Records</h4>
-                <p>500,000+ Transactions</p>
-            </div>
-        </div>
+</div>
 
-        <h3>Key Fields</h3>
-        <ul>
-            <li>Invoice Number</li>
-            <li>Customer ID</li>
-            <li>Country</li>
-            <li>Stock Code</li>
-            <li>Description</li>
-            <li>Quantity</li>
-            <li>Unit Price</li>
-            <li>Invoice Date</li>
-        </ul>
-    </section>
+<h2>🎯 Final Dashboard Delivered</h2>
 
-    <!-- ETL -->
-    <section class="content-block">
-        <h2>⚙️ Data Preparation & ETL</h2>
+<p>
+The dashboard below represents the final reporting solution delivered after
+completing the full data engineering and analytics workflow documented in
+this case study.
+</p>
 
-        <p>
-            Data transformation and cleansing were performed using Power Query to
-            ensure reporting accuracy and consistency.
-        </p>
-
-        <ol>
-            <li>Import raw retail dataset</li>
-            <li>Remove null and invalid records</li>
-            <li>Exclude cancelled transactions</li>
-            <li>Standardize data types</li>
-            <li>Create calendar attributes</li>
-            <li>Generate Month, Quarter, and Year dimensions</li>
-            <li>Create Revenue calculations</li>
-            <li>Prepare analytical model for reporting</li>
-        </ol>
-    </section>
-
-    <!-- Data Model -->
-    <section class="content-block">
-        <h2>🗄️ Data Modeling</h2>
-
-        <p>
-            A star-schema-inspired data model was designed to optimize report
-            performance and analytical flexibility.
-        </p>
-
-        <div class="model-grid">
-            <div>
-                <h4>Fact Table</h4>
-                <ul>
-                    <li>Sales Transactions</li>
-                </ul>
-            </div>
-
-            <div>
-                <h4>Dimension Tables</h4>
-                <ul>
-                    <li>Date</li>
-                    <li>Product</li>
-                    <li>Customer</li>
-                    <li>Country</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- DAX -->
-    <section class="content-block">
-        <h2>🧮 DAX Measures</h2>
-
-        <div class="code-block">
-            <strong>Total Revenue</strong><br>
-            SUM(Revenue)
-        </div>
-
-        <div class="code-block">
-            <strong>Total Orders</strong><br>
-            DISTINCTCOUNT(Invoice)
-        </div>
-
-        <div class="code-block">
-            <strong>Total Customers</strong><br>
-            DISTINCTCOUNT(Customer ID)
-        </div>
-
-        <div class="code-block">
-            <strong>Total Products</strong><br>
-            DISTINCTCOUNT(StockCode)
-        </div>
-    </section>
-
-    <!-- Dashboard -->
-    <section class="content-block">
-        <h2>📈 Dashboard & Reporting</h2>
-
-        <p>
-            The final dashboard provides an executive-level view of retail
-            performance through interactive visualizations and KPI monitoring.
-        </p>
-
-        <ul>
-            <li>KPI Cards</li>
-            <li>Revenue Trend Analysis</li>
-            <li>Quarterly Performance Analysis</li>
-            <li>Revenue by Country</li>
-            <li>Top Products by Revenue</li>
-            <li>Interactive Slicers & Filters</li>
-        </ul>
-    </section>
-
-    <!-- Insights -->
-    <section class="content-block">
-        <h2>💡 Key Insights</h2>
-
-        <ul>
-            <li>Revenue reached its highest levels during Q4.</li>
-            <li>Strong seasonal purchasing patterns were identified.</li>
-            <li>A limited number of products generated a majority of revenue.</li>
-            <li>Customer activity was concentrated within specific geographic regions.</li>
-        </ul>
-    </section>
-
-    <!-- Impact -->
-    <section class="content-block">
-        <h2>🚀 Business Impact</h2>
-
-        <ul>
-            <li>Improved sales visibility across the organization</li>
-            <li>Faster reporting and decision-making</li>
-            <li>Identification of growth opportunities</li>
-            <li>Enhanced executive reporting capabilities</li>
-        </ul>
-    </section>
-
-    <!-- Tech Stack -->
-    <section class="content-block">
-        <h2>🛠️ Technology Stack</h2>
-
-        <div class="tech-stack">
-            <span>Power BI</span>
-            <span>Power Query</span>
-            <span>DAX</span>
-            <span>Excel</span>
-        </div>
-    </section>
-
-    <!-- Gallery -->
-    <section class="content-block">
-        <h2>🖼️ Dashboard Preview Gallery</h2>
-        <p>Dashboard screenshots and reporting visuals displayed below.</p>
 <img
 src="assets/06-cs-001-dashboard-final.png"
 alt="Retail Sales Performance Dashboard"
-style="width:100%; border-radius:10px;">
+style="
+width:100%;
+max-width:1100px;
+border-radius:10px;
+box-shadow:0 4px 15px rgba(0,0,0,.15);
+margin-top:20px;
+margin-bottom:30px;
+">
 
-       
-    </section>
+<div style="
+background:#eef7ff;
+padding:20px;
+border-radius:10px;
+margin-top:20px;
+">
 
-    <!-- Conclusion -->
-    <section class="content-block">
-        <h2>📋 Conclusion</h2>
+<strong>What You Will Learn In This Case Study</strong>
 
-        <p>
-            This project demonstrates a complete Business Intelligence workflow,
-            covering data preparation, modeling, analytics, visualization, and
-            executive reporting using Microsoft Power BI.
-        </p>
-    </section>
+<ul>
+<li>Business problem definition</li>
+<li>Dataset acquisition and preparation</li>
+<li>Power Query ETL workflow</li>
+<li>Data quality validation process</li>
+<li>Analytics engineering using DAX</li>
+<li>Dashboard design methodology</li>
+<li>Business insight generation</li>
+<li>Project delivery approach used by DeTLeng</li>
+</ul>
 
-    <!-- Consultation -->
-    <section class="consultation-box">
-        <h2>🤝 Project Demonstration</h2>
-
-        <p>
-            The complete implementation, data model, dashboard logic, and
-            development process can be demonstrated during a complimentary
-            consultation session via screen sharing.
-        </p>
-
-        <p>
-            Project files are not publicly distributed. Live demonstrations are
-            available upon request through DeTLeng consultation channels.
-        </p>
-    </section>
-
-</section>
-
-
-
-
-
-
-
-
-
-
-```html
-<section class="project-availability">
-
-    <div class="availability-card">
-        <h2>🔒 Project Availability</h2>
-
-        <p>
-            This case study demonstrates the methodology, solution architecture,
-            analytics workflow, and reporting approach used during project development.
-        </p>
-
-        <p>
-            Source files, Power BI (.PBIX) models, datasets, and implementation
-            details are not publicly distributed.
-        </p>
-
-        <p>
-            A live walkthrough of the complete solution can be arranged during a
-            complimentary consultation session via screen-sharing tools upon request.
-        </p>
-
-    </div>
+</div>
 
 </section>
-```
+
+<!-- ========================================================= -->
+<!-- LAYER 0 END : CASE STUDY INTRODUCTION -->
+<!-- ========================================================= -->
+
+
+
+
+
+
+
+
 
 
 
@@ -687,6 +512,804 @@ style="width:100%; border-radius:10px;">
 
 
 
+
+
+
+<!-- ========================================================= -->
+<!-- LAYER 1 START : BUSINESS STORY -->
+<!-- ========================================================= -->
+
+<section class="case-study-section">
+
+    <h2>🎯 Business Objective</h2>
+
+    <p>
+        Retail organizations generate thousands of transactions every day.
+        Without a centralized reporting solution, decision-makers often struggle
+        to identify revenue trends, customer behavior patterns, product performance,
+        and seasonal sales fluctuations.
+    </p>
+
+    <p>
+        The primary objective of this project was to develop an executive-level
+        Retail Sales Performance Dashboard capable of transforming raw transactional
+        data into meaningful business insights.
+    </p>
+
+    <p>
+        The solution was designed to:
+    </p>
+
+    <ul>
+        <li>Monitor overall sales performance</li>
+        <li>Track revenue growth trends</li>
+        <li>Analyze customer activity</li>
+        <li>Identify top-performing products</li>
+        <li>Compare regional sales performance</li>
+        <li>Provide interactive executive reporting</li>
+    </ul>
+
+    <hr>
+
+    <h2>📦 Dataset</h2>
+
+    <p>
+        This case study utilizes the publicly available
+        <strong>Online Retail Dataset</strong> from the
+        UCI Machine Learning Repository.
+    </p>
+
+    <p>
+        The dataset contains real-world retail transaction records collected
+        from an online retail business operating between 2009 and 2011.
+    </p>
+
+    <h3>Dataset Overview</h3>
+
+    <ul>
+        <li><strong>Source:</strong> UCI Machine Learning Repository</li>
+        <li><strong>Dataset:</strong> Online Retail Dataset</li>
+        <li><strong>Period Covered:</strong> 2009 – 2011</li>
+        <li><strong>Total Records:</strong> Over 1 Million Transaction Records</li>
+        <li><strong>Data Format:</strong> Microsoft Excel Workbook</li>
+        <li><strong>Worksheets:</strong> Year 2009-2010 and Year 2010-2011</li>
+    </ul>
+
+    <h3>Key Fields Used</h3>
+
+    <ul>
+        <li>Invoice Number</li>
+        <li>Stock Code</li>
+        <li>Product Description</li>
+        <li>Quantity</li>
+        <li>Unit Price</li>
+        <li>Invoice Date</li>
+        <li>Customer ID</li>
+        <li>Country</li>
+    </ul>
+
+    <p>
+        The original workbook was imported into Power BI and used as the
+        source system for all subsequent ETL, modeling, and dashboard development activities.
+    </p>
+
+    <img
+        src="assets/01-cs-001-source-excel-files.png"
+        alt="Source Excel Dataset"
+        style="width:100%; margin-top:20px; border-radius:8px;"
+    >
+
+    <hr>
+
+    <h2>🚀 Expected Outcome</h2>
+
+    <p>
+        The expected outcome of this project was to establish a complete
+        Business Intelligence workflow capable of transforming raw retail
+        transaction data into actionable executive reporting.
+    </p>
+
+    <p>
+        The final solution was expected to provide:
+    </p>
+
+    <ul>
+        <li>Centralized sales performance monitoring</li>
+        <li>Revenue trend analysis by month and quarter</li>
+        <li>Customer activity measurement</li>
+        <li>Product performance analysis</li>
+        <li>Country-level revenue comparison</li>
+        <li>Interactive filtering and exploration capabilities</li>
+        <li>Executive-ready KPI reporting</li>
+    </ul>
+
+    <p>
+        Beyond visualization, the project aimed to demonstrate the complete
+        lifecycle of a modern analytics solution including data ingestion,
+        transformation, modeling, DAX calculations, and dashboard development.
+    </p>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- LAYER 1 END : BUSINESS STORY -->
+<!-- ========================================================= -->
+
+
+
+
+
+
+<!-- ========================================================= -->
+<!-- LAYER 2 START : DATA ENGINEERING & ETL STORY -->
+<!-- ========================================================= -->
+
+<section class="case-study-section">
+
+<h2>⚙️ Data Engineering & ETL Process</h2>
+
+<p>
+A successful Business Intelligence solution begins long before dashboard development.
+The majority of project effort is typically invested in data preparation,
+data quality validation, transformation, and modeling.
+</p>
+
+<p>
+For this case study, Power BI and Power Query were used to transform raw retail
+transaction data into a clean analytical dataset suitable for reporting and decision-making.
+</p>
+
+<hr>
+
+<h2>📂 Step 1 — Source Data Acquisition</h2>
+
+<p>
+The project started with the Online Retail Dataset obtained from the
+UCI Machine Learning Repository.
+</p>
+
+<p>
+The source workbook contained two separate worksheets covering different reporting periods:
+</p>
+
+<ul>
+<li><strong>Year 2009-2010</strong></li>
+<li><strong>Year 2010-2011</strong></li>
+</ul>
+
+<p>
+Combined, these worksheets contained more than one million retail transaction records,
+including invoices, products, quantities, pricing information, customer identifiers,
+and country-level sales information.
+</p>
+
+<p>
+The objective was to consolidate these datasets into a single analytical model
+capable of supporting executive reporting and business analysis.
+</p>
+
+<img
+src="assets/01-cs-001-source-excel-files.png"
+alt="Source Excel Files"
+style="width:100%; margin-top:20px; border-radius:8px;"
+>
+
+<p>
+<em>
+Figure 1: Original source workbook containing retail transaction data for two reporting periods.
+</em>
+</p>
+
+<hr>
+
+<h2>📥 Step 2 — Data Ingestion into Power BI</h2>
+
+<p>
+The Excel workbook was imported into Power BI Desktop.
+Each worksheet was loaded as an independent source table to preserve
+the original structure of the raw data.
+</p>
+
+<p>
+Two raw ingestion tables were created:
+</p>
+
+<ul>
+<li><strong>retail_raw_2009_2010</strong></li>
+<li><strong>retail_raw_2010_2011</strong></li>
+</ul>
+
+<p>
+Maintaining raw tables separately during ingestion is considered a best practice,
+as it allows validation against source data throughout the development lifecycle.
+</p>
+
+<img
+src="assets/02-cs-001-power-query-staging.png"
+alt="Data Ingestion into Power BI"
+style="width:100%; margin-top:20px; border-radius:8px;"
+>
+
+<p>
+<em>
+Figure 2: Raw source tables imported into Power BI for initial processing.
+</em>
+</p>
+
+<hr>
+
+<h2>🗄️ Step 3 — Building the Staging Layer</h2>
+
+<p>
+To prepare the data for reporting, a dedicated staging layer was created using
+Power Query.
+</p>
+
+<p>
+The staging layer serves as an intermediate transformation area where data is cleaned,
+standardized, and enriched before being exposed to the reporting model.
+</p>
+
+<p>
+A consolidated table named:
+</p>
+
+<ul>
+<li><strong>retail_staging</strong></li>
+</ul>
+
+<p>
+was created to serve as the primary analytical dataset.
+</p>
+
+<img
+src="assets/02-cs-001-power-query-staging.png"
+alt="Power Query Staging Layer"
+style="width:100%; margin-top:20px; border-radius:8px;"
+>
+
+<p>
+<em>
+Figure 3: Power Query staging layer used for data preparation and transformation.
+</em>
+</p>
+
+<hr>
+
+<h2>🔍 Step 4 — Data Quality Assessment & Profiling</h2>
+
+<p>
+Before performing transformations, a detailed data quality review was conducted.
+Power Query profiling tools were enabled to evaluate dataset health and identify
+potential data quality issues.
+</p>
+
+<p>
+The following validation checks were performed:
+</p>
+
+<ul>
+<li>Null Value Detection</li>
+<li>Error Value Detection</li>
+<li>Column Quality Analysis</li>
+<li>Column Distribution Analysis</li>
+<li>Distinct Value Identification</li>
+<li>Data Type Verification</li>
+<li>Outlier Review</li>
+</ul>
+
+<p>
+This step is critical because inaccurate source data can produce misleading business insights.
+Data profiling ensures that reporting logic is built on trusted and validated information.
+</p>
+
+<img
+src="assets/03-cs-001-data-profiling.png"
+alt="Data Profiling"
+style="width:100%; margin-top:20px; border-radius:8px;"
+>
+
+<p>
+<em>
+Figure 4: Power Query profiling tools showing column quality, distribution, and statistical summaries.
+</em>
+</p>
+
+<hr>
+
+<h2>🔄 Step 5 — Data Transformation & Enrichment</h2>
+
+<p>
+After validating data quality, transformation logic was applied to prepare the dataset
+for analytical reporting.
+</p>
+
+<p>
+The following transformations were implemented:
+</p>
+
+<ul>
+<li>Text standardization using Trim functions</li>
+<li>Data type corrections</li>
+<li>Revenue calculation column creation</li>
+<li>Year extraction from Invoice Date</li>
+<li>Month extraction from Invoice Date</li>
+<li>Month Name generation</li>
+<li>Quarter generation</li>
+<li>Day Name generation</li>
+</ul>
+
+<p>
+These derived attributes significantly improve reporting flexibility and enable
+time-based analysis without requiring complex calculations within visualizations.
+</p>
+
+<img
+src="assets/04-cs-001-date-dimensions.png"
+alt="Date Dimensions"
+style="width:100%; margin-top:20px; border-radius:8px;"
+>
+
+<p>
+<em>
+Figure 5: Date intelligence attributes generated from transactional invoice dates.
+</em>
+</p>
+
+<p>
+Power Query automatically tracked all applied transformation steps,
+ensuring transparency, repeatability, and maintainability of the ETL process.
+</p>
+
+<img
+src="assets/04-cs-001-date-dimensions.png"
+alt="Applied Transformation Steps"
+style="width:100%; margin-top:20px; border-radius:8px;"
+>
+
+<p>
+<em>
+Figure 6: Applied transformation steps forming the final ETL pipeline.
+</em>
+</p>
+
+<p>
+At the completion of the ETL process, the dataset was fully prepared for
+analytical modeling, DAX development, and dashboard creation.
+</p>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- LAYER 2 END : DATA ENGINEERING & ETL STORY -->
+<!-- ========================================================= -->
+
+
+
+
+
+
+
+   <!-- ========================================================= -->
+<!-- LAYER 3 START : ANALYTICS ENGINEERING -->
+<!-- ========================================================= -->
+
+<section class="case-study-section">
+
+<h2>📊 Analytics Engineering & Business Logic</h2>
+
+<p>
+Once the data preparation phase was completed, the project moved into the
+Analytics Engineering layer.
+</p>
+
+<p>
+This stage focused on converting clean transactional data into meaningful
+business metrics that could support operational reporting and executive
+decision-making.
+</p>
+
+<p>
+Rather than exposing raw records directly to stakeholders, reusable DAX
+measures were developed to create a centralized KPI layer for the dashboard.
+This approach improves consistency, scalability, and reporting accuracy.
+</p>
+
+<hr>
+
+<h2>🧮 KPI Development Framework</h2>
+
+<p>
+The dashboard was designed around four primary executive KPIs that provide
+a high-level view of overall business performance.
+</p>
+
+<ul>
+<li>Total Revenue</li>
+<li>Total Orders</li>
+<li>Total Customers</li>
+<li>Total Products</li>
+</ul>
+
+<p>
+These measures became the foundation for all visualizations, trend analysis,
+and business insights presented throughout the reporting solution.
+</p>
+
+<hr>
+
+<h2>💰 Revenue Analytics</h2>
+
+<p>
+Revenue serves as the primary performance indicator for the business.
+A dedicated DAX measure was created to aggregate transactional sales values
+across the entire dataset.
+</p>
+
+<pre>
+Total Revenue =
+SUM(retail_staging[Revenue])
+</pre>
+
+<p>
+This measure powers:
+</p>
+
+<ul>
+<li>KPI Revenue Card</li>
+<li>Monthly Revenue Trends</li>
+<li>Quarterly Revenue Analysis</li>
+<li>Country Revenue Comparison</li>
+<li>Product Revenue Rankings</li>
+</ul>
+
+<hr>
+
+<h2>🛒 Order Analytics</h2>
+
+<p>
+To understand overall business activity, the number of unique customer
+orders was calculated.
+</p>
+
+<pre>
+Total Orders =
+DISTINCTCOUNT(retail_staging[Invoice])
+</pre>
+
+<p>
+This metric represents completed business transactions rather than individual
+line items, providing a more accurate view of order volume.
+</p>
+
+<hr>
+
+<h2>👥 Customer Analytics</h2>
+
+<p>
+Customer measurement is critical for evaluating market reach and customer
+engagement.
+</p>
+
+<p>
+A distinct customer count measure was created to eliminate duplicate purchases
+and accurately represent active customers.
+</p>
+
+<pre>
+Total Customers =
+DISTINCTCOUNT(retail_staging[Customer ID])
+</pre>
+
+<p>
+This KPI helps stakeholders understand customer participation and overall
+business penetration.
+</p>
+
+<hr>
+
+<h2>📦 Product Analytics</h2>
+
+<p>
+Product diversity was measured using unique stock codes across all
+transactions.
+</p>
+
+<pre>
+Total Products =
+DISTINCTCOUNT(retail_staging[StockCode])
+</pre>
+
+<p>
+This measure provides visibility into catalog breadth and product activity
+within the reporting period.
+</p>
+
+<hr>
+
+<h2>🏗️ Semantic Model Design</h2>
+
+<p>
+The DAX layer was intentionally designed to separate business calculations
+from visual components.
+</p>
+
+<p>
+By centralizing logic within reusable measures, the dashboard remains:
+</p>
+
+<ul>
+<li>Scalable</li>
+<li>Maintainable</li>
+<li>Performance Optimized</li>
+<li>Consistent Across Visualizations</li>
+</ul>
+
+<p>
+This approach follows modern Business Intelligence development practices and
+ensures future enhancements can be implemented without redesigning existing reports.
+</p>
+
+<img
+src="assets/05-cs-001-dax-measures.png"
+alt="DAX Measures Development"
+style="width:100%; margin-top:20px; border-radius:8px;"
+>
+
+<p>
+<em>
+Figure 7: KPI measures and analytical business logic developed using DAX within Power BI.
+</em>
+</p>
+
+<hr>
+
+<h2>🎯 Outcome of the Analytics Layer</h2>
+
+<p>
+At the completion of this phase, the project had a fully developed analytical
+foundation capable of supporting interactive reporting, trend analysis,
+performance monitoring, and executive-level decision support.
+</p>
+
+<p>
+The resulting KPI framework became the core engine powering all dashboard
+visualizations and business insights presented in the final reporting solution.
+</p>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- LAYER 3 END : ANALYTICS ENGINEERING -->
+<!-- ========================================================= -->
+   
+
+
+
+   
+
+
+
+<!-- ========================================================= -->
+
+<!-- LAYER 4 START : DASHBOARD DEVELOPMENT & BUSINESS INSIGHTS -->
+
+<!-- ========================================================= -->
+
+<section class="case-study-section">
+
+<h2>📈 Dashboard Development & Executive Reporting</h2>
+
+<p>
+Following data preparation, transformation, and analytics engineering, the final stage of the project focused on delivering an executive-ready reporting solution.
+</p>
+
+<p>
+The objective was not simply to visualize data, but to create a dashboard capable of supporting business monitoring, performance evaluation, and data-driven decision-making.
+</p>
+
+<p>
+All visualizations were developed within Power BI using the analytical model and DAX measures created during previous stages of the project.
+</p>
+
+<hr>
+
+<h2>🖥️ Final Dashboard Overview</h2>
+
+<p>
+The final reporting solution consolidates key business metrics into a single interactive dashboard that enables stakeholders to monitor sales performance, customer activity, and product trends.
+</p>
+
+<img
+src="assets/06-cs-001-dashboard-final.png"
+alt="Retail Sales Performance Dashboard"
+style="width:100%; margin-top:20px; border-radius:8px;"
+
+>
+
+<p>
+<em>
+Figure 8: Final Retail Sales Performance Dashboard developed in Power BI.
+</em>
+</p>
+
+<hr>
+
+<h2>📊 Executive KPI Cards</h2>
+
+<p>
+To provide immediate visibility into overall business performance, executive KPI cards were implemented at the top of the dashboard.
+</p>
+
+<ul>
+<li><strong>Total Revenue</strong> — Overall sales generated during the reporting period.</li>
+<li><strong>Total Orders</strong> — Number of unique customer transactions.</li>
+<li><strong>Total Customers</strong> — Active customers identified within the dataset.</li>
+<li><strong>Total Products</strong> — Unique products sold across all transactions.</li>
+</ul>
+
+<p>
+These KPIs provide an instant snapshot of business health without requiring users to explore detailed reports.
+</p>
+
+<hr>
+
+<h2>📈 Revenue Trend Analysis</h2>
+
+<p>
+A monthly revenue trend visualization was created to identify growth patterns, seasonal behavior, and sales fluctuations throughout the year.
+</p>
+
+<p>
+This analysis allows stakeholders to quickly identify periods of strong performance and potential revenue decline.
+</p>
+
+<ul>
+<li>Visualization Type: Line Chart</li>
+<li>Metric: Revenue</li>
+<li>Dimension: Month Name</li>
+</ul>
+
+<hr>
+
+<h2>📅 Quarterly Performance Analysis</h2>
+
+<p>
+Quarter-level reporting was implemented to provide a higher-level business perspective and support strategic planning.
+</p>
+
+<ul>
+<li>Visualization Type: Line Chart</li>
+<li>Metric: Revenue</li>
+<li>Dimension: Quarter</li>
+</ul>
+
+<p>
+Quarterly analysis simplifies trend interpretation and highlights broader business performance patterns.
+</p>
+
+<hr>
+
+<h2>🌍 Country Revenue Analysis</h2>
+
+<p>
+Geographical performance reporting was developed to identify regional revenue contribution and market concentration.
+</p>
+
+<ul>
+<li>Visualization Type: Bar Chart</li>
+<li>Metric: Revenue</li>
+<li>Dimension: Country</li>
+</ul>
+
+<p>
+This analysis enables decision-makers to evaluate market performance and identify high-value customer regions.
+</p>
+
+<hr>
+
+<h2>📦 Product Performance Analysis</h2>
+
+<p>
+Product-level analysis was introduced to identify revenue-generating items and support inventory planning.
+</p>
+
+<ul>
+<li>Visualization Type: Bar Chart</li>
+<li>Metric: Revenue</li>
+<li>Dimension: Product Description</li>
+</ul>
+
+<p>
+The resulting visualization highlights products that contribute the greatest share of overall revenue.
+</p>
+
+<hr>
+
+<h2>🎛️ Interactive Dashboard Filtering</h2>
+
+<p>
+To improve usability and exploration capabilities, interactive slicers were incorporated into the dashboard.
+</p>
+
+<ul>
+<li>Country Filter</li>
+<li>Quarter Filter</li>
+</ul>
+
+<p>
+These controls allow stakeholders to perform self-service analysis without modifying the underlying report.
+</p>
+
+<hr>
+
+<h2>💡 Business Insights Generated</h2>
+
+<p>
+Analysis of the dataset revealed several notable findings:
+</p>
+
+<ul>
+<li>Revenue reached its highest levels during Quarter 4.</li>
+<li>The United Kingdom generated the majority of overall sales revenue.</li>
+<li>A relatively small group of products contributed a significant share of total revenue.</li>
+<li>Seasonal purchasing behavior became visible during year-end periods.</li>
+<li>Revenue concentration varied significantly across countries.</li>
+</ul>
+
+<p>
+These insights demonstrate how structured reporting can transform transactional data into actionable business intelligence.
+</p>
+
+<hr>
+
+<h2>🏆 Project Outcome</h2>
+
+<p>
+The project successfully delivered a complete Business Intelligence solution covering:
+</p>
+
+<ul>
+<li>Data Acquisition</li>
+<li>Data Engineering & ETL</li>
+<li>Data Quality Validation</li>
+<li>Analytics Engineering</li>
+<li>DAX Development</li>
+<li>Executive Dashboard Design</li>
+<li>Business Insight Generation</li>
+</ul>
+
+<p>
+The resulting solution provides a scalable foundation for performance monitoring, operational reporting, and executive decision support.
+</p>
+
+<hr>
+
+<h2>🤝 Project Availability & Consultation</h2>
+
+<p>
+This case study demonstrates the complete lifecycle of a modern Business Intelligence project, from raw source data through transformation, modeling, analytical calculations, and dashboard development.
+</p>
+
+<p>
+Project source files, PBIX artifacts, and implementation assets are not publicly distributed.
+</p>
+
+<p>
+Organizations seeking a similar solution can request a complimentary consultation session where project architecture, development methodology, reporting approach, and implementation strategy can be demonstrated through live screen sharing.
+</p>
+
+<p>
+Whether the requirement involves Power BI, ETL pipelines, SQL development, BigQuery analytics, or executive reporting, the same end-to-end methodology can be applied to transform business data into meaningful and actionable insights.
+</p>
+
+</section>
+
+<!-- ========================================================= -->
+
+<!-- LAYER 4 END : DASHBOARD DEVELOPMENT & BUSINESS INSIGHTS -->
+
+<!-- ========================================================= -->
 
 
 
