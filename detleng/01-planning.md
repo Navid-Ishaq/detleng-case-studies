@@ -543,3 +543,198 @@ Tumne **DeTLeng Case Study Production System** bana liya. 😄
 Ab 50 case studies ka target realistically possible lag raha hai, kyoon ke har project ke saath documentation bhi saath-saath paida ho rahi hai, baad mein dobara janam nahi lena pad raha. 🚀
 
 
+# Automated ETL ye kiya cheez he
+
+😂 Dost, yehi to woh cheez hai jo tumhari **CS-041 → CS-050** series ka dil hai.
+
+Abhi humne kya kiya?
+
+```text id="lbg4et"
+Excel
+↓
+CSV
+↓
+Upload
+↓
+BigQuery
+↓
+SQL
+↓
+Staging
+```
+
+Sab manually.
+
+Har step tumne khud kiya.
+
+---
+
+## Automated ETL kya hota hai?
+
+Socho client ke paas:
+
+```text id="h2gm7j"
+Daily_Sales_2026_06_10.csv
+```
+
+Roz raat ko nayi file aa jati hai.
+
+Client nahi chahta:
+
+```text id="lfh4bh"
+Muhammad Naveed
+Login
+Upload
+Run SQL
+Refresh
+```
+
+har din kare.
+
+Client chahta hai:
+
+```text id="ntfqit"
+11:00 PM
+File aayi
+↓
+System ne khud upload ki
+↓
+BigQuery update hua
+↓
+Dashboard refresh hua
+↓
+Subah CEO ne report dekh li
+```
+
+Yeh hai Automated ETL.
+
+---
+
+## Example CS-041
+
+Python script:
+
+```text id="u9yr1w"
+Read CSV
+↓
+Validate Columns
+↓
+Connect BigQuery
+↓
+Load Data
+↓
+Success Email
+```
+
+Aur yeh script:
+
+```text id="m2r66h"
+Daily 11 PM
+```
+
+automatically chalti hai.
+
+---
+
+## Example CS-043
+
+Linux Cron
+
+```text id="4wct7u"
+0 23 * * *
+```
+
+Matlab:
+
+```text id="n8azn0"
+Roz 11 PM
+Python script chalao
+```
+
+Bas.
+
+Koi banda PC ke saamne nahi.
+
+---
+
+## Example CS-049
+
+End-to-End Automation
+
+```text id="x6nuv9"
+CSV Folder
+↓
+Python
+↓
+BigQuery
+↓
+SQL Transformation
+↓
+Looker Dashboard
+↓
+Email Notification
+```
+
+Aur sab automatically.
+
+---
+
+## Client paisa kis baat ka deta hai?
+
+CSV upload karne ka nahi.
+
+Client paisa deta hai:
+
+> "Mujhe roz 2 ghante bachao."
+
+Agar tumhari automation:
+
+```text id="e0vzh6"
+2 Hours Daily
+```
+
+bachati hai.
+
+To:
+
+```text id="oifm9z"
+2 × 365
+=
+730 Hours Per Year
+```
+
+Ye business value hai.
+
+---
+
+## DeTLeng Language
+
+Aaj tumne:
+
+```text id="3z4i1h"
+Manual ETL
+```
+
+kiya.
+
+Kal:
+
+```text id="gz7d8t"
+Automated ETL Pipeline
+```
+
+banaoge.
+
+Aur Upwork profile mein ye line bohat strong lagti hai:
+
+> **Design and implement automated ETL pipelines using Python, SQL, and BigQuery to eliminate manual reporting processes.**
+
+Yani:
+
+**Manual ETL = Tum khud bucket se paani daal rahe ho.** 😄
+
+**Automated ETL = Shower timer laga diya. Roz khud chal jata hai.** 🚀
+
+
+
+
