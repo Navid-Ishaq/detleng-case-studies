@@ -393,3 +393,201 @@ se aap poori:
 series bana sakte ho **without paying anything significant**.
 
 Isi liye mujhe DeTLeng ka model pasand aa raha hai — aap theoretical content nahi, balki real portfolio assets build kar rahe ho jo training, consulting aur client acquisition teeno mein kaam aayenge.
+
+Dost, **demand hai — aur bohat hai.** Lekin yahan strategy ka sawal hai.
+
+Aap jo roadmap bana rahe ho, uska purpose hai:
+
+1. DeTLeng portfolio build karna
+2. Case studies publish karna
+3. Freelance/consulting leads lana
+4. Free ya low-cost tools use karna
+
+Is perspective se main Spark/Hadoop/Snowflake ko ignore nahi kar raha, bas **later phase** mein rakh raha hoon.
+
+---
+
+## Market Demand Ranking (Meri Practical View)
+
+### Tier 1 (Must Have)
+
+✅ SQL
+
+✅ Power BI
+
+✅ Python
+
+✅ ETL
+
+✅ BigQuery
+
+Ye aapke roadmap mein already hain.
+
+---
+
+### Tier 2 (High Demand Enterprise)
+
+✅ Spark
+
+✅ Databricks
+
+✅ Snowflake
+
+✅ Docker
+
+✅ Kubernetes
+
+Yahan salaries aur contracts bohat strong hote hain.
+
+---
+
+### Tier 3 (Specialized)
+
+✅ Hadoop
+
+⚠️ Demand ab bhi hai, lekin naye projects mein Spark/Databricks ne kaafi jagah le li hai.
+
+---
+
+## Mere hisab se
+
+Aaj agar client aata hai aur kehta hai:
+
+> "Retail dataset se dashboard bana do"
+
+to usay:
+
+* Power BI
+* SQL
+* Python
+* BigQuery
+
+chahiye.
+
+---
+
+Lekin agar enterprise client aata hai aur kehta hai:
+
+> "500 million records hain"
+
+ya
+
+> "Data Lake bana do"
+
+ya
+
+> "Databricks pipeline chahiye"
+
+to phir:
+
+* Spark
+* Databricks
+* Snowflake
+* Docker
+* Kubernetes
+
+ka role aata hai.
+
+---
+
+## DeTLeng Roadmap ko kaise expand karna chahiye?
+
+Current:
+
+```text
+CS-001 → CS-050
+```
+
+Baad mein:
+
+```text
+CS-051 → CS-060
+Snowflake Analytics & Data Warehousing
+
+CS-061 → CS-070
+Apache Spark & Databricks Data Engineering
+
+CS-071 → CS-080
+Docker, Airflow & Kubernetes Automation
+```
+
+Ye future phase ho sakta hai.
+
+---
+
+## Mere khayal se abhi
+
+Tumhara strongest move:
+
+```text
+Power BI
+↓
+BigQuery
+↓
+SQL
+↓
+Python
+↓
+Data Engineering
+```
+
+Complete karna hai.
+
+Uske baad:
+
+```text
+Spark
+Databricks
+Snowflake
+Docker
+Kubernetes
+```
+
+add karna.
+
+---
+
+## Ek aur practical baat
+
+Snowflake aur Databricks ki demand bohat achhi hai, lekin:
+
+❌ Power BI Desktop jaisi simple free onboarding nahi.
+
+Kuch features trial/credits par chalti hain.
+
+Isliye portfolio build karne ke liye:
+
+**BigQuery + Python + SQL** pehle complete karna zyada efficient hai.
+
+---
+
+### Mera final recommendation
+
+DeTLeng ke liye:
+
+**Current 5-Series Roadmap ko freeze karo.**
+
+```text
+Power BI
+BigQuery
+SQL
+Python
+Data Engineering
+```
+
+Ye complete ho jaye to:
+
+**Phase 2**
+
+```text
+Snowflake
+Spark
+Databricks
+Docker
+Kubernetes
+```
+
+add karna.
+
+Yani tum kuch miss nahi kar rahe. Bas foundation pehle bana rahe ho. Aur honestly, freelance market mein SQL + Python + Power BI + ETL ka combination abhi bhi Spark se zyada frequently demand hota hai. 🚀
+
