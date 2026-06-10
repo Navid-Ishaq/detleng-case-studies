@@ -1,3 +1,448 @@
+# CS-002 — Building an Analytics-Ready Retail Dataset with BigQuery
+
+**Transforming 1.06M+ Retail Transactions into a Cloud-Based Analytics & Reporting Foundation**
+
+---
+
+# Executive Summary
+
+This project demonstrates how a large retail transaction dataset containing more than 1.06 million records was transformed into an analytics-ready dataset using Google BigQuery.
+
+The objective was not simply to create dashboards, but to establish a reliable data foundation capable of supporting reporting, business intelligence, and decision-making. The implementation focused on data ingestion, ETL processing, data validation, KPI development, and analytics dataset preparation.
+
+Using Google BigQuery, multiple source files were consolidated into a centralized cloud-based data warehouse where business metrics could be calculated, validated, and consumed by reporting tools such as Power BI and Looker Studio.
+
+The result was a scalable retail analytics solution capable of transforming raw transactional data into actionable business insights.
+
+---
+
+# Business Problem
+
+Retail businesses often accumulate transaction data across multiple files, systems, and reporting periods. Before meaningful reporting can occur, the data must be consolidated, standardized, and validated.
+
+The Online Retail II dataset contained more than one million retail transaction records spread across two separate reporting periods.
+
+### Key Challenges
+
+* Combining multiple source datasets
+* Standardizing data structures
+* Preparing analytics-ready data
+* Validating business metrics
+* Creating reusable KPI calculations
+* Supporting future reporting and dashboard development
+
+The project was approached from a data engineering perspective where data quality, transformation logic, and business rules were prioritized before visualization.
+
+---
+
+# Source Data
+
+The project utilized the Online Retail II dataset obtained from the UCI Machine Learning Repository.
+
+### Dataset Characteristics
+
+* Over 1.06 million transaction records
+* Two years of retail activity
+* Invoice-level transactions
+* Product information
+* Customer identifiers
+* Pricing and quantity metrics
+* Country-level sales data
+
+The source workbook contained two worksheets:
+
+* Year 2009–2010
+* Year 2010–2011
+
+Both worksheets were exported to CSV format prior to ingestion into BigQuery.
+
+---
+
+# Solution Architecture
+
+The project followed a layered data engineering architecture designed to separate raw data from transformed business-ready datasets.
+
+```text
+Excel Files
+     ↓
+CSV Files
+     ↓
+BigQuery Raw Tables
+     ↓
+Staging Layer
+     ↓
+Data Validation
+     ↓
+Analytics Dataset
+     ↓
+Power BI / Looker Studio
+     ↓
+Business Insights
+```
+
+This architecture improves maintainability, scalability, and reporting reliability.
+
+---
+
+# Data Ingestion Process
+
+A dedicated BigQuery dataset named:
+
+```text
+detleng_retail
+```
+
+was created to host the complete retail analytics solution.
+
+Two raw tables were created:
+
+```text
+retail_raw_2009_2010
+retail_raw_2010_2011
+```
+
+The original Excel worksheets were converted to CSV files and loaded into their respective BigQuery tables.
+
+This raw layer preserved source records without applying business transformations, ensuring traceability and data integrity throughout the project lifecycle.
+
+---
+
+# Raw Data Layer
+
+The raw layer served as the system of record for all imported transaction data.
+
+### Key Objectives
+
+* Preserving source data
+* Preventing accidental data loss
+* Supporting future validation processes
+* Enabling repeatable ETL workflows
+
+Before transformation activities began, record counts were validated to confirm successful ingestion.
+
+### Approximate Source Volumes
+
+```text
+2009–2010 Dataset: 525K+ Records
+2010–2011 Dataset: 541K+ Records
+
+Combined Dataset:
+1,067,371 Records
+```
+
+---
+
+# ETL & Data Transformation
+
+After ingestion, both source datasets were consolidated into a staging table using SQL.
+
+```sql
+CREATE OR REPLACE TABLE detleng_retail.retail_staging AS
+
+SELECT *
+FROM detleng_retail.retail_raw_2009_2010
+
+UNION ALL
+
+SELECT *
+FROM detleng_retail.retail_raw_2010_2011;
+```
+
+Additional transformations were applied to create analytics-ready fields.
+
+### Revenue Calculation
+
+```text
+Revenue = Quantity × Price
+```
+
+### Date Standardization
+
+Source date fields were parsed and converted into reporting-friendly formats.
+
+### Feature Engineering
+
+The following analytical attributes were created:
+
+* Revenue
+* Year
+* Month
+* Quarter
+
+These fields simplified downstream reporting and dashboard development.
+
+---
+
+# Data Quality Validation
+
+Data quality validation was performed before KPI development.
+
+### Record Count Validation
+
+```text
+Total Rows: 1,067,371
+```
+
+### Date Range Validation
+
+```text
+Start Date: 2009-12-01
+End Date: 2011-12-09
+```
+
+### Null Customer Validation
+
+```text
+243,007 Records
+```
+
+The presence of null customer identifiers reflects guest purchases and anonymous transactions commonly found in retail systems.
+
+### Negative Quantity Validation
+
+```text
+22,950 Records
+```
+
+These records primarily represented returns, refunds, and order cancellations.
+
+### Negative Revenue Validation
+
+```text
+19,498 Records
+```
+
+Negative revenue values were expected due to return-related transactions.
+
+The validation process confirmed that the dataset accurately represented real-world retail activity.
+
+---
+
+# Analytics Dataset Design
+
+The staging table was transformed into an analytics-ready dataset capable of supporting executive reporting.
+
+### Final Dataset Components
+
+* Transaction Information
+* Customer Information
+* Product Information
+* Geographic Information
+* Revenue Metrics
+* Date Dimensions
+
+This structure allowed reporting tools to consume clean business-ready data without requiring additional transformation logic.
+
+---
+
+# KPI Development
+
+Business KPIs were developed directly within BigQuery using SQL.
+
+### KPI Summary
+
+| KPI                |     Value |
+| ------------------ | --------: |
+| Total Revenue      |   €20.97M |
+| Total Orders       |    53,628 |
+| Total Customers    |     5,942 |
+| Total Products     |     5,305 |
+| Total Transactions | 1,067,371 |
+
+These KPIs provided a high-level view of retail performance across the entire dataset.
+
+---
+
+# Business Insights
+
+## Top Revenue Countries
+
+| Rank | Country        | Revenue |
+| ---- | -------------- | ------: |
+| 1    | United Kingdom | €17.87M |
+| 2    | EIRE           |   €664K |
+| 3    | Netherlands    |   €554K |
+| 4    | Germany        |   €431K |
+| 5    | France         |   €357K |
+
+### Key Insight
+
+The United Kingdom generated more than 85% of total revenue, highlighting a strong concentration of business activity within the domestic market.
+
+---
+
+## Top Revenue Products
+
+| Rank | Product                            | Revenue |
+| ---- | ---------------------------------- | ------: |
+| 1    | REGENCY CAKESTAND 3 TIER           |   €344K |
+| 2    | Manual                             |   €341K |
+| 3    | DOTCOM POSTAGE                     |   €323K |
+| 4    | WHITE HANGING HEART T-LIGHT HOLDER |   €267K |
+| 5    | PAPER CRAFT, LITTLE BIRDIE         |   €168K |
+
+### Key Insight
+
+Home décor and gift-related products generated a significant share of total revenue, indicating strong customer demand within these product categories.
+
+---
+
+## Revenue Seasonality
+
+### Highest-Performing Months
+
+| Month    | Revenue |
+| -------- | ------: |
+| November |  €2.98M |
+| December |  €2.73M |
+| October  |  €2.32M |
+
+### Key Insight
+
+Quarter 4 represented the strongest sales period, demonstrating the impact of holiday and seasonal purchasing behavior.
+
+---
+
+# Reporting & Dashboard Integration
+
+Once the analytics-ready dataset was validated, it was connected to both Power BI and Looker Studio.
+
+This architecture allowed reporting tools to consume pre-processed business data directly from BigQuery rather than performing transformations locally.
+
+### Benefits
+
+* Faster report development
+* Consistent KPI definitions
+* Improved scalability
+* Reduced dashboard complexity
+* Centralized business logic
+
+---
+
+# Key Outcomes
+
+## Data Engineering Deliverables
+
+* ✅ Source Data Ingestion
+* ✅ BigQuery Data Warehouse Setup
+* ✅ Raw Data Layer
+* ✅ Staging Layer
+* ✅ SQL-Based ETL Processing
+* ✅ Revenue Calculations
+* ✅ Date Transformations
+* ✅ Data Validation Framework
+* ✅ Analytics Dataset Development
+
+## Analytics Deliverables
+
+* ✅ Executive KPI Development
+* ✅ Revenue Analysis
+* ✅ Customer Analysis
+* ✅ Product Analysis
+* ✅ Geographic Analysis
+* ✅ Reporting Integration
+
+---
+
+# Technologies Used
+
+* Google Cloud Platform (GCP)
+* Google BigQuery
+* SQL
+* ETL Development
+* Data Validation
+* Data Warehousing
+* Analytics Engineering
+* Power BI
+* Looker Studio
+* Business Intelligence
+
+---
+
+# Conclusion
+
+This project demonstrates how cloud-based data engineering practices can transform raw retail transaction data into a reliable analytics foundation.
+
+By implementing a structured ETL workflow within BigQuery, more than 1.06 million transactions were consolidated, validated, and transformed into an analytics-ready dataset capable of supporting reporting, business intelligence, and executive decision-making.
+
+The project reinforces a core principle of modern analytics:
+
+> Reliable dashboards begin with reliable data.
+
+At DeTLeng, the focus is not only on building reports but on engineering the data that makes those reports trustworthy.
+
+---
+
+---
+
+# Step-by-Step Project Execution
+
+The previous sections provided a high-level overview of the solution, architecture, implementation approach, and business outcomes.
+
+The following section documents the complete execution process used to build the retail analytics platform in Google BigQuery.
+
+Each step reflects the actual implementation workflow, including data ingestion, warehouse setup, ETL development, data validation, KPI creation, and analytics preparation.
+
+This execution log serves as a practical reference for understanding how more than 1.06 million retail transactions were transformed into an analytics-ready dataset capable of supporting reporting, business intelligence, and decision-making.
+
+The implementation followed a structured data engineering approach:
+
+```text
+Source Data
+     ↓
+Data Ingestion
+     ↓
+Raw Data Layer
+     ↓
+ETL Processing
+     ↓
+Data Validation
+     ↓
+Analytics Dataset
+     ↓
+KPI Development
+     ↓
+Business Insights
+     ↓
+Power BI / Looker Studio
+```
+
+The sections below document each phase of the project in the order it was executed.
+
+---
+
+## Data Warehouse Setup and Data Ingestion
+
+Following the initial review of the Online Retail II dataset...
+
+---
+CS-002 Overview
+│
+├── Executive Summary
+├── Business Problem
+├── Source Data
+├── Solution Architecture
+├── Data Ingestion Process
+├── Raw Data Layer
+├── ETL & Data Transformation
+├── Data Quality Validation
+├── Analytics Dataset Design
+├── KPI Development
+├── Business Insights
+├── Reporting & Dashboard Integration
+├── Key Outcomes
+├── Technologies Used
+├── Conclusion
+│
+└── Step-by-Step Project Execution
+      ├── Data Warehouse Setup and Data Ingestion
+      ├── Initial Data Validation and Staging Verification
+      ├── Data Quality Validation
+      ├── Analytics Layer Development
+      └── Business Insights
+
+---
+
 # Data Warehouse Setup and Data Ingestion
 
 Following the initial review of the Online Retail II dataset, the next phase focused on establishing a cloud-based data warehouse using Google BigQuery.
