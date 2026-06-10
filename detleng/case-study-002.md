@@ -416,6 +416,8 @@ The sections below document each phase of the project in the order it was execut
 Following the initial review of the Online Retail II dataset...
 
 ---
+
+```text
 CS-002 Overview
 │
 ├── Executive Summary
@@ -435,11 +437,11 @@ CS-002 Overview
 ├── Conclusion
 │
 └── Step-by-Step Project Execution
-      ├── Data Warehouse Setup and Data Ingestion
-      ├── Initial Data Validation and Staging Verification
-      ├── Data Quality Validation
-      ├── Analytics Layer Development
-      └── Business Insights
+    ├── Data Warehouse Setup and Data Ingestion
+    ├── Initial Data Validation and Staging Verification
+    ├── Data Quality Validation
+    ├── Analytics Layer Development
+    └── Business Insights
 
 ---
 
