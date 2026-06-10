@@ -424,7 +424,189 @@ Rather than treating every anomaly as an error, the project focused on understan
 
 With data quality validation completed, the project moved to the next phase: developing an analytics-ready dataset and building business KPIs using SQL.
 
+---
+
+## Analytics Layer Development
+
+With data ingestion, transformation, and validation successfully completed, the project moved into the analytics layer.
+
+The objective of this phase was to transform validated transaction data into business-ready KPIs that could support executive reporting, dashboard development, and decision-making.
+
+Unlike traditional dashboard-first approaches, the KPI logic was developed directly within BigQuery, ensuring that business calculations remained centralized, reusable, and consistent across reporting platforms.
+
+### Core Business KPIs
+
+Several foundational business metrics were created using SQL.
+
+#### Total Revenue
+
+```sql
+SELECT
+ROUND(SUM(Revenue),2) AS TotalRevenue
+FROM detleng_retail.retail_staging
+WHERE Revenue > 0;
+```
+
+#### Total Orders
+
+```sql
+SELECT
+COUNT(DISTINCT Invoice) AS TotalOrders
+FROM detleng_retail.retail_staging;
+```
+
+#### Total Customers
+
+```sql
+SELECT
+COUNT(DISTINCT CustomerID) AS TotalCustomers
+FROM detleng_retail.retail_staging
+WHERE CustomerID IS NOT NULL;
+```
+
+#### Total Products
+
+```sql
+SELECT
+COUNT(DISTINCT StockCode) AS TotalProducts
+FROM detleng_retail.retail_staging;
+```
+
+### KPI Results
+
+The resulting metrics provided an executive-level summary of the retail business.
+
+| KPI             | Result         |
+| --------------- | -------------- |
+| Total Revenue   | €20,972,968.14 |
+| Total Orders    | 53,628         |
+| Total Customers | 5,942          |
+| Total Products  | 5,305          |
+
+These results closely aligned with the previously developed Power BI solution, confirming the consistency and reliability of the BigQuery implementation.
+
+### Analytics Data Mart Structure
+
+To support future reporting requirements, KPI outputs and analytical datasets were organized within the BigQuery environment.
+
+<img width="1920" height="1080" alt="cs-011-gcp-07" src="https://github.com/user-attachments/assets/906f2f09-88bd-475e-a0f9-29c1f4f5c6a7" />
+
+The final structure contained:
+
+```text
+detleng_retail
+│
+├── retail_raw_2009_2010
+├── retail_raw_2010_2011
+├── retail_staging
+│
+├── Total Revenue
+├── Total Orders
+├── Total Customers
+├── Total Products
+│
+├── Revenue by Country
+├── Revenue by Month
+└── Revenue by Year
+```
+
+This structure separated source data from business reporting datasets and provided a clean foundation for analytics consumption.
+
+### Revenue Analysis by Country
+
+To understand geographical sales performance, revenue was aggregated at the country level.
+
+```sql
+SELECT
+Country,
+ROUND(SUM(Revenue),2) AS Revenue
+FROM detleng_retail.retail_staging
+WHERE Revenue > 0
+GROUP BY Country
+ORDER BY Revenue DESC;
+```
+
+This analysis identified the highest-performing markets and highlighted revenue concentration across countries.
+
+### Revenue Analysis by Year
+
+Annual revenue trends were calculated to evaluate overall business growth across the reporting period.
+
+```sql
+SELECT
+EXTRACT(YEAR FROM InvoiceDate) AS Year,
+ROUND(SUM(Revenue),2) AS Revenue
+FROM detleng_retail.retail_staging
+WHERE Revenue > 0
+GROUP BY Year
+ORDER BY Year;
+```
+
+The resulting dataset provided a year-over-year revenue view suitable for executive reporting and trend analysis.
+
+### Revenue Analysis by Month
+
+Monthly revenue aggregation was developed to identify seasonality and purchasing patterns.
+
+```sql
+SELECT
+FORMAT_DATE('%B', DATE(InvoiceDate)) AS MonthName,
+ROUND(SUM(Revenue),2) AS Revenue
+FROM detleng_retail.retail_staging
+WHERE Revenue > 0
+GROUP BY MonthName
+ORDER BY Revenue DESC;
+```
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9e320331-05da-4804-baab-1c9dc0e1c02f" />
+
+The analysis revealed clear seasonal trends, with November, December, and October generating the highest revenue levels across the dataset.
+
+### Business Insights
+
+The analytics layer produced several valuable business observations:
+
+* More than €20.9 million in positive revenue was generated across the reporting period.
+* Over 53,000 unique orders were processed.
+* Nearly 6,000 customers contributed to sales activity.
+* More than 5,300 unique products were sold.
+* Revenue demonstrated strong seasonal behavior during the final quarter of the year.
+* Country-level analysis revealed significant revenue concentration within key markets.
+
+### Outcome
+
+The analytics layer successfully transformed raw transaction data into business-ready metrics that could be consumed by reporting platforms such as Power BI and Looker Studio.
+
+At this stage, the project had completed:
+
+✅ Data Warehouse Setup
+
+✅ Raw Data Layer
+
+✅ ETL Processing
+
+✅ Data Quality Validation
+
+✅ KPI Development
+
+✅ Revenue Analysis
+
+✅ Customer Analysis
+
+✅ Product Analysis
+
+✅ Geographic Analysis
+
+✅ Time-Series Analysis
+
+The project had now evolved from a simple retail dataset into a fully operational analytics-ready data platform built on Google BigQuery.
 
 ---
+
+
+
+
+---
+
 
 
