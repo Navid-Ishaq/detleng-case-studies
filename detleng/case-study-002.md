@@ -558,7 +558,7 @@ GROUP BY MonthName
 ORDER BY Revenue DESC;
 ```
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9e320331-05da-4804-baab-1c9dc0e1c02f" />
+<img width="1473" height="737" alt="image" src="https://github.com/user-attachments/assets/38b894a0-e090-4f3f-bfd2-25c5bd14c1a2" />
 
 The analysis revealed clear seasonal trends, with November, December, and October generating the highest revenue levels across the dataset.
 
