@@ -664,6 +664,8 @@ ORDER BY Revenue DESC
 LIMIT 10;
 ```
 
+<img width="1600" height="796" alt="image" src="https://github.com/user-attachments/assets/a6bc2191-3f83-4e72-b511-66b6c3768fe1" />
+
 <img width="1464" height="737" alt="image" src="https://github.com/user-attachments/assets/a5199f2c-33a1-44f9-a40b-4c27f892cae8" />
 
 #### Top Products by Revenue
