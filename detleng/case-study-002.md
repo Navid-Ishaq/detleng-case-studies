@@ -1,4 +1,4 @@
-## Data Warehouse Setup and Data Ingestion
+# Data Warehouse Setup and Data Ingestion
 
 Following the initial review of the Online Retail II dataset, the next phase focused on establishing a cloud-based data warehouse using Google BigQuery.
 
@@ -139,154 +139,130 @@ At the completion of this phase, the project had successfully established:
 
 With the data warehouse environment fully operational, the project was ready to move into data transformation, quality validation, and KPI development.
 
+---
+## Initial Data Validation and Staging Verification
 
+Following the successful creation of the staging table, the next phase focused on validating the consolidated dataset before proceeding with analytics development.
 
+A staging layer should never be assumed to be correct simply because the SQL execution completed successfully. Record counts, data structures, and sample transactions must be reviewed to verify that the ETL process has preserved the source data accurately.
 
+### Record Count Validation
 
+The first validation step was to confirm that both source datasets had been successfully merged into the staging table.
 
-
-
-
-## Data Warehouse Setup and Data Ingestion
-
-After reviewing the source files, the next objective was to establish a cloud-based data warehouse environment using Google BigQuery.
-
-The solution architecture was designed to separate raw data, transformation logic, and reporting datasets into clearly defined layers.
-
-```text
-Excel Files
-     ↓
-BigQuery Raw Tables
-     ↓
-Staging Layer
-     ↓
-Analytics Layer
-     ↓
-SQL Reporting
-     ↓
-Power BI / Looker Studio
-```
-
-### BigQuery Environment Configuration
-
-A dedicated dataset was created within Google BigQuery to host all retail data assets.
-
-```text
-Dataset Name:
-detleng_retail
-```
-
-The dataset served as the central repository for raw data ingestion, SQL transformations, validation processes, and analytics-ready datasets.
-
-### Source File Preparation
-
-The Online Retail II workbook contained two separate worksheets representing different reporting periods.
-
-```text
-Year 2009–2010
-Year 2010–2011
-```
-
-To support BigQuery ingestion, both worksheets were exported to CSV format.
-
-```text
-retail_2009_2010.csv
-retail_2010_2011.csv
-```
-
-This conversion step ensured compatibility with BigQuery's data loading process.
-
-### Raw Data Layer
-
-Two raw tables were created within the dataset:
-
-```text
-retail_raw_2009_2010
-retail_raw_2010_2011
-```
-
-These tables preserved the original source records and acted as the foundation of the data warehouse architecture.
-
-The raw layer was intentionally designed to retain source-level information before applying any business transformations.
-
-### Handling Source Data Types
-
-During the initial import process, a data type issue was identified with the transaction date field.
-
-The source files stored dates in the following format:
-
-```text
-DD/MM/YYYY HH:MM
-```
-
-Example:
-
-```text
-13/12/2009 09:58
-```
-
-BigQuery attempted to interpret these values as native timestamps, resulting in import failures.
-
-To preserve source integrity and simplify the ETL process, the `InvoiceDate` field was initially loaded as a string.
-
-```text
-Invoice:STRING
-StockCode:STRING
-Description:STRING
-Quantity:INTEGER
-InvoiceDate:STRING
-Price:FLOAT
-CustomerID:STRING
-Country:STRING
-```
-
-This approach allowed date standardization to be handled later within the transformation layer using SQL.
-
-### Record Validation
-
-After both CSV files were successfully loaded, record counts were validated to confirm data completeness.
-
-```text
-2009–2010 Dataset: 525K+ Records
-2010–2011 Dataset: 541K+ Records
-```
-
-The validation confirmed that all source records had been successfully imported into BigQuery without loss.
-
-### Creating the Staging Layer
-
-Once the raw layer had been validated, both datasets were consolidated into a single staging table.
-
-This process replicated the append operation commonly performed in Power Query, but executed directly within BigQuery using SQL.
+The following query was executed:
 
 ```sql
-CREATE OR REPLACE TABLE
-detleng_retail.retail_staging AS
-
-SELECT *
-FROM detleng_retail.retail_raw_2009_2010
-
-UNION ALL
-
-SELECT *
-FROM detleng_retail.retail_raw_2010_2011;
+SELECT COUNT(*) AS TotalRows
+FROM detleng_retail.retail_staging;
 ```
 
-The resulting staging table became the primary transformation layer for subsequent data quality checks, KPI calculations, and analytics development.
+The result returned approximately 1.06 million records, confirming that the staging layer contained the complete transaction history from both reporting periods.
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d3600fff-7751-45ff-8104-b041b9fd6cc6" />
+```text
+Total Records:
+~1,067,371
+```
 
-The successful creation of the staging table confirmed that both source datasets had been consolidated into a unified analytical structure.
+This validation confirmed that the `UNION ALL` operation successfully consolidated the two source tables without data loss.
 
-### Outcome
+### Sample Data Verification
 
-At the completion of this phase, the project had established:
+After validating row counts, a sample of records was reviewed to verify data quality and field consistency.
 
-* A centralized BigQuery dataset
-* A raw data layer
-* Source data validation procedures
-* A consolidated staging table
-* A scalable foundation for downstream analytics
+```sql
+SELECT *
+FROM detleng_retail.retail_staging
+LIMIT 10;
+```
 
-This completed the data ingestion and warehouse setup phase of the project and prepared the dataset for transformation, validation, and KPI development.
+<img width="1479" height="739" alt="image" src="https://github.com/user-attachments/assets/a4f79784-6f5f-4d62-9c2e-75572f876190" />
+
+The sample records confirmed that transaction data had been loaded correctly and that all expected business fields were available within the staging layer.
+
+Key fields included:
+
+* Invoice Number
+* Product Code
+* Product Description
+* Quantity
+* Transaction Date
+* Unit Price
+* Customer Identifier
+* Country
+
+### Business Data Observations
+
+The sample records revealed several transaction types commonly found in real-world retail environments.
+
+Examples included:
+
+```text
+AMAZON FEE
+POSTAGE
+Manual Adjustments
+Bad Debt Adjustments
+```
+
+In addition, negative quantity values were present within the dataset.
+
+```text
+-1
+-2
+```
+
+These records are important because they represent legitimate business activities such as:
+
+* Product returns
+* Customer refunds
+* Shipping adjustments
+* Fee allocations
+* Financial corrections
+* Order cancellations
+
+Rather than treating these records as errors, they were preserved within the dataset to maintain an accurate representation of business operations.
+
+### ETL Validation Outcome
+
+The validation process confirmed that:
+
+* The staging table was successfully created.
+* Source records were consolidated correctly.
+* Date fields were parsed successfully.
+* Business transaction history was preserved.
+* Returns, refunds, fees, and adjustments remained available for analysis.
+* The dataset was suitable for further transformation and KPI development.
+
+### Data Engineering Progress
+
+At this stage of the project, the following components had been completed:
+
+✅ BigQuery Environment Setup
+
+✅ Dataset Creation
+
+✅ CSV Data Ingestion
+
+✅ Raw Data Layer
+
+✅ Schema Configuration
+
+✅ ETL Consolidation Process
+
+✅ Staging Layer Development
+
+✅ Record Count Validation
+
+✅ Sample Data Verification
+
+The project had now progressed beyond simple data loading and entered the data validation phase, providing a trusted foundation for analytics engineering, KPI development, and business intelligence reporting.
+
+
+
+
+---
+
+
+
+
 
