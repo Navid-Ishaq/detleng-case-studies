@@ -1164,7 +1164,3 @@ This aligns directly with DeTLeng's core philosophy:
 
 
 
----
-
-
-
