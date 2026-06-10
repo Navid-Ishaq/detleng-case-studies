@@ -411,39 +411,6 @@ The sections below document each phase of the project in the order it was execut
 
 ---
 
-## Data Warehouse Setup and Data Ingestion
-
-Following the initial review of the Online Retail II dataset...
-
----
-
-```text
-CS-002 Overview
-│
-├── Executive Summary
-├── Business Problem
-├── Source Data
-├── Solution Architecture
-├── Data Ingestion Process
-├── Raw Data Layer
-├── ETL & Data Transformation
-├── Data Quality Validation
-├── Analytics Dataset Design
-├── KPI Development
-├── Business Insights
-├── Reporting & Dashboard Integration
-├── Key Outcomes
-├── Technologies Used
-├── Conclusion
-│
-└── Step-by-Step Project Execution
-    ├── Data Warehouse Setup and Data Ingestion
-    ├── Initial Data Validation and Staging Verification
-    ├── Data Quality Validation
-    ├── Analytics Layer Development
-    └── Business Insights
-
----
 
 # Data Warehouse Setup and Data Ingestion
 
