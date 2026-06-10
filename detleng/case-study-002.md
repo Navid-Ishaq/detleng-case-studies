@@ -534,8 +534,7 @@ UNION ALL
 SELECT *
 FROM detleng_retail.retail_raw_2010_2011;
 ```
-
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d3600fff-7751-45ff-8104-b041b9fd6cc6" />
+<img width="1855" height="922" alt="image" src="https://github.com/user-attachments/assets/56430600-1bc3-4eb0-bfd9-0824abe4e59f" />
 
 The successful execution of the query created a unified staging table containing all retail transactions from both reporting periods.
 
@@ -903,7 +902,7 @@ These results closely aligned with the previously developed Power BI solution, c
 
 To support future reporting requirements, KPI outputs and analytical datasets were organized within the BigQuery environment.
 
-<img width="1920" height="1080" alt="cs-011-gcp-07" src="https://github.com/user-attachments/assets/906f2f09-88bd-475e-a0f9-29c1f4f5c6a7" />
+<img width="1860" height="930" alt="02" src="https://github.com/user-attachments/assets/c3b8a6a1-a226-40f7-b474-0b041949c201" />
 
 The final structure contained:
 
