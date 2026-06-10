@@ -602,6 +602,149 @@ At this stage, the project had completed:
 The project had now evolved from a simple retail dataset into a fully operational analytics-ready data platform built on Google BigQuery.
 
 ---
+## Business Insights
+
+After developing the core KPIs and analytical datasets, the final phase focused on identifying meaningful business insights from the retail transaction data.
+
+The objective was not only to calculate metrics but also to understand customer behavior, product performance, geographic trends, and seasonal sales patterns.
+
+### Top Revenue-Generating Countries
+
+The following query was used to identify the highest-performing markets.
+
+```sql
+SELECT
+    Country,
+    ROUND(SUM(Revenue),2) AS Revenue
+FROM detleng_retail.retail_staging
+WHERE Revenue > 0
+GROUP BY Country
+ORDER BY Revenue DESC
+LIMIT 10;
+```
+
+<img width="1837" height="923" alt="image" src="https://github.com/user-attachments/assets/5005da33-c2ce-49f7-97f0-721ca38bf4fa" />
+
+#### Top Countries by Revenue
+
+| Rank | Country | Revenue |
+|--------|---------|----------:|
+| 1 | United Kingdom | €17.87M |
+| 2 | EIRE | €664K |
+| 3 | Netherlands | €554K |
+| 4 | Germany | €431K |
+| 5 | France | €357K |
+
+### Geographic Insights
+
+Several important patterns emerged from the country-level analysis:
+
+- The United Kingdom generated more than 85% of total revenue.
+- Sales activity was highly concentrated within the domestic market.
+- EIRE and the Netherlands represented the strongest international markets.
+- Germany and France contributed consistent revenue despite significantly smaller customer bases.
+- The data suggests potential opportunities for expanding sales across additional European markets.
+
+These findings demonstrate the importance of geographic segmentation when evaluating business growth opportunities.
+
+---
+
+### Top Revenue-Generating Products
+
+To identify the most valuable products within the catalog, revenue was aggregated at the product level.
+
+```sql
+SELECT
+    Description,
+    ROUND(SUM(Revenue),2) AS Revenue
+FROM detleng_retail.retail_staging
+WHERE Revenue > 0
+GROUP BY Description
+ORDER BY Revenue DESC
+LIMIT 10;
+```
+
+<img width="1464" height="737" alt="image" src="https://github.com/user-attachments/assets/a5199f2c-33a1-44f9-a40b-4c27f892cae8" />
+
+#### Top Products by Revenue
+
+| Rank | Product | Revenue |
+|--------|---------|----------:|
+| 1 | REGENCY CAKESTAND 3 TIER | €344K |
+| 2 | Manual | €341K |
+| 3 | DOTCOM POSTAGE | €323K |
+| 4 | WHITE HANGING HEART T-LIGHT HOLDER | €267K |
+| 5 | PAPER CRAFT, LITTLE BIRDIE | €168K |
+
+### Product Performance Insights
+
+The product-level analysis highlighted several interesting trends:
+
+- REGENCY CAKESTAND 3 TIER generated the highest revenue across the entire product catalog.
+- Home décor and gift-related products consistently appeared among the top-performing items.
+- Shipping-related entries such as DOTCOM POSTAGE and POSTAGE contributed significant revenue.
+- Revenue was concentrated among a relatively small group of products, indicating the presence of key revenue drivers.
+- Seasonal and gift-oriented products played a major role in overall business performance.
+
+These findings provide valuable input for merchandising, inventory planning, and product portfolio optimization.
+
+---
+
+### Seasonal Revenue Trends
+
+Monthly revenue analysis revealed strong seasonal behavior across the reporting period.
+
+| Month | Revenue |
+|---------|-----------:|
+| November | €2.98M |
+| December | €2.73M |
+| October | €2.32M |
+| September | €1.98M |
+| March | €1.55M |
+
+### Seasonal Insights
+
+The monthly analysis identified clear purchasing patterns:
+
+- Q4 generated the highest overall revenue.
+- November was the strongest month across the entire dataset.
+- October, November, and December consistently outperformed other periods.
+- Holiday shopping activity had a significant impact on revenue growth.
+- The business demonstrated strong year-end seasonality driven by gift purchases and festive demand.
+
+Understanding these seasonal patterns can support future forecasting, inventory management, and marketing campaign planning.
+
+---
+
+## Business Value Delivered
+
+This project transformed more than 1.06 million retail transactions into a structured, analytics-ready dataset using Google BigQuery.
+
+The solution established a complete data engineering workflow covering:
+
+- Data ingestion
+- Data transformation
+- Data quality validation
+- KPI development
+- Business analytics
+- Reporting dataset preparation
+
+Key business outcomes included:
+
+- Centralized cloud-based data warehouse
+- Standardized KPI calculations
+- Improved reporting readiness
+- Reusable SQL transformation logic
+- Support for Power BI and Looker Studio integration
+- Scalable analytics architecture for future growth
+
+Most importantly, the project demonstrated how properly engineered data foundations create more reliable reporting and decision-making environments.
+
+This aligns directly with DeTLeng's core philosophy:
+
+> We don't just build dashboards. We engineer the data that makes dashboards trustworthy.
+
+---
 
 
 
