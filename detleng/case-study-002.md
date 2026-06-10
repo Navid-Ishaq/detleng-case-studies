@@ -138,3 +138,155 @@ At the completion of this phase, the project had successfully established:
 * A scalable foundation for analytics engineering
 
 With the data warehouse environment fully operational, the project was ready to move into data transformation, quality validation, and KPI development.
+
+
+
+
+
+
+
+
+
+## Data Warehouse Setup and Data Ingestion
+
+After reviewing the source files, the next objective was to establish a cloud-based data warehouse environment using Google BigQuery.
+
+The solution architecture was designed to separate raw data, transformation logic, and reporting datasets into clearly defined layers.
+
+```text
+Excel Files
+     ↓
+BigQuery Raw Tables
+     ↓
+Staging Layer
+     ↓
+Analytics Layer
+     ↓
+SQL Reporting
+     ↓
+Power BI / Looker Studio
+```
+
+### BigQuery Environment Configuration
+
+A dedicated dataset was created within Google BigQuery to host all retail data assets.
+
+```text
+Dataset Name:
+detleng_retail
+```
+
+The dataset served as the central repository for raw data ingestion, SQL transformations, validation processes, and analytics-ready datasets.
+
+### Source File Preparation
+
+The Online Retail II workbook contained two separate worksheets representing different reporting periods.
+
+```text
+Year 2009–2010
+Year 2010–2011
+```
+
+To support BigQuery ingestion, both worksheets were exported to CSV format.
+
+```text
+retail_2009_2010.csv
+retail_2010_2011.csv
+```
+
+This conversion step ensured compatibility with BigQuery's data loading process.
+
+### Raw Data Layer
+
+Two raw tables were created within the dataset:
+
+```text
+retail_raw_2009_2010
+retail_raw_2010_2011
+```
+
+These tables preserved the original source records and acted as the foundation of the data warehouse architecture.
+
+The raw layer was intentionally designed to retain source-level information before applying any business transformations.
+
+### Handling Source Data Types
+
+During the initial import process, a data type issue was identified with the transaction date field.
+
+The source files stored dates in the following format:
+
+```text
+DD/MM/YYYY HH:MM
+```
+
+Example:
+
+```text
+13/12/2009 09:58
+```
+
+BigQuery attempted to interpret these values as native timestamps, resulting in import failures.
+
+To preserve source integrity and simplify the ETL process, the `InvoiceDate` field was initially loaded as a string.
+
+```text
+Invoice:STRING
+StockCode:STRING
+Description:STRING
+Quantity:INTEGER
+InvoiceDate:STRING
+Price:FLOAT
+CustomerID:STRING
+Country:STRING
+```
+
+This approach allowed date standardization to be handled later within the transformation layer using SQL.
+
+### Record Validation
+
+After both CSV files were successfully loaded, record counts were validated to confirm data completeness.
+
+```text
+2009–2010 Dataset: 525K+ Records
+2010–2011 Dataset: 541K+ Records
+```
+
+The validation confirmed that all source records had been successfully imported into BigQuery without loss.
+
+### Creating the Staging Layer
+
+Once the raw layer had been validated, both datasets were consolidated into a single staging table.
+
+This process replicated the append operation commonly performed in Power Query, but executed directly within BigQuery using SQL.
+
+```sql
+CREATE OR REPLACE TABLE
+detleng_retail.retail_staging AS
+
+SELECT *
+FROM detleng_retail.retail_raw_2009_2010
+
+UNION ALL
+
+SELECT *
+FROM detleng_retail.retail_raw_2010_2011;
+```
+
+The resulting staging table became the primary transformation layer for subsequent data quality checks, KPI calculations, and analytics development.
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d3600fff-7751-45ff-8104-b041b9fd6cc6" />
+
+The successful creation of the staging table confirmed that both source datasets had been consolidated into a unified analytical structure.
+
+### Outcome
+
+At the completion of this phase, the project had established:
+
+* A centralized BigQuery dataset
+* A raw data layer
+* Source data validation procedures
+* A consolidated staging table
+* A scalable foundation for downstream analytics
+
+This completed the data ingestion and warehouse setup phase of the project and prepared the dataset for transformation, validation, and KPI development.
+
