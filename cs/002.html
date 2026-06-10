@@ -406,29 +406,1032 @@ border-radius:25px;
 font-size:14px;
 font-weight:600;
 ">
-CASE STUDY #0000000000001
+CASE STUDY #002
 </span>
 </div>
 
 
+<h1 id="cs-002-building-an-analytics-ready-retail-dataset-with-bigquery">CS-002 — Building an Analytics-Ready Retail Dataset with BigQuery</h1>
+<p><strong>Transforming 1.06M+ Retail Transactions into a Cloud-Based Analytics &amp; Reporting Foundation</strong></p>
+<hr>
+<h1 id="executive-summary">Executive Summary</h1>
+<p>This project demonstrates how a large retail transaction dataset containing more than 1.06 million records was transformed into an analytics-ready dataset using Google BigQuery.</p>
+<p>The objective was not simply to create dashboards, but to establish a reliable data foundation capable of supporting reporting, business intelligence, and decision-making. The implementation focused on data ingestion, ETL processing, data validation, KPI development, and analytics dataset preparation.</p>
+<p>Using Google BigQuery, multiple source files were consolidated into a centralized cloud-based data warehouse where business metrics could be calculated, validated, and consumed by reporting tools such as Power BI and Looker Studio.</p>
+<p>The result was a scalable retail analytics solution capable of transforming raw transactional data into actionable business insights.</p>
+<hr>
+<h1 id="business-problem">Business Problem</h1>
+<p>Retail businesses often accumulate transaction data across multiple files, systems, and reporting periods. Before meaningful reporting can occur, the data must be consolidated, standardized, and validated.</p>
+<p>The Online Retail II dataset contained more than one million retail transaction records spread across two separate reporting periods.</p>
+<h3 id="key-challenges">Key Challenges</h3>
+<ul>
+<li>Combining multiple source datasets</li>
+<li>Standardizing data structures</li>
+<li>Preparing analytics-ready data</li>
+<li>Validating business metrics</li>
+<li>Creating reusable KPI calculations</li>
+<li>Supporting future reporting and dashboard development</li>
+</ul>
+<p>The project was approached from a data engineering perspective where data quality, transformation logic, and business rules were prioritized before visualization.</p>
+<hr>
+<h1 id="source-data">Source Data</h1>
+<p>The project utilized the Online Retail II dataset obtained from the UCI Machine Learning Repository.</p>
+<h3 id="dataset-characteristics">Dataset Characteristics</h3>
+<ul>
+<li>Over 1.06 million transaction records</li>
+<li>Two years of retail activity</li>
+<li>Invoice-level transactions</li>
+<li>Product information</li>
+<li>Customer identifiers</li>
+<li>Pricing and quantity metrics</li>
+<li>Country-level sales data</li>
+</ul>
+<p>The source workbook contained two worksheets:</p>
+<ul>
+<li>Year 2009–2010</li>
+<li>Year 2010–2011</li>
+</ul>
+<p>Both worksheets were exported to CSV format prior to ingestion into BigQuery.</p>
+<hr>
+<h1 id="solution-architecture">Solution Architecture</h1>
+<p>The project followed a layered data engineering architecture designed to separate raw data from transformed business-ready datasets.</p>
+<pre><code class="lang-text"><span class="hljs-symbol">Excel</span> Files
+     ↓
+<span class="hljs-symbol">CSV</span> Files
+     ↓
+<span class="hljs-keyword">BigQuery </span>Raw Tables
+     ↓
+<span class="hljs-symbol">Staging</span> Layer
+     ↓
+<span class="hljs-symbol">Data</span> Validation
+     ↓
+<span class="hljs-symbol">Analytics</span> Dataset
+     ↓
+<span class="hljs-symbol">Power</span> <span class="hljs-keyword">BI </span>/ Looker Studio
+     ↓
+<span class="hljs-keyword">Business </span>Insights
+</code></pre>
+<p>This architecture improves maintainability, scalability, and reporting reliability.</p>
+<hr>
+<h1 id="data-ingestion-process">Data Ingestion Process</h1>
+<p>A dedicated BigQuery dataset named:</p>
+<pre><code class="lang-text">detleng_retail
+</code></pre>
+<p>was created to host the complete retail analytics solution.</p>
+<p>Two raw tables were created:</p>
+<pre><code class="lang-text">retail_raw_<span class="hljs-number">2009_2010</span>
+retail_raw_<span class="hljs-number">2010_2011</span>
+</code></pre>
+<p>The original Excel worksheets were converted to CSV files and loaded into their respective BigQuery tables.</p>
+<p>This raw layer preserved source records without applying business transformations, ensuring traceability and data integrity throughout the project lifecycle.</p>
+<hr>
+<h1 id="raw-data-layer">Raw Data Layer</h1>
+<p>The raw layer served as the system of record for all imported transaction data.</p>
+<h3 id="key-objectives">Key Objectives</h3>
+<ul>
+<li>Preserving source data</li>
+<li>Preventing accidental data loss</li>
+<li>Supporting future validation processes</li>
+<li>Enabling repeatable ETL workflows</li>
+</ul>
+<p>Before transformation activities began, record counts were validated to confirm successful ingestion.</p>
+<h3 id="approximate-source-volumes">Approximate Source Volumes</h3>
+<pre><code class="lang-text"><span class="hljs-number">2009–2010</span> Dataset: <span class="hljs-number">525</span>K+ Records
+<span class="hljs-number">2010–2011</span> Dataset: <span class="hljs-number">541</span>K+ Records
 
+Combined Dataset:
+<span class="hljs-number">1</span>,<span class="hljs-number">067,371</span> Records
+</code></pre>
+<hr>
+<h1 id="etl-data-transformation">ETL &amp; Data Transformation</h1>
+<p>After ingestion, both source datasets were consolidated into a staging table using SQL.</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">REPLACE</span> <span class="hljs-keyword">TABLE</span> detleng_retail.retail_staging <span class="hljs-keyword">AS</span>
 
+<span class="hljs-keyword">SELECT</span> *
+<span class="hljs-keyword">FROM</span> detleng_retail.retail_raw_2009_2010
 
+<span class="hljs-keyword">UNION</span> ALL
 
+<span class="hljs-keyword">SELECT</span> *
+<span class="hljs-keyword">FROM</span> detleng_retail.retail_raw_2010_2011;
+</code></pre>
+<p>Additional transformations were applied to create analytics-ready fields.</p>
+<h3 id="revenue-calculation">Revenue Calculation</h3>
+<pre><code class="lang-text"><span class="hljs-attr">Revenue</span> = Quantity × Price
+</code></pre>
+<h3 id="date-standardization">Date Standardization</h3>
+<p>Source date fields were parsed and converted into reporting-friendly formats.</p>
+<h3 id="feature-engineering">Feature Engineering</h3>
+<p>The following analytical attributes were created:</p>
+<ul>
+<li>Revenue</li>
+<li>Year</li>
+<li>Month</li>
+<li>Quarter</li>
+</ul>
+<p>These fields simplified downstream reporting and dashboard development.</p>
+<hr>
+<h1 id="data-quality-validation">Data Quality Validation</h1>
+<p>Data quality validation was performed before KPI development.</p>
+<h3 id="record-count-validation">Record Count Validation</h3>
+<pre><code class="lang-text">Total Rows: <span class="hljs-number">1</span>,<span class="hljs-number">067,371</span>
+</code></pre>
+<h3 id="date-range-validation">Date Range Validation</h3>
+<pre><code class="lang-text"><span class="hljs-keyword">Start</span> <span class="hljs-built_in">Date</span>: <span class="hljs-number">2009</span><span class="hljs-number">-12</span><span class="hljs-number">-01</span>
+<span class="hljs-keyword">End</span> <span class="hljs-built_in">Date</span>: <span class="hljs-number">2011</span><span class="hljs-number">-12</span><span class="hljs-number">-09</span>
+</code></pre>
+<h3 id="null-customer-validation">Null Customer Validation</h3>
+<pre><code class="lang-text"><span class="hljs-number">243</span>,<span class="hljs-number">007</span> Records
+</code></pre>
+<p>The presence of null customer identifiers reflects guest purchases and anonymous transactions commonly found in retail systems.</p>
+<h3 id="negative-quantity-validation">Negative Quantity Validation</h3>
+<pre><code class="lang-text"><span class="hljs-number">22</span>,<span class="hljs-number">950</span> Records
+</code></pre>
+<p>These records primarily represented returns, refunds, and order cancellations.</p>
+<h3 id="negative-revenue-validation">Negative Revenue Validation</h3>
+<pre><code class="lang-text"><span class="hljs-number">19</span>,<span class="hljs-number">498</span> Records
+</code></pre>
+<p>Negative revenue values were expected due to return-related transactions.</p>
+<p>The validation process confirmed that the dataset accurately represented real-world retail activity.</p>
+<hr>
+<h1 id="analytics-dataset-design">Analytics Dataset Design</h1>
+<p>The staging table was transformed into an analytics-ready dataset capable of supporting executive reporting.</p>
+<h3 id="final-dataset-components">Final Dataset Components</h3>
+<ul>
+<li>Transaction Information</li>
+<li>Customer Information</li>
+<li>Product Information</li>
+<li>Geographic Information</li>
+<li>Revenue Metrics</li>
+<li>Date Dimensions</li>
+</ul>
+<p>This structure allowed reporting tools to consume clean business-ready data without requiring additional transformation logic.</p>
+<hr>
+<h1 id="kpi-development">KPI Development</h1>
+<p>Business KPIs were developed directly within BigQuery using SQL.</p>
+<h3 id="kpi-summary">KPI Summary</h3>
+<table>
+<thead>
+<tr>
+<th>KPI</th>
+<th style="text-align:right">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total Revenue</td>
+<td style="text-align:right">€20.97M</td>
+</tr>
+<tr>
+<td>Total Orders</td>
+<td style="text-align:right">53,628</td>
+</tr>
+<tr>
+<td>Total Customers</td>
+<td style="text-align:right">5,942</td>
+</tr>
+<tr>
+<td>Total Products</td>
+<td style="text-align:right">5,305</td>
+</tr>
+<tr>
+<td>Total Transactions</td>
+<td style="text-align:right">1,067,371</td>
+</tr>
+</tbody>
+</table>
+<p>These KPIs provided a high-level view of retail performance across the entire dataset.</p>
+<hr>
+<h1 id="business-insights">Business Insights</h1>
+<h2 id="top-revenue-countries">Top Revenue Countries</h2>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Country</th>
+<th style="text-align:right">Revenue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>United Kingdom</td>
+<td style="text-align:right">€17.87M</td>
+</tr>
+<tr>
+<td>2</td>
+<td>EIRE</td>
+<td style="text-align:right">€664K</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Netherlands</td>
+<td style="text-align:right">€554K</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Germany</td>
+<td style="text-align:right">€431K</td>
+</tr>
+<tr>
+<td>5</td>
+<td>France</td>
+<td style="text-align:right">€357K</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-insight">Key Insight</h3>
+<p>The United Kingdom generated more than 85% of total revenue, highlighting a strong concentration of business activity within the domestic market.</p>
+<hr>
+<h2 id="top-revenue-products">Top Revenue Products</h2>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Product</th>
+<th style="text-align:right">Revenue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>REGENCY CAKESTAND 3 TIER</td>
+<td style="text-align:right">€344K</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Manual</td>
+<td style="text-align:right">€341K</td>
+</tr>
+<tr>
+<td>3</td>
+<td>DOTCOM POSTAGE</td>
+<td style="text-align:right">€323K</td>
+</tr>
+<tr>
+<td>4</td>
+<td>WHITE HANGING HEART T-LIGHT HOLDER</td>
+<td style="text-align:right">€267K</td>
+</tr>
+<tr>
+<td>5</td>
+<td>PAPER CRAFT, LITTLE BIRDIE</td>
+<td style="text-align:right">€168K</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-insight">Key Insight</h3>
+<p>Home décor and gift-related products generated a significant share of total revenue, indicating strong customer demand within these product categories.</p>
+<hr>
+<h2 id="revenue-seasonality">Revenue Seasonality</h2>
+<h3 id="highest-performing-months">Highest-Performing Months</h3>
+<table>
+<thead>
+<tr>
+<th>Month</th>
+<th style="text-align:right">Revenue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>November</td>
+<td style="text-align:right">€2.98M</td>
+</tr>
+<tr>
+<td>December</td>
+<td style="text-align:right">€2.73M</td>
+</tr>
+<tr>
+<td>October</td>
+<td style="text-align:right">€2.32M</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-insight">Key Insight</h3>
+<p>Quarter 4 represented the strongest sales period, demonstrating the impact of holiday and seasonal purchasing behavior.</p>
+<hr>
+<h1 id="reporting-dashboard-integration">Reporting &amp; Dashboard Integration</h1>
+<p>Once the analytics-ready dataset was validated, it was connected to both Power BI and Looker Studio.</p>
+<p>This architecture allowed reporting tools to consume pre-processed business data directly from BigQuery rather than performing transformations locally.</p>
+<h3 id="benefits">Benefits</h3>
+<ul>
+<li>Faster report development</li>
+<li>Consistent KPI definitions</li>
+<li>Improved scalability</li>
+<li>Reduced dashboard complexity</li>
+<li>Centralized business logic</li>
+</ul>
+<hr>
+<h1 id="key-outcomes">Key Outcomes</h1>
+<h2 id="data-engineering-deliverables">Data Engineering Deliverables</h2>
+<ul>
+<li>✅ Source Data Ingestion</li>
+<li>✅ BigQuery Data Warehouse Setup</li>
+<li>✅ Raw Data Layer</li>
+<li>✅ Staging Layer</li>
+<li>✅ SQL-Based ETL Processing</li>
+<li>✅ Revenue Calculations</li>
+<li>✅ Date Transformations</li>
+<li>✅ Data Validation Framework</li>
+<li>✅ Analytics Dataset Development</li>
+</ul>
+<h2 id="analytics-deliverables">Analytics Deliverables</h2>
+<ul>
+<li>✅ Executive KPI Development</li>
+<li>✅ Revenue Analysis</li>
+<li>✅ Customer Analysis</li>
+<li>✅ Product Analysis</li>
+<li>✅ Geographic Analysis</li>
+<li>✅ Reporting Integration</li>
+</ul>
+<hr>
+<h1 id="technologies-used">Technologies Used</h1>
+<ul>
+<li>Google Cloud Platform (GCP)</li>
+<li>Google BigQuery</li>
+<li>SQL</li>
+<li>ETL Development</li>
+<li>Data Validation</li>
+<li>Data Warehousing</li>
+<li>Analytics Engineering</li>
+<li>Power BI</li>
+<li>Looker Studio</li>
+<li>Business Intelligence</li>
+</ul>
+<hr>
+<h1 id="conclusion">Conclusion</h1>
+<p>This project demonstrates how cloud-based data engineering practices can transform raw retail transaction data into a reliable analytics foundation.</p>
+<p>By implementing a structured ETL workflow within BigQuery, more than 1.06 million transactions were consolidated, validated, and transformed into an analytics-ready dataset capable of supporting reporting, business intelligence, and executive decision-making.</p>
+<p>The project reinforces a core principle of modern analytics:</p>
+<blockquote>
+<p>Reliable dashboards begin with reliable data.</p>
+</blockquote>
+<p>At DeTLeng, the focus is not only on building reports but on engineering the data that makes those reports trustworthy.</p>
+<hr>
+<hr>
+<h1 id="step-by-step-project-execution">Step-by-Step Project Execution</h1>
+<p>The previous sections provided a high-level overview of the solution, architecture, implementation approach, and business outcomes.</p>
+<p>The following section documents the complete execution process used to build the retail analytics platform in Google BigQuery.</p>
+<p>Each step reflects the actual implementation workflow, including data ingestion, warehouse setup, ETL development, data validation, KPI creation, and analytics preparation.</p>
+<p>This execution log serves as a practical reference for understanding how more than 1.06 million retail transactions were transformed into an analytics-ready dataset capable of supporting reporting, business intelligence, and decision-making.</p>
+<p>The implementation followed a structured data engineering approach:</p>
+<pre><code class="lang-text"><span class="hljs-symbol">Source</span> <span class="hljs-meta">Data</span>
+     ↓
+<span class="hljs-symbol">Data</span> Ingestion
+     ↓
+<span class="hljs-symbol">Raw</span> <span class="hljs-meta">Data</span> Layer
+     ↓
+<span class="hljs-symbol">ETL</span> Processing
+     ↓
+<span class="hljs-symbol">Data</span> Validation
+     ↓
+<span class="hljs-symbol">Analytics</span> Dataset
+     ↓
+<span class="hljs-symbol">KPI</span> Development
+     ↓
+<span class="hljs-keyword">Business </span>Insights
+     ↓
+<span class="hljs-symbol">Power</span> <span class="hljs-keyword">BI </span>/ Looker Studio
+</code></pre>
+<p>The sections below document each phase of the project in the order it was executed.</p>
+<hr>
+<h1 id="data-warehouse-setup-and-data-ingestion">Data Warehouse Setup and Data Ingestion</h1>
+<p>Following the initial review of the Online Retail II dataset, the next phase focused on establishing a cloud-based data warehouse using Google BigQuery.</p>
+<p>The objective was to move beyond spreadsheet-based analysis and create a scalable environment capable of supporting data transformation, validation, reporting, and business intelligence.</p>
+<h3 id="solution-architecture">Solution Architecture</h3>
+<p>The project followed a layered data engineering architecture designed to separate raw source data from transformed analytical datasets.</p>
+<pre><code class="lang-text"><span class="hljs-symbol">Excel</span> Files
+     ↓
+<span class="hljs-keyword">BigQuery </span>Raw Tables
+     ↓
+<span class="hljs-symbol">Staging</span> Layer
+     ↓
+<span class="hljs-symbol">Analytics</span> Layer
+     ↓
+<span class="hljs-symbol">SQL</span> Reporting
+     ↓
+<span class="hljs-symbol">Looker</span> Studio
+</code></pre>
+<p>This structure provides a clear separation between data ingestion, transformation, and reporting activities while supporting future scalability.</p>
+<h3 id="bigquery-dataset-creation">BigQuery Dataset Creation</h3>
+<p>A dedicated dataset was created within Google BigQuery to host all retail-related assets.</p>
+<pre><code class="lang-text">Dataset <span class="hljs-keyword">Name</span>:
+detleng_retail
+</code></pre>
+<p>This dataset became the central repository for raw tables, staging tables, validation processes, and analytics-ready datasets.</p>
+<h3 id="source-file-preparation">Source File Preparation</h3>
+<p>The original Online Retail II workbook contained two worksheets representing separate reporting periods.</p>
+<pre><code class="lang-text">Year <span class="hljs-number">2009</span>–<span class="hljs-number">2010</span>
+Year <span class="hljs-number">2010</span>–<span class="hljs-number">2011</span>
+</code></pre>
+<p>To ensure compatibility with BigQuery, both worksheets were exported to CSV format.</p>
+<pre><code class="lang-text"><span class="hljs-selector-tag">retail_2009_2010</span><span class="hljs-selector-class">.csv</span>
+<span class="hljs-selector-tag">retail_2010_2011</span><span class="hljs-selector-class">.csv</span>
+</code></pre>
+<p>The conversion process enabled structured ingestion into the cloud data warehouse environment.</p>
+<h3 id="raw-data-layer">Raw Data Layer</h3>
+<p>Two raw tables were created to preserve the original source data.</p>
+<pre><code class="lang-text">retail_raw_<span class="hljs-number">2009_2010</span>
+retail_raw_<span class="hljs-number">2010_2011</span>
+</code></pre>
+<p>The raw layer was intentionally designed to retain source records without applying business transformations. This approach ensures traceability and allows future validation against the original files whenever required.</p>
+<h3 id="handling-source-data-types">Handling Source Data Types</h3>
+<p>During the initial import process, a schema validation issue was encountered with the <code>InvoiceDate</code> field.</p>
+<p>The source files stored dates using the following format:</p>
+<pre><code class="lang-text"><span class="hljs-number">13</span><span class="hljs-regexp">/12/</span><span class="hljs-number">2009</span> <span class="hljs-number">09</span>:<span class="hljs-number">58</span>
+</code></pre>
+<p>BigQuery attempted to interpret these values as native timestamps, which resulted in loading errors because the source format did not match BigQuery&#39;s default timestamp expectations.</p>
+<p>To preserve data integrity and simplify the ETL workflow, the date field was initially imported as a string.</p>
+<pre><code class="lang-text"><span class="hljs-symbol">Invoice:</span>STRING
+<span class="hljs-symbol">StockCode:</span>STRING
+<span class="hljs-symbol">Description:</span>STRING
+<span class="hljs-symbol">Quantity:</span>INTEGER
+<span class="hljs-symbol">InvoiceDate:</span>STRING
+<span class="hljs-symbol">Price:</span>FLOAT
+<span class="hljs-symbol">CustomerID:</span>STRING
+<span class="hljs-symbol">Country:</span>STRING
+</code></pre>
+<p>This approach allowed date parsing and standardization to be handled later within the transformation layer using SQL.</p>
+<h3 id="data-loading-and-validation">Data Loading and Validation</h3>
+<p>After both CSV files were successfully loaded into BigQuery, row-count validation was performed to verify ingestion completeness.</p>
+<pre><code class="lang-text"><span class="hljs-number">2009–2010</span> Dataset: <span class="hljs-number">525</span>K+ Records
+<span class="hljs-number">2010–2011</span> Dataset: <span class="hljs-number">541</span>K+ Records
+</code></pre>
+<p>The validation confirmed that all source records were successfully imported into the raw layer.</p>
+<h3 id="staging-layer-development">Staging Layer Development</h3>
+<p>Once the raw tables had been validated, both datasets were consolidated into a single staging table.</p>
+<p>This process replicated the append operation commonly performed in Power Query but executed directly within BigQuery using SQL.</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">REPLACE</span> <span class="hljs-keyword">TABLE</span>
+detleng_retail.retail_staging <span class="hljs-keyword">AS</span>
 
+<span class="hljs-keyword">SELECT</span> *
+<span class="hljs-keyword">FROM</span> detleng_retail.retail_raw_2009_2010
 
+<span class="hljs-keyword">UNION</span> ALL
 
-
-
-
-
-
-
-  
-  
-
+<span class="hljs-keyword">SELECT</span> *
+<span class="hljs-keyword">FROM</span> detleng_retail.retail_raw_2010_2011;
+</code></pre>
+<p><img width="1855" height="922" alt="image" src="https://github.com/user-attachments/assets/56430600-1bc3-4eb0-bfd9-0824abe4e59f" /></p>
+<p>The successful execution of the query created a unified staging table containing all retail transactions from both reporting periods.</p>
+<p>This staging layer became the foundation for data transformation, quality validation, KPI development, and reporting activities performed later in the project.</p>
+<h3 id="outcome">Outcome</h3>
+<p>At the completion of this phase, the project had successfully established:</p>
+<ul>
+<li>A centralized BigQuery dataset</li>
+<li>A structured raw data layer</li>
+<li>Source data validation procedures</li>
+<li>A consolidated staging table</li>
+<li>A scalable foundation for analytics engineering</li>
+</ul>
+<p>With the data warehouse environment fully operational, the project was ready to move into data transformation, quality validation, and KPI development.</p>
+<hr>
+<h2 id="initial-data-validation-and-staging-verification">Initial Data Validation and Staging Verification</h2>
+<p>Following the successful creation of the staging table, the next phase focused on validating the consolidated dataset before proceeding with analytics development.</p>
+<p>A staging layer should never be assumed to be correct simply because the SQL execution completed successfully. Record counts, data structures, and sample transactions must be reviewed to verify that the ETL process has preserved the source data accurately.</p>
+<h3 id="record-count-validation">Record Count Validation</h3>
+<p>The first validation step was to confirm that both source datasets had been successfully merged into the staging table.</p>
+<p>The following query was executed:</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(*) <span class="hljs-keyword">AS</span> TotalRows
+<span class="hljs-keyword">FROM</span> detleng_retail.retail_staging;
+</code></pre>
+<p>The result returned approximately 1.06 million records, confirming that the staging layer contained the complete transaction history from both reporting periods.</p>
+<pre><code class="lang-text">Total Records:
+~<span class="hljs-number">1</span>,<span class="hljs-number">067,371</span>
+</code></pre>
+<p>This validation confirmed that the <code>UNION ALL</code> operation successfully consolidated the two source tables without data loss.</p>
+<h3 id="sample-data-verification">Sample Data Verification</h3>
+<p>After validating row counts, a sample of records was reviewed to verify data quality and field consistency.</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> *
+<span class="hljs-keyword">FROM</span> detleng_retail.retail_staging
+<span class="hljs-keyword">LIMIT</span> <span class="hljs-number">10</span>;
+</code></pre>
+<p><img width="1479" height="739" alt="image" src="https://github.com/user-attachments/assets/a4f79784-6f5f-4d62-9c2e-75572f876190" /></p>
+<p>The sample records confirmed that transaction data had been loaded correctly and that all expected business fields were available within the staging layer.</p>
+<p>Key fields included:</p>
+<ul>
+<li>Invoice Number</li>
+<li>Product Code</li>
+<li>Product Description</li>
+<li>Quantity</li>
+<li>Transaction Date</li>
+<li>Unit Price</li>
+<li>Customer Identifier</li>
+<li>Country</li>
+</ul>
+<h3 id="business-data-observations">Business Data Observations</h3>
+<p>The sample records revealed several transaction types commonly found in real-world retail environments.</p>
+<p>Examples included:</p>
+<pre><code class="lang-text"><span class="hljs-symbol">AMAZON</span> FEE
+<span class="hljs-symbol">POSTAGE</span>
+<span class="hljs-symbol">Manual</span> Adjustments
+<span class="hljs-keyword">Bad </span>Debt Adjustments
+</code></pre>
+<p>In addition, negative quantity values were present within the dataset.</p>
+<pre><code class="lang-text">-<span class="ruby"><span class="hljs-number">1</span>
+</span>-<span class="ruby"><span class="hljs-number">2</span></span>
+</code></pre>
+<p>These records are important because they represent legitimate business activities such as:</p>
+<ul>
+<li>Product returns</li>
+<li>Customer refunds</li>
+<li>Shipping adjustments</li>
+<li>Fee allocations</li>
+<li>Financial corrections</li>
+<li>Order cancellations</li>
+</ul>
+<p>Rather than treating these records as errors, they were preserved within the dataset to maintain an accurate representation of business operations.</p>
+<h3 id="etl-validation-outcome">ETL Validation Outcome</h3>
+<p>The validation process confirmed that:</p>
+<ul>
+<li>The staging table was successfully created.</li>
+<li>Source records were consolidated correctly.</li>
+<li>Date fields were parsed successfully.</li>
+<li>Business transaction history was preserved.</li>
+<li>Returns, refunds, fees, and adjustments remained available for analysis.</li>
+<li>The dataset was suitable for further transformation and KPI development.</li>
+</ul>
+<h3 id="data-engineering-progress">Data Engineering Progress</h3>
+<p>At this stage of the project, the following components had been completed:</p>
+<p>✅ BigQuery Environment Setup</p>
+<p>✅ Dataset Creation</p>
+<p>✅ CSV Data Ingestion</p>
+<p>✅ Raw Data Layer</p>
+<p>✅ Schema Configuration</p>
+<p>✅ ETL Consolidation Process</p>
+<p>✅ Staging Layer Development</p>
+<p>✅ Record Count Validation</p>
+<p>✅ Sample Data Verification</p>
+<p>The project had now progressed beyond simple data loading and entered the data validation phase, providing a trusted foundation for analytics engineering, KPI development, and business intelligence reporting.</p>
+<hr>
+<h2 id="data-quality-validation">Data Quality Validation</h2>
+<p>After confirming that the staging table contained the complete transaction history, a series of data quality validation checks were performed to assess the reliability of the dataset before KPI development and analytics modeling.</p>
+<p>The objective of this phase was not to remove records, but to understand the characteristics of the data and identify business scenarios that could influence reporting results.</p>
+<h3 id="record-count-validation">Record Count Validation</h3>
+<p>The first validation step confirmed the total number of records available in the staging layer.</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(*) <span class="hljs-keyword">AS</span> TotalRows
+<span class="hljs-keyword">FROM</span> detleng_retail.retail_staging;
+</code></pre>
+<p><img width="1830" height="715" alt="image" src="https://github.com/user-attachments/assets/485cd14a-b29d-4a9a-8a3c-d18f3ec6aef2" /></p>
+<p>Result:</p>
+<pre><code class="lang-text">Total Rows: <span class="hljs-number">1</span>,<span class="hljs-number">067,371</span>
+</code></pre>
+<p>This result confirmed that the complete transaction history from both source datasets had been successfully consolidated into the staging layer.</p>
+<h3 id="date-range-validation">Date Range Validation</h3>
+<p>The next step was to verify the reporting period covered by the dataset.</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span>
+  <span class="hljs-keyword">MIN</span>(InvoiceDate) <span class="hljs-keyword">AS</span> StartDate,
+  <span class="hljs-keyword">MAX</span>(InvoiceDate) <span class="hljs-keyword">AS</span> EndDate
+<span class="hljs-keyword">FROM</span> detleng_retail.retail_staging;
+</code></pre>
+<p><img width="1846" height="730" alt="image" src="https://github.com/user-attachments/assets/7b7d8c0e-9f94-4607-95bc-ddd1c7222751" /></p>
+<p>Result:</p>
+<pre><code class="lang-text"><span class="hljs-keyword">Start</span> <span class="hljs-built_in">Date</span>: <span class="hljs-number">2009</span><span class="hljs-number">-12</span><span class="hljs-number">-01</span>
+<span class="hljs-keyword">End</span> <span class="hljs-built_in">Date</span>: <span class="hljs-number">2011</span><span class="hljs-number">-12</span><span class="hljs-number">-09</span>
+</code></pre>
+<p>The validation confirmed that the dataset covered approximately two years of retail activity, matching the expected reporting period of the Online Retail II dataset.</p>
+<h3 id="customer-data-completeness">Customer Data Completeness</h3>
+<p>Customer identifiers were reviewed to determine the presence of missing customer records.</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(*) <span class="hljs-keyword">AS</span> NullCustomerID
+<span class="hljs-keyword">FROM</span> detleng_retail.retail_staging
+<span class="hljs-keyword">WHERE</span> CustomerID <span class="hljs-keyword">IS</span> <span class="hljs-literal">NULL</span>;
+</code></pre>
+<p><img width="1472" height="577" alt="image" src="https://github.com/user-attachments/assets/d5d93cd5-1c98-401f-b4b1-d366a529f912" /></p>
+<p>Result:</p>
+<pre><code class="lang-text"><span class="hljs-literal">Null</span> Customer IDs: <span class="hljs-number">243</span>,<span class="hljs-number">007</span>
+</code></pre>
+<h4 id="business-interpretation">Business Interpretation</h4>
+<p>This is a known characteristic of the Online Retail II dataset and does not necessarily indicate poor data quality.</p>
+<p>These records may represent:</p>
+<ul>
+<li>Guest purchases</li>
+<li>Anonymous transactions</li>
+<li>Customers without registered accounts</li>
+<li>Incomplete customer registration data</li>
+</ul>
+<p>The records were retained because they still contribute to revenue and transaction analysis.</p>
+<h3 id="negative-quantity-analysis">Negative Quantity Analysis</h3>
+<p>Retail datasets commonly contain return and cancellation transactions. To validate their presence, quantity values were analyzed.</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(*) <span class="hljs-keyword">AS</span> NegativeQuantity
+<span class="hljs-keyword">FROM</span> detleng_retail.retail_staging
+<span class="hljs-keyword">WHERE</span> Quantity &lt; <span class="hljs-number">0</span>;
+</code></pre>
+<p><img width="1474" height="572" alt="image" src="https://github.com/user-attachments/assets/e69cd262-36cc-40f8-91be-369594534c63" /></p>
+<p>Result:</p>
+<pre><code class="lang-text"><span class="hljs-keyword">Negative</span> <span class="hljs-keyword">Quantity</span> Records: <span class="hljs-number">22</span>,<span class="hljs-number">950</span>
+</code></pre>
+<h4 id="business-interpretation">Business Interpretation</h4>
+<p>Negative quantities typically represent:</p>
+<ul>
+<li>Product returns</li>
+<li>Refund transactions</li>
+<li>Order cancellations</li>
+<li>Inventory corrections</li>
+</ul>
+<p>These records were preserved because they reflect legitimate business activity and are essential for accurate revenue reporting.</p>
+<h3 id="negative-revenue-analysis">Negative Revenue Analysis</h3>
+<p>Revenue validation was performed to identify transactions generating negative sales values.</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(*) <span class="hljs-keyword">AS</span> NegativeRevenue
+<span class="hljs-keyword">FROM</span> detleng_retail.retail_staging
+<span class="hljs-keyword">WHERE</span> Revenue &lt; <span class="hljs-number">0</span>;
+</code></pre>
+<p><img width="1480" height="577" alt="image" src="https://github.com/user-attachments/assets/c07216b2-ab13-4902-91e6-7cd4412d94ef" /></p>
+<p>Result:</p>
+<pre><code class="lang-text"><span class="hljs-symbol">Negative</span> <span class="hljs-keyword">Revenue </span>Records: <span class="hljs-number">19</span>,<span class="hljs-number">498</span>
+</code></pre>
+<h4 id="business-interpretation">Business Interpretation</h4>
+<p>Revenue was calculated using:</p>
+<pre><code class="lang-text"><span class="hljs-attr">Revenue</span> = Quantity × Price
+</code></pre>
+<p>When quantity values are negative, revenue values also become negative.</p>
+<p>These records primarily represent:</p>
+<ul>
+<li>Customer refunds</li>
+<li>Product returns</li>
+<li>Cancelled orders</li>
+<li>Financial adjustments</li>
+</ul>
+<p>The presence of negative revenue confirms that the dataset captures both sales activity and post-sale business events.</p>
+<h3 id="validation-summary">Validation Summary</h3>
+<p>The data quality assessment confirmed that the dataset accurately represents real-world retail operations.</p>
+<table>
+<thead>
+<tr>
+<th>Validation Check</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total Rows</td>
+<td>1,067,371</td>
+</tr>
+<tr>
+<td>Date Range</td>
+<td>2009-12-01 to 2011-12-09</td>
+</tr>
+<tr>
+<td>Null Customer IDs</td>
+<td>243,007</td>
+</tr>
+<tr>
+<td>Negative Quantity Records</td>
+<td>22,950</td>
+</tr>
+<tr>
+<td>Negative Revenue Records</td>
+<td>19,498</td>
+</tr>
+</tbody>
+</table>
+<h3 id="outcome">Outcome</h3>
+<p>The validation process confirmed that the staging layer was complete, consistent, and suitable for analytics development.</p>
+<p>Rather than treating every anomaly as an error, the project focused on understanding the business meaning behind each data pattern. This approach ensured that returns, refunds, anonymous purchases, and other real-world retail events remained available for analysis.</p>
+<p>With data quality validation completed, the project moved to the next phase: developing an analytics-ready dataset and building business KPIs using SQL.</p>
+<hr>
+<h2 id="analytics-layer-development">Analytics Layer Development</h2>
+<p>With data ingestion, transformation, and validation successfully completed, the project moved into the analytics layer.</p>
+<p>The objective of this phase was to transform validated transaction data into business-ready KPIs that could support executive reporting, dashboard development, and decision-making.</p>
+<p>Unlike traditional dashboard-first approaches, the KPI logic was developed directly within BigQuery, ensuring that business calculations remained centralized, reusable, and consistent across reporting platforms.</p>
+<h3 id="core-business-kpis">Core Business KPIs</h3>
+<p>Several foundational business metrics were created using SQL.</p>
+<h4 id="total-revenue">Total Revenue</h4>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span>
+<span class="hljs-keyword">ROUND</span>(<span class="hljs-keyword">SUM</span>(Revenue),<span class="hljs-number">2</span>) <span class="hljs-keyword">AS</span> TotalRevenue
+<span class="hljs-keyword">FROM</span> detleng_retail.retail_staging
+<span class="hljs-keyword">WHERE</span> Revenue &gt; <span class="hljs-number">0</span>;
+</code></pre>
+<h4 id="total-orders">Total Orders</h4>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span>
+<span class="hljs-keyword">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> Invoice) <span class="hljs-keyword">AS</span> TotalOrders
+<span class="hljs-keyword">FROM</span> detleng_retail.retail_staging;
+</code></pre>
+<h4 id="total-customers">Total Customers</h4>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span>
+<span class="hljs-keyword">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> CustomerID) <span class="hljs-keyword">AS</span> TotalCustomers
+<span class="hljs-keyword">FROM</span> detleng_retail.retail_staging
+<span class="hljs-keyword">WHERE</span> CustomerID <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>;
+</code></pre>
+<h4 id="total-products">Total Products</h4>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span>
+<span class="hljs-keyword">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> StockCode) <span class="hljs-keyword">AS</span> TotalProducts
+<span class="hljs-keyword">FROM</span> detleng_retail.retail_staging;
+</code></pre>
+<h3 id="kpi-results">KPI Results</h3>
+<p>The resulting metrics provided an executive-level summary of the retail business.</p>
+<table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total Revenue</td>
+<td>€20,972,968.14</td>
+</tr>
+<tr>
+<td>Total Orders</td>
+<td>53,628</td>
+</tr>
+<tr>
+<td>Total Customers</td>
+<td>5,942</td>
+</tr>
+<tr>
+<td>Total Products</td>
+<td>5,305</td>
+</tr>
+</tbody>
+</table>
+<p>These results closely aligned with the previously developed Power BI solution, confirming the consistency and reliability of the BigQuery implementation.</p>
+<h3 id="analytics-data-mart-structure">Analytics Data Mart Structure</h3>
+<p>To support future reporting requirements, KPI outputs and analytical datasets were organized within the BigQuery environment.</p>
+<p><img width="1860" height="930" alt="02" src="https://github.com/user-attachments/assets/c3b8a6a1-a226-40f7-b474-0b041949c201" /></p>
+<p>The final structure contained:</p>
+<pre><code class="lang-text">detleng_retail
+│
+├── retail_raw_2009_2010
+├── retail_raw_2010_2011
+├── retail_staging
+│
+├── <span class="hljs-keyword">Total</span> Revenue
+├── <span class="hljs-keyword">Total</span> Orders
+├── <span class="hljs-keyword">Total</span> Customers
+├── <span class="hljs-keyword">Total</span> Products
+│
+├── Revenue <span class="hljs-keyword">by</span> Country
+├── Revenue <span class="hljs-keyword">by</span> <span class="hljs-built_in">Month</span>
+└── Revenue <span class="hljs-keyword">by</span> <span class="hljs-built_in">Year</span>
+</code></pre>
+<p>This structure separated source data from business reporting datasets and provided a clean foundation for analytics consumption.</p>
+<h3 id="revenue-analysis-by-country">Revenue Analysis by Country</h3>
+<p>To understand geographical sales performance, revenue was aggregated at the country level.</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span>
+Country,
+<span class="hljs-keyword">ROUND</span>(<span class="hljs-keyword">SUM</span>(Revenue),<span class="hljs-number">2</span>) <span class="hljs-keyword">AS</span> Revenue
+<span class="hljs-keyword">FROM</span> detleng_retail.retail_staging
+<span class="hljs-keyword">WHERE</span> Revenue &gt; <span class="hljs-number">0</span>
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> Country
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> Revenue <span class="hljs-keyword">DESC</span>;
+</code></pre>
+<p>This analysis identified the highest-performing markets and highlighted revenue concentration across countries.</p>
+<h3 id="revenue-analysis-by-year">Revenue Analysis by Year</h3>
+<p>Annual revenue trends were calculated to evaluate overall business growth across the reporting period.</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span>
+<span class="hljs-keyword">EXTRACT</span>(<span class="hljs-keyword">YEAR</span> <span class="hljs-keyword">FROM</span> InvoiceDate) <span class="hljs-keyword">AS</span> <span class="hljs-keyword">Year</span>,
+<span class="hljs-keyword">ROUND</span>(<span class="hljs-keyword">SUM</span>(Revenue),<span class="hljs-number">2</span>) <span class="hljs-keyword">AS</span> Revenue
+<span class="hljs-keyword">FROM</span> detleng_retail.retail_staging
+<span class="hljs-keyword">WHERE</span> Revenue &gt; <span class="hljs-number">0</span>
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> <span class="hljs-keyword">Year</span>
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-keyword">Year</span>;
+</code></pre>
+<p>The resulting dataset provided a year-over-year revenue view suitable for executive reporting and trend analysis.</p>
+<h3 id="revenue-analysis-by-month">Revenue Analysis by Month</h3>
+<p>Monthly revenue aggregation was developed to identify seasonality and purchasing patterns.</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span>
+FORMAT_DATE(<span class="hljs-string">'%B'</span>, <span class="hljs-built_in">DATE</span>(InvoiceDate)) <span class="hljs-keyword">AS</span> MonthName,
+<span class="hljs-keyword">ROUND</span>(<span class="hljs-keyword">SUM</span>(Revenue),<span class="hljs-number">2</span>) <span class="hljs-keyword">AS</span> Revenue
+<span class="hljs-keyword">FROM</span> detleng_retail.retail_staging
+<span class="hljs-keyword">WHERE</span> Revenue &gt; <span class="hljs-number">0</span>
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> MonthName
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> Revenue <span class="hljs-keyword">DESC</span>;
+</code></pre>
+<p><img width="1473" height="737" alt="image" src="https://github.com/user-attachments/assets/38b894a0-e090-4f3f-bfd2-25c5bd14c1a2" /></p>
+<p>The analysis revealed clear seasonal trends, with November, December, and October generating the highest revenue levels across the dataset.</p>
+<h3 id="business-insights">Business Insights</h3>
+<p>The analytics layer produced several valuable business observations:</p>
+<ul>
+<li>More than €20.9 million in positive revenue was generated across the reporting period.</li>
+<li>Over 53,000 unique orders were processed.</li>
+<li>Nearly 6,000 customers contributed to sales activity.</li>
+<li>More than 5,300 unique products were sold.</li>
+<li>Revenue demonstrated strong seasonal behavior during the final quarter of the year.</li>
+<li>Country-level analysis revealed significant revenue concentration within key markets.</li>
+</ul>
+<h3 id="outcome">Outcome</h3>
+<p>The analytics layer successfully transformed raw transaction data into business-ready metrics that could be consumed by reporting platforms such as Power BI and Looker Studio.</p>
+<p>At this stage, the project had completed:</p>
+<p>✅ Data Warehouse Setup</p>
+<p>✅ Raw Data Layer</p>
+<p>✅ ETL Processing</p>
+<p>✅ Data Quality Validation</p>
+<p>✅ KPI Development</p>
+<p>✅ Revenue Analysis</p>
+<p>✅ Customer Analysis</p>
+<p>✅ Product Analysis</p>
+<p>✅ Geographic Analysis</p>
+<p>✅ Time-Series Analysis</p>
+<p>The project had now evolved from a simple retail dataset into a fully operational analytics-ready data platform built on Google BigQuery.</p>
+<hr>
+<h2 id="business-insights">Business Insights</h2>
+<p>After developing the core KPIs and analytical datasets, the final phase focused on identifying meaningful business insights from the retail transaction data.</p>
+<p>The objective was not only to calculate metrics but also to understand customer behavior, product performance, geographic trends, and seasonal sales patterns.</p>
+<h3 id="top-revenue-generating-countries">Top Revenue-Generating Countries</h3>
+<p>The following query was used to identify the highest-performing markets.</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span>
+    Country,
+    <span class="hljs-keyword">ROUND</span>(<span class="hljs-keyword">SUM</span>(Revenue),<span class="hljs-number">2</span>) <span class="hljs-keyword">AS</span> Revenue
+<span class="hljs-keyword">FROM</span> detleng_retail.retail_staging
+<span class="hljs-keyword">WHERE</span> Revenue &gt; <span class="hljs-number">0</span>
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> Country
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> Revenue <span class="hljs-keyword">DESC</span>
+<span class="hljs-keyword">LIMIT</span> <span class="hljs-number">10</span>;
+</code></pre>
+<p><img width="1837" height="923" alt="image" src="https://github.com/user-attachments/assets/5005da33-c2ce-49f7-97f0-721ca38bf4fa" /></p>
+<h4 id="top-countries-by-revenue">Top Countries by Revenue</h4>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Country</th>
+<th style="text-align:right">Revenue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>United Kingdom</td>
+<td style="text-align:right">€17.87M</td>
+</tr>
+<tr>
+<td>2</td>
+<td>EIRE</td>
+<td style="text-align:right">€664K</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Netherlands</td>
+<td style="text-align:right">€554K</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Germany</td>
+<td style="text-align:right">€431K</td>
+</tr>
+<tr>
+<td>5</td>
+<td>France</td>
+<td style="text-align:right">€357K</td>
+</tr>
+</tbody>
+</table>
+<h3 id="geographic-insights">Geographic Insights</h3>
+<p>Several important patterns emerged from the country-level analysis:</p>
+<ul>
+<li>The United Kingdom generated more than 85% of total revenue.</li>
+<li>Sales activity was highly concentrated within the domestic market.</li>
+<li>EIRE and the Netherlands represented the strongest international markets.</li>
+<li>Germany and France contributed consistent revenue despite significantly smaller customer bases.</li>
+<li>The data suggests potential opportunities for expanding sales across additional European markets.</li>
+</ul>
+<p>These findings demonstrate the importance of geographic segmentation when evaluating business growth opportunities.</p>
+<hr>
+<h3 id="top-revenue-generating-products">Top Revenue-Generating Products</h3>
+<p>To identify the most valuable products within the catalog, revenue was aggregated at the product level.</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span>
+    Description,
+    <span class="hljs-keyword">ROUND</span>(<span class="hljs-keyword">SUM</span>(Revenue),<span class="hljs-number">2</span>) <span class="hljs-keyword">AS</span> Revenue
+<span class="hljs-keyword">FROM</span> detleng_retail.retail_staging
+<span class="hljs-keyword">WHERE</span> Revenue &gt; <span class="hljs-number">0</span>
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> Description
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> Revenue <span class="hljs-keyword">DESC</span>
+<span class="hljs-keyword">LIMIT</span> <span class="hljs-number">10</span>;
+</code></pre>
+<p><img width="1600" height="796" alt="image" src="https://github.com/user-attachments/assets/a6bc2191-3f83-4e72-b511-66b6c3768fe1" /></p>
+<p><img width="1464" height="737" alt="image" src="https://github.com/user-attachments/assets/a5199f2c-33a1-44f9-a40b-4c27f892cae8" /></p>
+<h4 id="top-products-by-revenue">Top Products by Revenue</h4>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Product</th>
+<th style="text-align:right">Revenue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>REGENCY CAKESTAND 3 TIER</td>
+<td style="text-align:right">€344K</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Manual</td>
+<td style="text-align:right">€341K</td>
+</tr>
+<tr>
+<td>3</td>
+<td>DOTCOM POSTAGE</td>
+<td style="text-align:right">€323K</td>
+</tr>
+<tr>
+<td>4</td>
+<td>WHITE HANGING HEART T-LIGHT HOLDER</td>
+<td style="text-align:right">€267K</td>
+</tr>
+<tr>
+<td>5</td>
+<td>PAPER CRAFT, LITTLE BIRDIE</td>
+<td style="text-align:right">€168K</td>
+</tr>
+</tbody>
+</table>
+<h3 id="product-performance-insights">Product Performance Insights</h3>
+<p>The product-level analysis highlighted several interesting trends:</p>
+<ul>
+<li>REGENCY CAKESTAND 3 TIER generated the highest revenue across the entire product catalog.</li>
+<li>Home décor and gift-related products consistently appeared among the top-performing items.</li>
+<li>Shipping-related entries such as DOTCOM POSTAGE and POSTAGE contributed significant revenue.</li>
+<li>Revenue was concentrated among a relatively small group of products, indicating the presence of key revenue drivers.</li>
+<li>Seasonal and gift-oriented products played a major role in overall business performance.</li>
+</ul>
+<p>These findings provide valuable input for merchandising, inventory planning, and product portfolio optimization.</p>
+<hr>
+<h3 id="seasonal-revenue-trends">Seasonal Revenue Trends</h3>
+<p>Monthly revenue analysis revealed strong seasonal behavior across the reporting period.</p>
+<table>
+<thead>
+<tr>
+<th>Month</th>
+<th style="text-align:right">Revenue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>November</td>
+<td style="text-align:right">€2.98M</td>
+</tr>
+<tr>
+<td>December</td>
+<td style="text-align:right">€2.73M</td>
+</tr>
+<tr>
+<td>October</td>
+<td style="text-align:right">€2.32M</td>
+</tr>
+<tr>
+<td>September</td>
+<td style="text-align:right">€1.98M</td>
+</tr>
+<tr>
+<td>March</td>
+<td style="text-align:right">€1.55M</td>
+</tr>
+</tbody>
+</table>
+<h3 id="seasonal-insights">Seasonal Insights</h3>
+<p>The monthly analysis identified clear purchasing patterns:</p>
+<ul>
+<li>Q4 generated the highest overall revenue.</li>
+<li>November was the strongest month across the entire dataset.</li>
+<li>October, November, and December consistently outperformed other periods.</li>
+<li>Holiday shopping activity had a significant impact on revenue growth.</li>
+<li>The business demonstrated strong year-end seasonality driven by gift purchases and festive demand.</li>
+</ul>
+<p>Understanding these seasonal patterns can support future forecasting, inventory management, and marketing campaign planning.</p>
+<hr>
+<h2 id="business-value-delivered">Business Value Delivered</h2>
+<p>This project transformed more than 1.06 million retail transactions into a structured, analytics-ready dataset using Google BigQuery.</p>
+<p>The solution established a complete data engineering workflow covering:</p>
+<ul>
+<li>Data ingestion</li>
+<li>Data transformation</li>
+<li>Data quality validation</li>
+<li>KPI development</li>
+<li>Business analytics</li>
+<li>Reporting dataset preparation</li>
+</ul>
+<p>Key business outcomes included:</p>
+<ul>
+<li>Centralized cloud-based data warehouse</li>
+<li>Standardized KPI calculations</li>
+<li>Improved reporting readiness</li>
+<li>Reusable SQL transformation logic</li>
+<li>Support for Power BI and Looker Studio integration</li>
+<li>Scalable analytics architecture for future growth</li>
+</ul>
+<p>Most importantly, the project demonstrated how properly engineered data foundations create more reliable reporting and decision-making environments.</p>
+<p>This aligns directly with DeTLeng&#39;s core philosophy:</p>
+<blockquote>
+<p>We don&#39;t just build dashboards. We engineer the data that makes dashboards trustworthy.</p>
+</blockquote>
 <hr>
 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 
 
 
