@@ -258,11 +258,173 @@ At this stage of the project, the following components had been completed:
 The project had now progressed beyond simple data loading and entered the data validation phase, providing a trusted foundation for analytics engineering, KPI development, and business intelligence reporting.
 
 
+---
+
+## Data Quality Validation
+
+After confirming that the staging table contained the complete transaction history, a series of data quality validation checks were performed to assess the reliability of the dataset before KPI development and analytics modeling.
+
+The objective of this phase was not to remove records, but to understand the characteristics of the data and identify business scenarios that could influence reporting results.
+
+### Record Count Validation
+
+The first validation step confirmed the total number of records available in the staging layer.
+
+```sql
+SELECT COUNT(*) AS TotalRows
+FROM detleng_retail.retail_staging;
+```
+
+<img width="1830" height="715" alt="image" src="https://github.com/user-attachments/assets/485cd14a-b29d-4a9a-8a3c-d18f3ec6aef2" />
+
+Result:
+
+```text
+Total Rows: 1,067,371
+```
+
+This result confirmed that the complete transaction history from both source datasets had been successfully consolidated into the staging layer.
+
+### Date Range Validation
+
+The next step was to verify the reporting period covered by the dataset.
+
+```sql
+SELECT
+  MIN(InvoiceDate) AS StartDate,
+  MAX(InvoiceDate) AS EndDate
+FROM detleng_retail.retail_staging;
+```
+
+<img width="1846" height="730" alt="image" src="https://github.com/user-attachments/assets/7b7d8c0e-9f94-4607-95bc-ddd1c7222751" />
+
+Result:
+
+```text
+Start Date: 2009-12-01
+End Date: 2011-12-09
+```
+
+The validation confirmed that the dataset covered approximately two years of retail activity, matching the expected reporting period of the Online Retail II dataset.
+
+### Customer Data Completeness
+
+Customer identifiers were reviewed to determine the presence of missing customer records.
+
+```sql
+SELECT COUNT(*) AS NullCustomerID
+FROM detleng_retail.retail_staging
+WHERE CustomerID IS NULL;
+```
+
+<img width="1472" height="577" alt="image" src="https://github.com/user-attachments/assets/d5d93cd5-1c98-401f-b4b1-d366a529f912" />
+
+Result:
+
+```text
+Null Customer IDs: 243,007
+```
+
+#### Business Interpretation
+
+This is a known characteristic of the Online Retail II dataset and does not necessarily indicate poor data quality.
+
+These records may represent:
+
+* Guest purchases
+* Anonymous transactions
+* Customers without registered accounts
+* Incomplete customer registration data
+
+The records were retained because they still contribute to revenue and transaction analysis.
+
+### Negative Quantity Analysis
+
+Retail datasets commonly contain return and cancellation transactions. To validate their presence, quantity values were analyzed.
+
+```sql
+SELECT COUNT(*) AS NegativeQuantity
+FROM detleng_retail.retail_staging
+WHERE Quantity < 0;
+```
+
+<img width="1474" height="572" alt="image" src="https://github.com/user-attachments/assets/e69cd262-36cc-40f8-91be-369594534c63" />
+
+Result:
+
+```text
+Negative Quantity Records: 22,950
+```
+
+#### Business Interpretation
+
+Negative quantities typically represent:
+
+* Product returns
+* Refund transactions
+* Order cancellations
+* Inventory corrections
+
+These records were preserved because they reflect legitimate business activity and are essential for accurate revenue reporting.
+
+### Negative Revenue Analysis
+
+Revenue validation was performed to identify transactions generating negative sales values.
+
+```sql
+SELECT COUNT(*) AS NegativeRevenue
+FROM detleng_retail.retail_staging
+WHERE Revenue < 0;
+```
+
+<img width="1480" height="577" alt="image" src="https://github.com/user-attachments/assets/c07216b2-ab13-4902-91e6-7cd4412d94ef" />
+
+Result:
+
+```text
+Negative Revenue Records: 19,498
+```
+
+#### Business Interpretation
+
+Revenue was calculated using:
+
+```text
+Revenue = Quantity × Price
+```
+
+When quantity values are negative, revenue values also become negative.
+
+These records primarily represent:
+
+* Customer refunds
+* Product returns
+* Cancelled orders
+* Financial adjustments
+
+The presence of negative revenue confirms that the dataset captures both sales activity and post-sale business events.
+
+### Validation Summary
+
+The data quality assessment confirmed that the dataset accurately represents real-world retail operations.
+
+| Validation Check          | Result                   |
+| ------------------------- | ------------------------ |
+| Total Rows                | 1,067,371                |
+| Date Range                | 2009-12-01 to 2011-12-09 |
+| Null Customer IDs         | 243,007                  |
+| Negative Quantity Records | 22,950                   |
+| Negative Revenue Records  | 19,498                   |
+
+### Outcome
+
+The validation process confirmed that the staging layer was complete, consistent, and suitable for analytics development.
+
+Rather than treating every anomaly as an error, the project focused on understanding the business meaning behind each data pattern. This approach ensured that returns, refunds, anonymous purchases, and other real-world retail events remained available for analysis.
+
+With data quality validation completed, the project moved to the next phase: developing an analytics-ready dataset and building business KPIs using SQL.
 
 
 ---
-
-
-
 
 
