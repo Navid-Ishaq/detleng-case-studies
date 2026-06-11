@@ -401,7 +401,7 @@ Automation When Necessary
 Business Value
 ```
 
-At DeTLeng, success is measured by outcomes, not by the number of technologies used.
+> At DeTLeng, success is measured by outcomes, not by the number of technologies used.
 
 ---
 
