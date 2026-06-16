@@ -21,6 +21,10 @@
 <!-- DeTLeng Badge End -->
    
 
+<!-- ======================================================== -->
+<!-- DeTLeng Floating Menu START -->
+<!-- ======================================================== -->
+
 <input type="checkbox" id="menu-toggle">
 
 <label for="menu-toggle" class="menu-icon">
@@ -29,7 +33,7 @@
 
 <div class="menu-links">
 
-<a href="https://casestudy.detleng.com/index.html">Home</a>
+<a href="https://casestudy.detleng.com/index.html" class="active">Home</a>
 
 <a href="https://casestudy.detleng.com/case-studies.html">Case Studies</a>
 
@@ -42,10 +46,59 @@ DeTLeng Site →
 
 </div>
 
+<!-- ======================================================== -->
+<!-- DeTLeng Floating Menu END -->
+<!-- ======================================================== -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
 </nav>
 
 <style>
 
+
+
+
+/* Hover Effect */
+nav a {
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: #26C6FF;
+}
+
+/* Active Menu Item */
+nav a.active {
+    color: #0047D6;
+    font-weight: 600;
+}
+
+
+
+
+
+
+
+     
 /* ===========================
    DeTLeng Professional Menu
 =========================== */
@@ -72,8 +125,6 @@ DeTLeng Site →
 
 }
 
-/* Logo Left */
-
 .detleng-logo{
 
     position:absolute;
@@ -81,7 +132,7 @@ DeTLeng Site →
     left:20px;
     top:15px;
 
-    font-weight:700;
+    z-index:999;
 
 }
 
@@ -387,6 +438,7 @@ h1{
 }
 
 </style>
+
 
 <section class="detleng-content">
 
