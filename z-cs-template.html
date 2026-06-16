@@ -1,14 +1,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="favicon1.png">
+<link rel="icon" type="image/png" href="favicon2.png">
 <div style="height:90px;"></div>
 
 <nav class="detleng-nav">
 
+
+
+
 <div class="detleng-logo">
-<span style="font-size:28px;">   
-<span style="color:green;">✦</span> <strong style="color:#0F52BA;">DeTLeng</strong> <span style="color:green;">✦</span>
-</span>
+
+<a href="index.html">
+
+<img src="logodl3.png"
+     alt="DeTLeng"
+     style="height:60px;width:auto;display:block;">
+
+</a>
+
 </div>
+
+
+
+
+
+
+
+
+<!-- ======================================================== -->
+<!-- DeTLeng Floating Menu START -->
+<!-- ======================================================== -->
 
 <input type="checkbox" id="menu-toggle">
 
@@ -18,23 +38,77 @@
 
 <div class="menu-links">
 
-<a href="https://casestudy.detleng.com/index.html">Home</a>
+<a href="index.html" class="active">Home</a>
 
-<a href="https://casestudy.detleng.com/case-studies.html">Case Studies</a>
+<a href="about.html">About</a>
 
-<a href="https://casestudy.detleng.com/articles.html">Articles</a>
+<a href="services.html">Services</a>
 
-<a href="https://www.detleng.com" target="_blank"
-style="color:#2563EB;font-weight:700;">
-DeTLeng Site →
-</a>
+<a href="pricing.html">Pricing</a>
+
+<a href="framework.html">Framework</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="policies.html">Policies</a>
+
+<a href="contact.html">Contact</a>
 
 </div>
+
+<!-- ======================================================== -->
+<!-- DeTLeng Floating Menu END -->
+<!-- ======================================================== -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
 
 </nav>
 
 <style>
 
+
+
+
+/* Hover Effect */
+nav a {
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: #26C6FF;
+}
+
+/* Active Menu Item */
+nav a.active {
+    color: #0047D6;
+    font-weight: 600;
+}
+
+
+
+
+
+
+
+     
 /* ===========================
    DeTLeng Professional Menu
 =========================== */
@@ -61,8 +135,6 @@ DeTLeng Site →
 
 }
 
-/* Logo Left */
-
 .detleng-logo{
 
     position:absolute;
@@ -70,7 +142,7 @@ DeTLeng Site →
     left:20px;
     top:15px;
 
-    font-weight:700;
+    z-index:999;
 
 }
 
@@ -377,6 +449,9 @@ h1{
 
 </style>
 
+
+
+
 <section class="detleng-content">
 
 
@@ -392,11 +467,16 @@ h1{
 
 
 
+</section>
+
+
+
+     
 
    
 
 
-   
+
 
 <div style="
 max-width:900px;
@@ -436,75 +516,6 @@ Get Started with <strong style="color:yellow;">DeTLeng</strong>
 
 
 
-
-<style>
-
-/* DeTLeng Sticky Slogan */
-
-.detleng-slogan-sticky{
-
-    position:fixed;
-
-    right:20px;
-    bottom:80px;
-
-    background:#0F52BA;
-    color:#FFFFFF;
-
-    padding:12px 22px;
-
-    border-radius:10px;
-
-    font-family:Inter,sans-serif;
-    font-size:18px;
-    font-weight:700;
-
-    box-shadow:0 4px 15px rgba(0,0,0,0.30);
-
-    z-index:99999;
-
-    white-space:nowrap;
-}
-
-/* Mobile Friendly */
-
-@media (max-width:768px){
-
-.detleng-slogan-sticky{
-
-    right:10px;
-    bottom:65px;
-
-    padding:14px 20px;
-
-    font-size:16px;
-
-    border-radius:10px;
-}
-}
-
-</style>
-
-<div class="detleng-slogan-sticky">
-
-<span style="color:yellow;"> ✦ </span>
-
-<span style="color:white;"> DATA </span>
-
-<span style="color:yellow;"> ✦ </span>
-
-<span style="color:white;"> TRANSFORM </span>
-
-<span style="color:yellow;"> ✦ </span>
-    
-<span style="color:white;"> ENGINEERING </span>
-
-<span style="color:yellow;"> ✦ </span>
-
-</div>
-    
-  
-
 <style>
 /* DeTLeng Sticky Consultation Button */
 
@@ -513,7 +524,13 @@ Get Started with <strong style="color:yellow;">DeTLeng</strong>
     bottom:20px;
     right:20px;
 
-    background:darkgreen;
+    background:linear-gradient(
+        135deg,
+        #0033CC 0%,
+        #005BFF 50%,
+        #33D6FF 100%
+    );
+
     color:#FFD700;
 
     padding:12px 22px;
@@ -525,7 +542,9 @@ Get Started with <strong style="color:yellow;">DeTLeng</strong>
     font-size:18px;
     font-weight:700;
 
-    box-shadow:0 4px 15px rgba(0,0,0,0.30);
+    box-shadow:
+    0 4px 15px rgba(0,91,255,0.35),
+    0 0 12px rgba(255,215,0,0.30);
 
     z-index:99999;
 
@@ -533,7 +552,12 @@ Get Started with <strong style="color:yellow;">DeTLeng</strong>
 }
 
 .detleng-sticky-btn:hover{
-    background:#111111;
+    background: linear-gradient(
+    135deg,
+    #003FC7 0%,
+    #0A63FF 70%,
+    #F7941D 100%
+);
     transform:translateY(-2px);
 }
 
@@ -557,13 +581,12 @@ Get Started with <strong style="color:yellow;">DeTLeng</strong>
 <a class="detleng-sticky-btn"
 href="mailto:info@detleng.com?subject=Free%20Consultation%20Request&body=Hello%20DeTLeng%20Team,%0D%0A%0D%0AMy%20name%20is:%20________________%0D%0A%0D%0AI%20would%20like%20a%20free%20consultation%20regarding:%0D%0A%0D%0AProject%20Type:%20________________%0D%0AData%20Source:%20________________%0D%0AExpected%20Outcome:%20________________%0D%0ADeadline:%20________________%0D%0AAdditional%20Requirements:%20________________%0D%0A%0D%0ARegards,%0D%0A________________">
 
-👉
-<span style="color:white;">Free </span>
-<span style="color:white;">Consultation |</span>
-<span style="color:yellow;"> DeTLeng</span>
-👈
+👉 <span style="color:white;">Consult |</span> <span style="color:#FFD700;"> DeTLeng</span>
 
 </a>
+
+
+
 
 
 </body>
