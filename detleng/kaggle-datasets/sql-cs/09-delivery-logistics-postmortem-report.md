@@ -40,6 +40,12 @@ This is where the Operation Theatre starts finding the actual disease.
 
 ---
 
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/30b99299-c7d1-465c-bae0-2d7af8579240" />
+
+
+---
+
+
 # Data Source
 
 ## Dataset Name
