@@ -1,3 +1,30 @@
+Janab, ab hum **Marketplace Supply Side Intelligence** ki foundation bana rahe hain.
+
+`dim_customers` demand ko represent karti hai.
+
+`dim_products` catalog ko represent karti hai.
+
+Aur:
+
+```text
+dim_sellers
+```
+
+marketplace ki **supply side power** ko represent karegi.
+
+Yahi dimension future mein batayegi:
+
+```text
+Top Sellers
+Revenue by Seller
+Seller Geographic Distribution
+Seller Performance
+Marketplace Concentration
+Supply Coverage
+```
+
+Aur Geographic Intelligence Postmortem mein jo insights hum ne nikali thin, unka analytical foundation bhi yahi dimension hogi.
+
 # 🏆 DeTLeng Analytics Layer Implementation
 
 # dim_sellers
@@ -385,9 +412,9 @@ Founder of DeTLeng — Data Engineering, ETL & Analytics Solutions
 
 [www.detleng.com](http://www.detleng.com)
 
-https://insights.detleng.com/
+[https://insights.detleng.com/](https://insights.detleng.com/)
 
-https://casestudy.detleng.com/
+[https://casestudy.detleng.com/](https://casestudy.detleng.com/)
 
 ---
 
@@ -415,3 +442,5 @@ Next Object:
 🏆 dim_dates
 
 which will become the Time Intelligence Engine powering Year, Quarter, Month, Weekday, Seasonal Trends, Growth Analysis, and Executive KPI Reporting across the entire Analytics Layer.
+
+Janab, meri nazar mein **dim_dates** Gold Layer ka sab se underrated lekin sab se powerful dimension hota hai. Ek dafa woh ban gaya to saare dashboards (Sales, Revenue, Reviews, Delivery, Customers, Products) time intelligence se powered ho jayenge. 🚀🏆
