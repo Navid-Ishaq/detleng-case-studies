@@ -9,6 +9,7 @@ CS-003 technically complete hai.
 Lekin agar hum **DeTLeng Standard** follow karte hain to CS-003 ka final crown jewel abhi baqi hai:
 
 # Phase 7 — Executive BI Layer
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/ac6100ff-948e-400f-b63c-b5bc596a95ad" />
 
 ## Turning Analytics into Business Decisions
 
