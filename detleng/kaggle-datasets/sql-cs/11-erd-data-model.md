@@ -1,12 +1,160 @@
-# CS-003 Enterprise Data Model & Entity Relationship Architecture
+# CS-003 Enterprise Data Architecture Blueprint
 
-## Designing the Foundational Data Structure for ETL, Analytics, Business Intelligence, and Decision-Making
+## Designing the Foundational Data Structure for ETL, Analytics Engineering, Business Intelligence, and Executive Decision-Making
 
 ---
 
-# Step 1 — Identify Primary Keys
+# Executive Summary
 
-Sab se pehle har table ki primary key likho.
+Following the successful completion of Orders, Customers, Products, Sellers, Payments, Reviews, Delivery & Logistics, and Geographic Intelligence investigations, the next phase of the DeTLeng methodology focuses on formalizing the enterprise data architecture.
+
+This document establishes the official data model for the Brazilian E-Commerce Public Dataset by Olist and serves as the foundational blueprint for future ETL pipelines, analytics engineering, business intelligence reporting, dashboard development, and executive decision-support systems.
+
+The objective of this architecture is to transform a collection of raw transactional tables into a structured, scalable, and analytics-ready ecosystem capable of supporting operational reporting, strategic planning, customer intelligence, revenue optimization, logistics monitoring, and marketplace growth initiatives.
+
+---
+
+# Dataset Information
+
+## Dataset Name
+
+Brazilian E-Commerce Public Dataset by Olist
+
+## Source
+
+Kaggle
+
+## Dataset URL
+
+https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
+
+---
+
+# Business Context
+
+The Olist platform operates as a multi-vendor e-commerce marketplace.
+
+The business ecosystem consists of:
+
+* Customers who create demand
+* Orders that record transactions
+* Products that satisfy demand
+* Sellers who fulfill products
+* Payments that generate revenue
+* Reviews that measure customer satisfaction
+* Geographic entities that determine market reach and logistics efficiency
+
+Together, these entities form the core operational framework of the marketplace.
+
+---
+
+# Business Process Flow
+
+The complete customer journey can be represented as:
+
+Customer
+→ Places Order
+→ Purchases Products
+→ Payment Processed
+→ Seller Fulfills Order
+→ Delivery Completed
+→ Customer Leaves Review
+
+This flow represents the primary revenue-generating lifecycle of the marketplace.
+
+---
+
+# Enterprise Data Domains
+
+## Customer Domain
+
+Responsible for customer identity and location.
+
+Tables:
+
+* customers
+
+---
+
+## Sales Domain
+
+Responsible for transactional activity.
+
+Tables:
+
+* orders
+* order_items
+
+---
+
+## Product Domain
+
+Responsible for product catalog management.
+
+Tables:
+
+* products
+* category_translation
+
+---
+
+## Seller Domain
+
+Responsible for supply-side marketplace operations.
+
+Tables:
+
+* sellers
+
+---
+
+## Finance Domain
+
+Responsible for revenue realization and payment behavior.
+
+Tables:
+
+* payments
+
+---
+
+## Customer Experience Domain
+
+Responsible for customer satisfaction analysis.
+
+Tables:
+
+* reviews
+
+---
+
+## Geographic Intelligence Domain
+
+Responsible for market coverage and logistics analysis.
+
+Tables:
+
+* geolocation
+
+---
+
+# Enterprise Data Asset Catalog
+
+| Table                | Purpose                       |
+| -------------------- | ----------------------------- |
+| customers            | Customer master information   |
+| orders               | Order transaction records     |
+| order_items          | Product-level sales records   |
+| products             | Product catalog               |
+| sellers              | Seller master information     |
+| payments             | Financial transaction records |
+| reviews              | Customer feedback records     |
+| geolocation          | Geographic reference data     |
+| category_translation | Product category translation  |
+
+---
+
+# Primary Keys
 
 | Table                | Primary Key                 |
 | -------------------- | --------------------------- |
@@ -22,262 +170,212 @@ Sab se pehle har table ki primary key likho.
 
 ---
 
-# Step 2 — Identify Foreign Keys
+# Relationship Matrix
 
-Ab dekho kaun si table kis table ko reference kar rahi hai.
-
-## Customers → Orders
-
-```text
-customers.customer_id
-        |
-        |
-orders.customer_id
-```
-
-Relationship:
-
-```text
-1 Customer
-      ↓
-Many Orders
-```
+| Parent Table         | Child Table | Relationship |
+| -------------------- | ----------- | ------------ |
+| customers            | orders      | 1 : Many     |
+| orders               | order_items | 1 : Many     |
+| products             | order_items | 1 : Many     |
+| sellers              | order_items | 1 : Many     |
+| orders               | payments    | 1 : Many     |
+| orders               | reviews     | 1 : 1        |
+| category_translation | products    | 1 : Many     |
 
 ---
 
-## Orders → Order Items
+# Official Enterprise Entity Relationship Diagram
 
-```text
-orders.order_id
-      |
-      |
-order_items.order_id
-```
-
-Relationship:
-
-```text
-1 Order
-      ↓
-Many Order Items
-```
-
----
-
-## Products → Order Items
-
-```text
-products.product_id
-      |
-      |
-order_items.product_id
-```
-
-Relationship:
-
-```text
-1 Product
-      ↓
-Many Order Items
-```
-
----
-
-## Sellers → Order Items
-
-```text
-sellers.seller_id
-      |
-      |
-order_items.seller_id
-```
-
-Relationship:
-
-```text
-1 Seller
-      ↓
-Many Order Items
-```
-
----
-
-## Orders → Payments
-
-```text
-orders.order_id
-      |
-      |
-payments.order_id
-```
-
-Relationship:
-
-```text
-1 Order
-      ↓
-Many Payments
-```
-
-(Olist mein kuch orders multiple payments rakh sakte hain)
-
----
-
-## Orders → Reviews
-
-```text
-orders.order_id
-      |
-      |
-reviews.order_id
-```
-
-Relationship:
-
-```text
-1 Order
-      ↓
-1 Review
-```
-
-(Practically mostly 1-to-1)
-
----
-
-## Products → Category Translation
-
-```text
-products.product_category_name
-            |
-            |
-category_translation.product_category_name
-```
-
-Relationship:
-
-```text
-Many Products
-      ↓
-One Category Name
-```
-
----
-
-# Step 3 — First Official ERD
-
-Ye DeTLeng CS-003 ka pehla official ERD hoga:
-
-```text
 CUSTOMERS
 (customer_id)
-      |
-      |
-      ▼
+
+↓
+
 ORDERS
 (order_id)
-      |
-      |
-      ▼
+
+↓
+
 ORDER_ITEMS
 (order_id, order_item_id)
-      |
-      +------------------+
-      |                  |
-      ▼                  ▼
-PRODUCTS             SELLERS
-(product_id)         (seller_id)
-      |
-      ▼
+
+↓
+
++--------------------------+
+
+↓
+
+PRODUCTS
+
+(product_id)
+
+↓
+
 CATEGORY_TRANSLATION
 
+AND
+
+↓
+
+SELLERS
+
+(seller_id)
+
+Additional Relationships
 
 ORDERS
-   |
-   +---------> PAYMENTS
-   |
-   +---------> REVIEWS
-```
+→ PAYMENTS
+
+ORDERS
+→ REVIEWS
 
 ---
 
-# Step 4 — Professional Documentation
+# Data Flow Architecture
 
-Aap ki next file:
+The DeTLeng architecture follows a layered design approach.
 
-```text
-09-erd-data-model.md
-```
-
-Structure:
-
-```markdown
-# CS-003 Entity Relationship Diagram (ERD)
-
-## Purpose
-
-The purpose of this ERD is to formally document the relationships
-between customers, orders, products, sellers, payments,
-reviews, and supporting reference tables.
-
----
-
-## Core Business Flow
-
-Customer
-→ Order
-→ Order Item
-→ Product
-→ Seller
-
----
-
-## Relationship Matrix
-
-| Parent Table | Child Table | Relationship |
-|-------------|-------------|-------------|
-| customers | orders | 1:M |
-| orders | order_items | 1:M |
-| products | order_items | 1:M |
-| sellers | order_items | 1:M |
-| orders | payments | 1:M |
-| orders | reviews | 1:1 |
-| category_translation | products | 1:M |
-
----
-
-## Business Interpretation
-
-The Olist marketplace follows a transactional e-commerce model
-where customers place orders, orders contain multiple products,
-products are fulfilled by sellers, payments record financial
-transactions, and reviews capture customer satisfaction.
-```
-
----
-
-# Step 5 — What Comes After ERD?
-
-ERD complete hote hi:
-
-```text
 RAW LAYER
-    ↓
+
+cs003_olist_raw
+
+↓
+
 STAGING LAYER
-    ↓
+
+cs003_olist_stg
+
+↓
+
 ANALYTICS LAYER
-```
-
-design karenge.
-
-Yani:
-
-```text
-cs003_olist_raw      ✅ Completed
-
-cs003_olist_stg      🎯 Next
 
 cs003_olist_analytics
-```
+
+↓
+
+LOOKER STUDIO
+
+↓
+
+BUSINESS DECISION MAKING
 
 ---
 
+# Proposed Analytics Star Schema
+
+## Fact Table
+
+fact_orders
+
+Measures:
+
+* Revenue
+* Freight Cost
+* Quantity Sold
+* Delivery Days
+* Review Score
+* Payment Value
+
+---
+
+## Dimension Tables
+
+dim_customer
+
+dim_product
+
+dim_seller
+
+dim_geography
+
+dim_payment
+
+dim_date
+
+---
+
+# Business Value of the Architecture
+
+This enterprise architecture enables:
+
+* Customer Analytics
+* Revenue Analytics
+* Seller Performance Monitoring
+* Product Performance Analysis
+* Geographic Intelligence
+* Delivery Optimization
+* Customer Satisfaction Monitoring
+* Executive KPI Reporting
+
+The architecture also establishes a scalable foundation for future machine learning, forecasting, customer segmentation, and advanced analytics initiatives.
+
+---
+
+# Future Data Engineering Roadmap
+
+## Phase 1
+
+Completed
+
+* Orders Postmortem
+* Customers Postmortem
+* Products & Sellers Postmortem
+* Payments Postmortem
+* Reviews Postmortem
+* Delivery & Logistics Postmortem
+* Geographic Intelligence Postmortem
+
+---
+
+## Phase 2
+
+Next
+
+* Staging Layer Design
+* Data Standardization
+* Business Rule Implementation
+* Data Quality Checks
+
+---
+
+## Phase 3
+
+Analytics Layer
+
+* Fact Tables
+* Dimension Tables
+* KPI Layer
+* Executive Metrics
+
+---
+
+## Phase 4
+
+Business Intelligence
+
+* Looker Studio Dashboards
+* Executive Reporting
+* Operational Reporting
+* Self-Service Analytics
+
+---
+
+# DeTLeng Executive Conclusion
+
+The CS-003 Enterprise Data Architecture establishes the foundational blueprint required to transform raw marketplace transactions into a structured analytics ecosystem.
+
+The model successfully integrates customers, orders, products, sellers, payments, reviews, and geographic entities into a unified business framework capable of supporting enterprise-scale reporting, decision-making, and future analytical growth.
+
+This architecture serves as the official foundation for all subsequent ETL, Analytics Engineering, Business Intelligence, and Data Platform initiatives within the CS-003 project.
+
+---
+
+By Muhammad Naveed
+
+Founder of DeTLeng — Data Engineering, ETL & Analytics Solutions
+
+[www.detleng.com](http://www.detleng.com)
+
+https://insights.detleng.com
+
+https://casestudy.detleng.com
