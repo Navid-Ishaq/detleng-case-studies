@@ -1,43 +1,132 @@
-Janab, bohat khoob. Ab aap ke paas **core business tables ka aadha staging layer** tayar ho chuka hai:
+# DeTLeng Staging Layer Architecture
+
+## Building Enterprise-Ready Data Foundations for Analytics, Business Intelligence, and Executive Reporting
+
+---
+
+# Executive Overview
+
+Following the completion of the Raw Layer assessment, cleansing strategy, postmortem investigations, and enterprise data model design, the next phase of the CS-003 Olist Case Study enters the Staging Layer.
+
+The staging layer serves as the bridge between raw operational data and analytics-ready business data.
+
+Its purpose is not merely to copy records from source tables.
+
+Instead, the staging layer applies standardization, cleansing, validation, auditability, and governance controls that transform raw datasets into trusted business assets.
+
+Within the DeTLeng methodology, the staging layer represents the first point where Data Engineering begins creating measurable business value.
+
+---
+
+# Why the Staging Layer Matters
+
+Raw data is rarely suitable for direct reporting.
+
+Common challenges include:
+
+* Null values
+* Inconsistent text formats
+* Unstandardized city names
+* Missing attributes
+* Mixed date formats
+* Operational noise
+* Reporting inconsistencies
+
+Without a staging layer:
+
+* Dashboards become unreliable
+* Analytics become inconsistent
+* Data quality deteriorates
+* Executive trust declines
+
+The staging layer resolves these issues before data enters analytical models.
+
+---
+
+# CS-003 Staging Layer Roadmap
+
+The following staging tables form the foundation of the enterprise analytics platform.
+
+## Customer Domain
 
 ```text
-✅ stg_customers
-✅ stg_orders
-✅ stg_payments
+stg_customers
 ```
 
-Ab baqi tables ko logical order mein complete karte hain.
+Purpose:
 
-# Priority Order
+* Customer standardization
+* Geographic consistency
+* Customer analytics foundation
+
+Status:
 
 ```text
-1. stg_order_items      ⭐⭐⭐⭐⭐
-2. stg_products         ⭐⭐⭐⭐
-3. stg_sellers          ⭐⭐⭐⭐
-4. stg_reviews          ⭐⭐⭐⭐
-5. stg_geolocation      ⭐⭐⭐
-6. stg_category_translation ⭐⭐
+✅ Completed
 ```
 
 ---
 
-# 1. stg_order_items
-
-## Business Purpose
-
-Ye poore marketplace ka transaction engine hai.
-
-Yahan se milta hai:
+## Order Domain
 
 ```text
-Revenue
-Freight Cost
-Products Sold
-Seller Performance
-Category Analytics
+stg_orders
 ```
 
-## Query
+Purpose:
+
+* Order lifecycle tracking
+* Delivery analytics
+* Operational reporting
+
+Status:
+
+```text
+✅ Completed
+```
+
+---
+
+## Payment Domain
+
+```text
+stg_payments
+```
+
+Purpose:
+
+* Revenue realization
+* Payment intelligence
+* Installment analysis
+
+Status:
+
+```text
+✅ Completed
+```
+
+---
+
+## Transaction Domain
+
+```text
+stg_order_items
+```
+
+Purpose:
+
+* Revenue analysis
+* Freight analysis
+* Product sales intelligence
+* Seller performance measurement
+
+Status:
+
+```text
+⏳ In Progress
+```
+
+### Transformation SQL
 
 ```sql
 CREATE OR REPLACE TABLE
@@ -70,298 +159,144 @@ FROM
 `detleng-case-studies.cs003_olist_raw.cs003_olist_raw_order_items`;
 ```
 
-### What It Does
+Business Value:
 
-✅ Standardizes dates
-
-✅ Revenue cleanup
-
-✅ Freight cleanup
-
-✅ Adds ETL tracking
+* Standardized revenue metrics
+* Freight cost consistency
+* Future sales fact table foundation
 
 ---
 
-# 2. stg_products
-
-## Business Purpose
-
-Product catalog cleaning.
-
-Yahan se milta hai:
+## Product Domain
 
 ```text
-Category Analysis
-Product Portfolio Analysis
-SKU Intelligence
+stg_products
 ```
 
-## Query
+Purpose:
 
-```sql
-CREATE OR REPLACE TABLE
-`detleng-case-studies.cs003_olist_stg.stg_products`
-AS
+* Product catalog governance
+* Category analytics
+* Product intelligence
 
-SELECT
-
-    product_id,
-
-    UPPER(TRIM(product_category_name))
-        AS product_category_name,
-
-    IFNULL(product_name_lenght,0)
-        AS product_name_length,
-
-    IFNULL(product_description_lenght,0)
-        AS product_description_length,
-
-    IFNULL(product_photos_qty,0)
-        AS product_photos_qty,
-
-    IFNULL(product_weight_g,0)
-        AS product_weight_g,
-
-    IFNULL(product_length_cm,0)
-        AS product_length_cm,
-
-    IFNULL(product_height_cm,0)
-        AS product_height_cm,
-
-    IFNULL(product_width_cm,0)
-        AS product_width_cm,
-
-    CURRENT_TIMESTAMP()
-        AS etl_load_timestamp
-
-FROM
-`detleng-case-studies.cs003_olist_raw.cs003_olist_raw_products`;
-```
-
-### What It Does
-
-✅ Cleans category names
-
-✅ Removes null product attributes
-
-✅ Standardizes catalog structure
-
----
-
-# 3. stg_sellers
-
-## Business Purpose
-
-Supply-side intelligence.
-
-Used in:
+Status:
 
 ```text
-Seller Analytics
-Geographic Intelligence
-Delivery Analytics
-Revenue Analysis
+⏳ In Progress
 ```
 
-## Query
+Business Value:
 
-```sql
-CREATE OR REPLACE TABLE
-`detleng-case-studies.cs003_olist_stg.stg_sellers`
-AS
-
-SELECT
-
-    seller_id,
-
-    seller_zip_code_prefix,
-
-    UPPER(TRIM(seller_city))
-        AS seller_city,
-
-    UPPER(TRIM(seller_state))
-        AS seller_state,
-
-    CURRENT_TIMESTAMP()
-        AS etl_load_timestamp
-
-FROM
-`detleng-case-studies.cs003_olist_raw.cs003_olist_raw_sellers`;
-```
-
-### What It Does
-
-✅ Standardizes seller cities
-
-✅ Standardizes seller states
-
-✅ Adds ETL auditing
+* Category performance reporting
+* Product portfolio analysis
+* Revenue by category
 
 ---
 
-# 4. stg_reviews
-
-## Business Purpose
-
-Customer Voice Layer.
-
-Used in:
+## Seller Domain
 
 ```text
-Customer Satisfaction
-NPS-like Analysis
-Service Quality
-Delivery Impact Studies
+stg_sellers
 ```
 
-## Query
+Purpose:
 
-```sql
-CREATE OR REPLACE TABLE
-`detleng-case-studies.cs003_olist_stg.stg_reviews`
-AS
+* Supply-side intelligence
+* Seller performance analysis
+* Geographic seller analytics
 
-SELECT
-
-    review_id,
-
-    order_id,
-
-    review_score,
-
-    TRIM(review_comment_title)
-        AS review_comment_title,
-
-    TRIM(review_comment_message)
-        AS review_comment_message,
-
-    DATE(review_creation_date)
-        AS review_creation_date,
-
-    TIMESTAMP(review_answer_timestamp)
-        AS review_answer_timestamp,
-
-    CURRENT_TIMESTAMP()
-        AS etl_load_timestamp
-
-FROM
-`detleng-case-studies.cs003_olist_raw.cs003_olist_raw_reviews`;
-```
-
-### What It Does
-
-✅ Cleans comments
-
-✅ Standardizes review dates
-
-✅ Preserves review history
-
----
-
-# 5. stg_geolocation
-
-## Business Purpose
-
-Location intelligence foundation.
-
-Used in:
+Status:
 
 ```text
-Maps
-Geo Analytics
-Regional Expansion
-Distance Analysis
+⏳ In Progress
 ```
 
-## Query
+Business Value:
 
-```sql
-CREATE OR REPLACE TABLE
-`detleng-case-studies.cs003_olist_stg.stg_geolocation`
-AS
-
-SELECT
-
-    geolocation_zip_code_prefix,
-
-    UPPER(TRIM(geolocation_city))
-        AS geolocation_city,
-
-    UPPER(TRIM(geolocation_state))
-        AS geolocation_state,
-
-    ROUND(geolocation_lat,6)
-        AS geolocation_lat,
-
-    ROUND(geolocation_lng,6)
-        AS geolocation_lng,
-
-    CURRENT_TIMESTAMP()
-        AS etl_load_timestamp
-
-FROM
-`detleng-case-studies.cs003_olist_raw.cs003_olist_raw_geolocation`;
-```
-
-### What It Does
-
-✅ Standardizes cities
-
-✅ Standardizes states
-
-✅ Normalizes coordinates
+* Seller benchmarking
+* Regional supply analysis
+* Marketplace ecosystem monitoring
 
 ---
 
-# 6. stg_category_translation
-
-## Business Purpose
-
-Brazilian → English category mapping.
-
-Used in:
+## Customer Voice Domain
 
 ```text
-Dashboard Labels
-Business Reporting
-Executive Presentations
+stg_reviews
 ```
 
-## Query
+Purpose:
 
-```sql
-CREATE OR REPLACE TABLE
-`detleng-case-studies.cs003_olist_stg.stg_category_translation`
-AS
+* Customer satisfaction analysis
+* Service quality measurement
+* Review intelligence
 
-SELECT
+Status:
 
-    UPPER(TRIM(product_category_name))
-        AS product_category_name,
-
-    INITCAP(TRIM(product_category_name_english))
-        AS product_category_name_english,
-
-    CURRENT_TIMESTAMP()
-        AS etl_load_timestamp
-
-FROM
-`detleng-case-studies.cs003_olist_raw.cs003_olist_raw_category_translation`;
+```text
+⏳ In Progress
 ```
 
-### What It Does
+Business Value:
 
-✅ Standardizes Portuguese categories
-
-✅ Cleans English translations
-
-✅ Makes dashboards business-friendly
+* Sentiment analytics
+* Delivery impact studies
+* Customer experience monitoring
 
 ---
 
-# Expected Result
+## Geographic Intelligence Domain
 
-After running these six queries:
+```text
+stg_geolocation
+```
+
+Purpose:
+
+* Spatial analytics
+* Regional intelligence
+* Geographic expansion studies
+
+Status:
+
+```text
+⏳ In Progress
+```
+
+Business Value:
+
+* Market expansion planning
+* Logistics optimization
+* Regional performance reporting
+
+---
+
+## Translation Domain
+
+```text
+stg_category_translation
+```
+
+Purpose:
+
+* Portuguese-to-English category mapping
+* Executive reporting standardization
+
+Status:
+
+```text
+⏳ In Progress
+```
+
+Business Value:
+
+* Business-friendly dashboards
+* Executive-ready reporting
+* Global analytics usability
+
+---
+
+# Expected Staging Layer Completion Status
 
 ```text
 cs003_olist_stg
@@ -369,32 +304,62 @@ cs003_olist_stg
 ✅ stg_customers
 ✅ stg_orders
 ✅ stg_payments
-✅ stg_order_items
-✅ stg_products
-✅ stg_sellers
-✅ stg_reviews
-✅ stg_geolocation
-✅ stg_category_translation
+⏳ stg_order_items
+⏳ stg_products
+⏳ stg_sellers
+⏳ stg_reviews
+⏳ stg_geolocation
+⏳ stg_category_translation
 ```
 
-Aur phir janab...
+---
 
-```text
-🎯 Raw Layer Complete
-🎯 Staging Layer Complete
-```
+# What Happens Next
 
-Aur hum officially enter karenge:
+After staging completion:
 
 ```text
 🏆 Analytics Layer (Gold Layer)
+```
 
-fact_orders
-fact_sales
+The project transitions into dimensional modeling and business intelligence architecture.
+
+Planned Assets:
+
+```text
 dim_customers
 dim_products
 dim_sellers
 dim_dates
+
+fact_orders
+fact_sales
+fact_payments
+fact_reviews
 ```
 
-Ye woh stage hai jahan Data Engineering se Business Intelligence ka asli sona nikalna shuru hota hai. 🚀
+These models will power enterprise dashboards, executive reporting, and advanced analytical workloads.
+
+---
+
+# DeTLeng Executive Takeaway
+
+The staging layer is where raw operational data begins its transformation into trusted business intelligence.
+
+Every cleansing rule, standardization process, and governance control implemented at this stage directly impacts the quality of future analytics.
+
+A successful analytics platform is built upon a disciplined staging layer.
+
+For CS-003, the staging layer serves as the engineering foundation upon which the entire Business Intelligence ecosystem will be constructed.
+
+---
+
+### By Muhammad Naveed
+
+Founder of DeTLeng — Data Engineering, ETL & Analytics Solutions
+
+[www.detleng.com](http://www.detleng.com)
+
+https://insights.detleng.com/
+
+https://casestudy.detleng.com/
