@@ -1,5 +1,3 @@
-Ye content `.md` document ke liye zyada professional, mature, aur consulting-oriented style mein is tarah likha ja sakta hai:
-
 # Evidence Over Claims: The DeTLeng Professional Philosophy
 <img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/e924352f-8a69-417b-86c4-146721b350e2" />
 
@@ -272,4 +270,3 @@ Founder of DeTLeng — Data Engineering, ETL & Analytics Solutions
 
 [https://casestudy.detleng.com/](https://casestudy.detleng.com/)
 
-Ye document aap ke repo mein `38-evidence-over-claims-professional-philosophy.md` ya `38-building-proof-not-promises.md` ke naam se bohat strong lagega, aur ye aap ki consulting philosophy ko bhi represent karega.
