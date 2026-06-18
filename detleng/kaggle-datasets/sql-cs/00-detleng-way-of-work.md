@@ -1,6 +1,7 @@
 Ye content `.md` document ke liye zyada professional, mature, aur consulting-oriented style mein is tarah likha ja sakta hai:
 
 # Evidence Over Claims: The DeTLeng Professional Philosophy
+<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/e924352f-8a69-417b-86c4-146721b350e2" />
 
 ## Why Evidence Matters More Than Titles
 
