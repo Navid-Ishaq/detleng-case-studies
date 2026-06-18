@@ -1,3 +1,39 @@
+Bilkul janab. 🚀
+
+Ab hum Analytics Layer ke sab se important object par aa gaye hain:
+
+```text
+🏆 fact_orders
+```
+
+Agar `dim_customers`, `dim_products`, `dim_sellers`, `dim_dates`, aur `dim_geography` Gold Layer ki family hain...
+
+to:
+
+```text
+fact_orders
+```
+
+un sab ka central meeting point hai.
+
+Ye woh table hai jahan:
+
+```text
+Customer
++
+Order
++
+Delivery
++
+Time Intelligence
+=
+Business KPIs
+```
+
+milte hain.
+
+Isliye iska document enterprise-grade hona chahiye.
+
 # 🏆 DeTLeng Analytics Layer Implementation
 
 # fact_orders
@@ -445,9 +481,9 @@ Founder of DeTLeng — Data Engineering, ETL & Analytics Solutions
 
 [www.detleng.com](http://www.detleng.com)
 
-https://insights.detleng.com/
+[https://insights.detleng.com/](https://insights.detleng.com/)
 
-https://casestudy.detleng.com/
+[https://casestudy.detleng.com/](https://casestudy.detleng.com/)
 
 ---
 
@@ -477,3 +513,5 @@ Next Object:
 The Revenue Engine of the Analytics Layer.
 
 This is where Products, Sellers, Revenue, Freight Cost, and Category Performance finally come together to power Sales Analytics, Product Analytics, Seller Analytics, and Executive Revenue Dashboards.
+
+Janab, meri nazar mein `fact_sales` poore Gold Layer ka sab se valuable table hogi, kyun ke wahi table directly revenue, products, sellers aur categories ko connect karegi. 💰🏆🚀
