@@ -1,5 +1,7 @@
 # CS-003 Enterprise Data Architecture Blueprint
 
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/8c9d2023-6c75-4a17-8716-b457e0c6d5c1" />
+
 ## Designing the Foundational Data Structure for ETL, Analytics Engineering, Business Intelligence, and Executive Decision-Making
 
 ---
