@@ -1,16 +1,14 @@
 # DeTLeng Intelligent Data Platform Framework
+
 ## Version 1.0
 
 ---
 
 # Purpose
 
-This document defines the standard implementation architecture for all
-DeTLeng Data Engineering, Business Intelligence, AI, and Automation
-projects.
+This document defines the standard implementation architecture for all DeTLeng Data Engineering, Business Intelligence, AI, and Automation projects.
 
-Every future client implementation should follow this framework unless
-there is a justified business requirement to deviate.
+Every future client implementation should follow this framework unless there is a justified business requirement to deviate.
 
 The framework ensures:
 
@@ -25,17 +23,15 @@ The framework ensures:
 
 # DeTLeng Philosophy
 
-We do not build dashboards.
-
 We do not simply build ETL pipelines.
 
-We build Intelligent Business Platforms that transform raw business data
-into trusted business intelligence and AI-powered decision support.
+We build Intelligent Business Platforms that transform raw business data into trusted Business Intelligence and AI-powered decision support.
 
 ---
 
 # High-Level Architecture
 
+```text
 Business Data
         │
         ▼
@@ -48,11 +44,13 @@ Analytics Warehouse
  ▼                ▼
 Dashboards      AI Assistant
                 (via MCP)
+```
 
 ---
 
 # The DeTLeng Technology Flow
 
+```text
 BigQuery
         ↓
 Scheduled Queries
@@ -64,20 +62,19 @@ Cloud Functions
 n8n
         ↓
 MCP
+```
 
 Every layer has a specific responsibility.
 
 ---
 
-# Layer 1
+# Layer 1 — BigQuery
 
-## BigQuery
-
-Purpose
+## Purpose
 
 Central Data Warehouse
 
-Responsibilities
+### Responsibilities
 
 - Store Raw Data
 - Store Staging Layer
@@ -87,30 +84,29 @@ Responsibilities
 - Historical Data
 - Business KPIs
 
-This is the Single Source of Truth.
+BigQuery is the **Single Source of Truth**.
 
 Nothing bypasses BigQuery.
 
 ---
 
-# Layer 2
+# Layer 2 — Scheduled Queries
 
-## BigQuery Scheduled Queries
-
-Purpose
+## Purpose
 
 Automate SQL execution.
 
-Responsibilities
+### Responsibilities
 
 - Run staging transformations
 - Run analytics transformations
 - Refresh fact tables
-- Refresh dimensions
-- Schedule ETL jobs
+- Refresh dimension tables
+- Execute ETL automatically
 
-Example
+### Example
 
+```text
 02:00 AM
 
 ↓
@@ -124,29 +120,29 @@ Run fact_sales.sql
 ↓
 
 Run fact_delivery.sql
+```
 
 No manual execution.
 
 ---
 
-# Layer 3
+# Layer 3 — Cloud Storage
 
-## Cloud Storage
-
-Purpose
+## Purpose
 
 Landing area for incoming business data.
 
-Typical Sources
+### Typical Sources
 
 - CSV
 - Excel
 - JSON
-- API exports
 - ERP exports
+- API exports
 
-Example
+### Example
 
+```text
 Client uploads
 
 sales_2026_07_03.csv
@@ -154,29 +150,29 @@ sales_2026_07_03.csv
 ↓
 
 Cloud Storage
+```
 
 Cloud Storage becomes the Raw Data Landing Zone.
 
 ---
 
-# Layer 4
+# Layer 4 — Cloud Functions / Triggers
 
-## Cloud Functions / Triggers
+## Purpose
 
-Purpose
+Automatically detect new business data.
 
-Automatically detect new data.
-
-Responsibilities
+### Responsibilities
 
 - Watch Cloud Storage
 - Detect new files
 - Load into Raw Layer
-- Trigger ETL process
-- Send notifications if required
+- Trigger ETL
+- Send notifications
 
-Example
+### Example
 
+```text
 New CSV
 
 ↓
@@ -189,21 +185,20 @@ Load Raw Table
 
 ↓
 
-Run Scheduled ETL
+Trigger ETL
+```
 
 No human intervention.
 
 ---
 
-# Layer 5
+# Layer 5 — n8n
 
-## n8n
+## Purpose
 
-Purpose
+Business Workflow Automation.
 
-Business Process Automation
-
-Responsibilities
+### Responsibilities
 
 Connect BigQuery with:
 
@@ -217,14 +212,15 @@ Connect BigQuery with:
 - ERP
 - OpenAI
 - Claude
-- External Systems
+- External systems
 
-n8n does NOT replace ETL.
+n8n does **not** replace ETL.
 
 It orchestrates business workflows.
 
-Example
+### Example
 
+```text
 Daily Sales File
 
 ↓
@@ -242,36 +238,36 @@ Email CEO
 ↓
 
 Notify Slack
+```
 
 ---
 
-# Layer 6
+# Layer 6 — MCP
 
-## MCP (Model Context Protocol)
-
-Purpose
+## Purpose
 
 Connect AI to trusted business data.
 
-Responsibilities
+### Responsibilities
 
 Allow AI to:
 
 - Query BigQuery
-- Read analytics tables
+- Read Analytics Layer
 - Explain KPIs
 - Answer business questions
 - Generate summaries
-- Assist executives
+- Support executives
 
 MCP never replaces ETL.
 
 MCP never replaces BigQuery.
 
-MCP provides AI access to the Analytics Layer.
+MCP simply provides AI access to the Analytics Layer.
 
-Example
+### Example
 
+```text
 CEO asks
 
 "What was revenue this month?"
@@ -295,52 +291,53 @@ fact_sales
 ↓
 
 Business Answer
+```
 
 ---
 
 # Analytics Layer
 
-Purpose
+## Purpose
 
 Create business-ready datasets.
 
-Contains
+### Fact Tables
 
-- Fact Orders
-- Fact Sales
-- Fact Payments
-- Fact Delivery
-- Fact Reviews
+- fact_orders
+- fact_sales
+- fact_payments
+- fact_delivery
+- fact_reviews
 
-Dimensions
+### Dimension Tables
 
-- Customers
-- Products
-- Sellers
-- Dates
-- Geography
+- dim_customers
+- dim_products
+- dim_sellers
+- dim_dates
+- dim_geography
 
-Every dashboard and every AI assistant must use this layer.
+Every dashboard and every AI assistant must consume this layer.
 
-Never query Raw tables directly.
+Never expose Raw tables directly.
 
 ---
 
 # Business Intelligence Layer
 
-Purpose
+## Purpose
 
-Visual analytics.
+Visual Analytics.
 
-Tools
+### Tools
 
 - Power BI
 - Looker Studio
 
-Responsibilities
+### Responsibilities
 
 - Executive Dashboards
-- Operational Dashboards
+- Operational Reporting
 - KPI Monitoring
 - Trend Analysis
 
@@ -348,25 +345,25 @@ Responsibilities
 
 # AI Layer
 
-Purpose
+## Purpose
 
 Conversational Business Intelligence.
 
-Technologies
+### Technologies
 
 - OpenAI
 - Claude
 - MCP
 
-Capabilities
+### Capabilities
 
 - Ask business questions
 - Explain KPIs
-- Generate executive reports
+- Generate executive summaries
 - Analyze trends
 - Recommend actions
 
-AI consumes Analytics Data.
+AI consumes the Analytics Layer.
 
 AI never replaces Data Engineering.
 
@@ -374,12 +371,13 @@ AI never replaces Data Engineering.
 
 # Automation Layer
 
-Purpose
+## Purpose
 
 Remove repetitive manual work.
 
-Examples
+### Example
 
+```text
 Daily CSV
 
 ↓
@@ -401,13 +399,15 @@ Executive Notification
 ↓
 
 AI Ready
+```
 
 Everything happens automatically.
 
 ---
 
-# DeTLeng Data Flow
+# Complete DeTLeng Data Flow
 
+```text
 Business Files / APIs
         │
         ▼
@@ -439,58 +439,22 @@ Analytics Layer
                               │
                               ▼
                      AI Business Assistant
+```
 
 ---
 
 # Responsibility Matrix
 
-BigQuery
-
-Responsible for
-
-✓ Data
-
-Cloud Storage
-
-Responsible for
-
-✓ File Landing
-
-Scheduled Queries
-
-Responsible for
-
-✓ ETL Execution
-
-Cloud Functions
-
-Responsible for
-
-✓ Automation Trigger
-
-n8n
-
-Responsible for
-
-✓ Business Workflow Automation
-
-MCP
-
-Responsible for
-
-✓ AI Connectivity
-
-Power BI / Looker
-
-Responsible for
-
-✓ Visualization
-
-OpenAI / Claude
-
-Responsible for
-
-✓ Conversational Analytics
+| Component | Responsibility |
+|------------|----------------|
+| BigQuery | Data Warehouse |
+| Cloud Storage | File Landing Zone |
+| Scheduled Queries | ETL Execution |
+| Cloud Functions | Automation Trigger |
+| n8n | Business Workflow Automation |
+| MCP | AI Connectivity |
+| Power BI / Looker Studio | Visualization |
+| OpenAI / Claude | Conversational Analytics |
 
 ---
 
@@ -510,16 +474,16 @@ Together they create an Intelligent Business Platform.
 
 # Final Principle
 
-The objective of DeTLeng is NOT to sell SQL.
+The objective of DeTLeng is **not** to sell SQL.
 
-The objective is NOT to sell dashboards.
+The objective is **not** to sell dashboards.
 
 The objective is to deliver an automated, scalable, AI-ready Business Intelligence Platform where:
 
-• Business data flows automatically.
-• ETL executes automatically.
-• Dashboards refresh automatically.
-• AI answers business questions.
-• Executives make decisions using trusted information.
+- Business data flows automatically.
+- ETL executes automatically.
+- Dashboards refresh automatically.
+- AI answers business questions.
+- Executives make decisions using trusted information.
 
-This is the standard implementation framework for all future DeTLeng projects.
+This framework becomes the standard implementation architecture for every future DeTLeng client project.
