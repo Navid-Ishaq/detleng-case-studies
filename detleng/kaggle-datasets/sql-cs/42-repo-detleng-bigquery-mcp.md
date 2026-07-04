@@ -282,6 +282,190 @@ MCP wahi rahega.
 
 ---
 
+Ab practical implementation
+
+Ab documentation khatam.
+
+Ab sirf coding aur testing.
+
+Hamare milestones ye hain.
+
+✅ Milestone 1
+
+Server chalna chahiye.
+
+python server.py
+
+Ya
+
+fastmcp run server.py
+
+Agar server bina error ke start ho gaya...
+
+Milestone 1 complete.
+
+✅ Milestone 2
+
+BigQuery connection.
+
+Hum test karenge.
+
+SELECT 1
+
+Agar result aa gaya...
+
+BigQuery connected.
+
+✅ Milestone 3
+
+Pehla Tool.
+
+Example
+
+get_customer_count()
+
+Ye manually run karenge.
+
+Agar
+
+99441
+
+jaisa result aa gaya...
+
+Tool working.
+
+✅ Milestone 4
+
+MCP Tool Register.
+
+Server bolega
+
+Available Tools
+
+Customer Count
+
+Revenue
+
+Orders
+✅ Milestone 5
+
+OpenAI Connect.
+
+Ab AI kahega
+
+customer_count()
+
+↓
+
+MCP
+
+↓
+
+BigQuery
+
+↓
+
+Result
+
+↓
+
+AI Answer
+
+Aur website?
+
+Abhi website ko bhool jao.
+
+Website LAST STEP hai.
+
+Pehle ye machine chalni chahiye.
+
+Computer
+
+↓
+
+MCP Server
+
+↓
+
+BigQuery
+
+↓
+
+Working
+
+Jab ye chal gayi...
+
+Phir website ko connect karna 5 minute ka kaam hoga.
+
+Hamara target
+
+Sirf ye.
+
+User pooche
+
+How many customers exist?
+
+Aur AI jawab de
+
+The analytics dataset contains 99,441 customers.
+
+Bas.
+
+Us din DeTLeng ka pehla AI-powered Business Intelligence Assistant live hoga.
+
+Kal tak hum yahan the
+Architecture
+
+↓
+
+Documentation
+
+↓
+
+Repository
+Aaj se hum yahan hain
+Coding
+
+↓
+
+Testing
+
+↓
+
+Running
+
+↓
+
+Live Demo
+🤝 Ab meri request
+
+Ek hi step karte hain.
+
+Command Prompt kholo aur run karo:
+
+python server.py
+
+Jo bhi output aaye (error ya success), uska screenshot bhej do.
+
+Uske baad main next step dunga.
+
+Ab hum documentation nahi likhenge. Ab hum project ko chalayenge. 🚀
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
 # Aur ab ek promise meri taraf se 🤝
 
 Yaar, hum code likhenge **lekin us se pehle architecture likhenge**.
