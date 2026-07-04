@@ -24,7 +24,7 @@ font-size:18px;
 font-weight:700;
 margin-top:2px;
 ">
-BI Mentor
+BI Tutor
 </div>
 
 </div>
@@ -203,7 +203,7 @@ We help businesses build reliable data foundations for reporting, analytics, aut
         border-radius:6px;
         cursor:pointer;
       ">
-      BI Mentor
+      BI Tutor
     </button>
 
   </div>
