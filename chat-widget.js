@@ -24,7 +24,7 @@ font-size:18px;
 font-weight:700;
 margin-top:2px;
 ">
-BI Tutor
+Ask AI
 </div>
 
 </div>
@@ -69,6 +69,7 @@ bubble.style.animation =
 const style = document.createElement("style");
 
 style.innerHTML = `
+
 @keyframes aiPulse{
 
 0%{
@@ -95,6 +96,28 @@ box-shadow:0 0 12px rgba(37,99,235,.35);
 }
 
 }
+
+.quick-question{
+
+padding:8px 12px;
+border:none;
+border-radius:20px;
+background:#eff6ff;
+color:#1d4ed8;
+cursor:pointer;
+font-size:13px;
+font-weight:600;
+transition:.2s;
+
+}
+
+.quick-question:hover{
+
+background:#2563eb;
+color:white;
+
+}
+
 `;
 
 document.head.appendChild(style);
@@ -103,76 +126,76 @@ document.head.appendChild(style);
   // CHAT PANEL
   // =========================
 
-  const panel = document.createElement("div");
-
-  panel.style.position = "fixed";
-  panel.style.bottom = "90px";
-  panel.style.right = "20px";
-  panel.style.width = "360px";
-  panel.style.height = "520px";
-  panel.style.background = "#ffffff";
-  panel.style.border = "1px solid #ddd";
-  panel.style.borderRadius = "12px";
-  panel.style.display = "none";
-  panel.style.zIndex = "99999";
-  panel.style.boxShadow = "0 4px 20px rgba(0,0,0,.2)";
-  panel.style.overflow = "hidden";
-
-  panel.innerHTML = `
-  <div style="
-    background:#2563eb;
-    color:white;
-    padding:12px;
-    font-weight:bold;
-    font-size:16px;
-  ">
-    Agents DeTLeng AI Assistant
-  </div>
-
-  <div id="chatMessages"
-      style="
-        height:360px;
-        padding:12px;
-        overflow-y:auto;
-        font-size:14px;
-        line-height:1.6;
-      ">
-
-    <div style="
-        <div style="
-    background:#f5f7ff;
-    padding:10px;
-    border-radius:8px;
-    margin-bottom:10px;
+<div style="
+background:#f8fbff;
+padding:14px;
+border-radius:10px;
+margin-bottom:14px;
+border:1px solid #dbeafe;
 ">
 
-<b>👋 Welcome!</b>
+<div style="font-size:18px;font-weight:700;color:#2563eb;">
+👋 Welcome to BI Tutor
+</div>
 
-<br><br>
+<div style="margin-top:8px;">
+Your AI Business Intelligence Assistant.
+</div>
 
-We help businesses build reliable data foundations for reporting, analytics, automation, and business intelligence.
+<div style="margin-top:10px;">
+I can help you understand Data Engineering, Analytics, AI, Business Intelligence, ETL, BigQuery, Dashboards and real-world Case Studies.
+</div>
 
-<br><br>
+<div style="
+margin-top:14px;
+font-weight:600;
+color:#2563eb;
+">
+Try asking:
+</div>
 
-🌍 You can ask me about:
+<div style="
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin-top:10px;
+">
 
-<br><br>
+<button class="quick-question">
+What is Data Engineering?
+</button>
 
-<ul style="display:flex;flex-wrap:wrap;gap:10px 25px;">
-<li>🤖 AI Agents</li>
-<li>⚙ Intelligent Automation</li>
-<li>💼 Business Applications</li>
-<li>📚 Resources</li>
-<li>📖 Case Studies</li>
-<li>🌐 DeTLeng Ecosystem</li>
-<li>📞 Contact Information</li>
-</ul>
+<button class="quick-question">
+Explain ETL
+</button>
 
-💬 Ask your question below and I'll do my best to help.
+<button class="quick-question">
+What is Analytics Engineering?
+</button>
+
+<button class="quick-question">
+How does BigQuery work?
+</button>
+
+<button class="quick-question">
+Explain Business Intelligence
+</button>
+
+<button class="quick-question">
+What is a Data Warehouse?
+</button>
+
+<button class="quick-question">
+How can AI help my business?
+</button>
+
+<button class="quick-question">
+Show available Case Studies
+</button>
 
 </div>
 
-  </div>
+</div>
 
   <div style="
       padding:10px;
@@ -184,7 +207,7 @@ We help businesses build reliable data foundations for reporting, analytics, aut
     <input
       id="chatInput"
       type="text"
-      placeholder="How can AI help your business?"
+      placeholder="Ask anything about Data Engineering, BI, AI or Analytics..."
       style="
         flex:1;
         padding:8px;
@@ -203,7 +226,7 @@ We help businesses build reliable data foundations for reporting, analytics, aut
         border-radius:6px;
         cursor:pointer;
       ">
-      BI Tutor
+      Ask AI
     </button>
 
   </div>
@@ -266,6 +289,21 @@ function makeLinksClickable(text) {
         <div style="margin-top:10px;">
           <b>You:</b> ${question}
         </div>
+
+document
+.querySelectorAll(".quick-question")
+.forEach(btn=>{
+
+btn.onclick=()=>{
+
+chatInput.value=btn.innerText;
+
+sendBtn.click();
+
+};
+
+});      
+        
       `;
 
       chatInput.value = "";
@@ -307,7 +345,7 @@ chatMessages.innerHTML += `
     background:#f7f7f7;
     border-radius:8px;
   ">
-    <b>Agents DeTLeng:</b><br>
+    <b>📊 DeTLeng Analytics AI:</b><br>
     ${makeLinksClickable(answer)}
   </div>
 `;
