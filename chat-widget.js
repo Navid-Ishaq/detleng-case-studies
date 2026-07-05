@@ -422,12 +422,11 @@ chatInput.value="";
 chatMessages.scrollTop=
 chatMessages.scrollHeight;
 
-try{
+try {
 
 const response = await fetch(
 
-const response = await fetch(
-  "https://casestudy-ai-backend.onrender.com/chat",
+"https://casestudy-ai-backend.onrender.com/chat",
 
 {
 
@@ -448,6 +447,7 @@ history:chatHistory
 }
 
 );
+
 
 const data =
 await response.json();
