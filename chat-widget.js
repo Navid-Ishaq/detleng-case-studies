@@ -1,8 +1,14 @@
 (function () {
 
-// =========================
-// CHAT BUBBLE
-// =========================
+// =====================================================
+// DeTLeng Case Study AI Widget
+// Part 1
+// UI + Layout
+// =====================================================
+
+// =====================================
+// Floating Bubble
+// =====================================
 
 const bubble = document.createElement("div");
 
@@ -33,38 +39,24 @@ Ask AI
 bubble.style.position = "fixed";
 bubble.style.bottom = "20px";
 bubble.style.right = "20px";
-
 bubble.style.width = "82px";
 bubble.style.height = "82px";
-
 bubble.style.borderRadius = "50%";
-
-bubble.style.background =
-"linear-gradient(135deg,#2563eb,#06b6d4)";
-
-bubble.style.color = "white";
-
+bubble.style.background = "linear-gradient(135deg,#2563eb,#06b6d4)";
+bubble.style.color = "#fff";
 bubble.style.display = "flex";
 bubble.style.alignItems = "center";
 bubble.style.justifyContent = "center";
-
-bubble.style.fontFamily =
-"'Segoe UI',Arial,sans-serif";
-
+bubble.style.fontFamily = "'Segoe UI',Arial,sans-serif";
 bubble.style.cursor = "pointer";
-
 bubble.style.userSelect = "none";
+bubble.style.zIndex = "999999";
+bubble.style.boxShadow = "0 8px 24px rgba(37,99,235,.40)";
+bubble.style.animation = "aiPulse 1.8s infinite";
 
-bubble.style.zIndex = "99999";
-
-bubble.style.boxShadow =
-"0 8px 22px rgba(37,99,235,.45)";
-
-bubble.style.animation =
-"aiPulse 1.8s infinite";
-
-
-// Create animation
+// =====================================
+// CSS
+// =====================================
 
 const style = document.createElement("style");
 
@@ -73,26 +65,20 @@ style.innerHTML = `
 @keyframes aiPulse{
 
 0%{
-
 transform:scale(1);
 box-shadow:0 0 12px rgba(37,99,235,.35);
-
 }
 
 50%{
-
-transform:scale(1.12);
+transform:scale(1.10);
 box-shadow:
 0 0 24px rgba(37,99,235,.70),
 0 0 40px rgba(6,182,212,.40);
-
 }
 
 100%{
-
 transform:scale(1);
 box-shadow:0 0 12px rgba(37,99,235,.35);
-
 }
 
 }
@@ -103,11 +89,11 @@ padding:8px 12px;
 border:none;
 border-radius:20px;
 background:#eff6ff;
-color:#1d4ed8;
+color:#2563eb;
 cursor:pointer;
 font-size:13px;
 font-weight:600;
-transition:.2s;
+transition:.25s;
 
 }
 
@@ -122,43 +108,100 @@ color:white;
 
 document.head.appendChild(style);
 
-  // =========================
-  // CHAT PANEL
-  // =========================
+// =====================================
+// Chat Panel
+// =====================================
+
+const panel = document.createElement("div");
+
+panel.style.position = "fixed";
+panel.style.bottom = "110px";
+panel.style.right = "20px";
+panel.style.width = "390px";
+panel.style.height = "620px";
+panel.style.background = "#ffffff";
+panel.style.border = "1px solid #dbeafe";
+panel.style.borderRadius = "14px";
+panel.style.display = "none";
+panel.style.zIndex = "999999";
+panel.style.overflow = "hidden";
+panel.style.boxShadow = "0 10px 30px rgba(0,0,0,.20)";
+
+panel.innerHTML = `
 
 <div style="
-background:#f8fbff;
+background:#2563eb;
+color:white;
 padding:14px;
-border-radius:10px;
-margin-bottom:14px;
-border:1px solid #dbeafe;
+font-size:18px;
+font-weight:700;
 ">
 
-<div style="font-size:18px;font-weight:700;color:#2563eb;">
-👋 Welcome to BI Tutor
+📊 DeTLeng Analytics AI
+
 </div>
 
-<div style="margin-top:8px;">
-Your AI Business Intelligence Assistant.
+<div
+id="chatMessages"
+
+style="
+height:455px;
+overflow-y:auto;
+padding:15px;
+font-family:'Segoe UI',Arial,sans-serif;
+font-size:14px;
+line-height:1.6;
+background:white;
+">
+
+<div
+style="
+background:#f8fbff;
+border:1px solid #dbeafe;
+border-radius:10px;
+padding:14px;
+">
+
+<div
+style="
+font-size:19px;
+font-weight:700;
+color:#2563eb;
+">
+
+👋 Welcome
+
 </div>
 
 <div style="margin-top:10px;">
-I can help you understand Data Engineering, Analytics, AI, Business Intelligence, ETL, BigQuery, Dashboards and real-world Case Studies.
+
+I'm your AI Business Intelligence Assistant.
+
 </div>
 
-<div style="
-margin-top:14px;
-font-weight:600;
+<div style="margin-top:12px;">
+
+I can explain concepts, recommend architectures, discuss analytics projects, Data Engineering, BigQuery, ETL, dashboards and Case Studies.
+
+</div>
+
+<div
+style="
+margin-top:16px;
+font-weight:700;
 color:#2563eb;
 ">
-Try asking:
+
+Try asking
+
 </div>
 
-<div style="
+<div
+style="
 display:flex;
 flex-wrap:wrap;
 gap:8px;
-margin-top:10px;
+margin-top:12px;
 ">
 
 <button class="quick-question">
@@ -197,98 +240,129 @@ Show available Case Studies
 
 </div>
 
-  <div style="
-      padding:10px;
-      border-top:1px solid #ddd;
-      display:flex;
-      gap:8px;
-  ">
+</div>
 
-    <input
-      id="chatInput"
-      type="text"
-      placeholder="Ask anything about Data Engineering, BI, AI or Analytics..."
-      style="
-        flex:1;
-        padding:8px;
-        border:1px solid #ccc;
-        border-radius:6px;
-      "
-    />
+<div
+style="
+padding:12px;
+border-top:1px solid #e5e7eb;
+display:flex;
+gap:8px;
+background:white;
+">
 
-    <button
-      id="sendBtn"
-      style="
-        padding:8px 12px;
-        background:#2563eb;
-        color:white;
-        border:none;
-        border-radius:6px;
-        cursor:pointer;
-      ">
-      Ask AI
-    </button>
+<input
 
-  </div>
-  `;
+id="chatInput"
 
-  // =========================
-  // OPEN CLOSE
-  // =========================
+type="text"
 
-  bubble.onclick = () => {
+placeholder="Ask about AI, Data Engineering, ETL, BI, BigQuery..."
 
-    panel.style.display =
-      panel.style.display === "none"
-      ? "block"
-      : "none";
+style="
+flex:1;
+padding:10px;
+border:1px solid #cbd5e1;
+border-radius:8px;
+outline:none;
+font-size:14px;
+"/>
 
-  };
+<button
 
-  document.body.appendChild(bubble);
-  document.body.appendChild(panel);
+id="sendBtn"
 
-  // =========================
-  // CHAT LOGIC
-  // =========================
+style="
+padding:10px 16px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-weight:600;
+">
 
-function makeLinksClickable(text) {
-  return text.replace(
-    /(https?:\/\/[^\s<]+)/g,
-    function(url) {
+Ask AI
 
-      const cleanUrl = url.replace(/[.,!?;:]+$/, '');
+</button>
 
-      return `<a href="${cleanUrl}" target="_blank"
-        style="color:#2563eb;font-weight:bold;">
-        ${cleanUrl}
-      </a>`;
-    }
-  );
+</div>
+
+`;
+
+// =====================================
+// Open / Close
+// =====================================
+
+bubble.onclick = () => {
+
+panel.style.display =
+panel.style.display === "none"
+? "block"
+: "none";
+
+};
+
+document.body.appendChild(bubble);
+document.body.appendChild(panel);
+
+// =====================================
+// Helper
+// =====================================
+
+function makeLinksClickable(text){
+
+return text.replace(
+
+/(https?:\/\/[^\s<]+)/g,
+
+function(url){
+
+const cleanUrl=url.replace(/[.,!?;:]+$/,'');
+
+return `
+<a
+href="${cleanUrl}"
+target="_blank"
+style="
+color:#2563eb;
+font-weight:bold;
+text-decoration:none;
+">
+${cleanUrl}
+</a>
+`;
+
 }
 
-  setTimeout(() => {
+);
 
-    const sendBtn =
-      document.getElementById("sendBtn");
+}
 
-    const chatInput =
-      document.getElementById("chatInput");
+// =====================================================
+// PART 2 STARTS FROM HERE
+// =====================================================
 
-    const chatMessages =
-      document.getElementById("chatMessages");
-      let chatHistory = [];
+// =====================================
+// CHAT LOGIC
+// =====================================
 
-    sendBtn.onclick = async () => {
+setTimeout(() => {
 
-      const question = chatInput.value.trim();
+const sendBtn =
+document.getElementById("sendBtn");
 
-      if (!question) return;
+const chatInput =
+document.getElementById("chatInput");
 
-      chatMessages.innerHTML += `
-        <div style="margin-top:10px;">
-          <b>You:</b> ${question}
-        </div>
+const chatMessages =
+document.getElementById("chatMessages");
+
+let chatHistory = [];
+
+// =====================================
+// Quick Questions
+// =====================================
 
 document
 .querySelectorAll(".quick-question")
@@ -302,112 +376,193 @@ sendBtn.click();
 
 };
 
-});      
-        
-      `;
-
-      chatInput.value = "";
-
-      try {
-
-        const response = await fetch(
-          "https://aapkaustaad-ai-backend.onrender.com/chat",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-               message: question,
-               domain: window.location.origin,
-               history: chatHistory
-            })
-          }
-        );
-
-        const data = await response.json();
-
-const answer = data.answer || "";
-        chatHistory.push({
-    role: "user",
-    content: question
 });
 
-chatHistory.push({
-    role: "assistant",
-    content: answer
-});
+// =====================================
+// Send Message
+// =====================================
+
+sendBtn.onclick = async ()=>{
+
+const question =
+chatInput.value.trim();
+
+if(!question) return;
+
+// User Message
 
 chatMessages.innerHTML += `
-  <div style="
-    margin-top:10px;
-    padding:8px;
-    background:#f7f7f7;
-    border-radius:8px;
-  ">
-    <b>📊 DeTLeng Analytics AI:</b><br>
-    ${makeLinksClickable(answer)}
-  </div>
+
+<div
+style="
+margin-top:12px;
+text-align:right;
+">
+
+<div
+style="
+display:inline-block;
+background:#2563eb;
+color:white;
+padding:10px 14px;
+border-radius:12px;
+max-width:85%;
+">
+
+${question}
+
+</div>
+
+</div>
+
 `;
 
-if (data.whatsapp) {
+chatInput.value="";
 
-  chatMessages.innerHTML += `
-    <div style="margin-top:12px;">
+chatMessages.scrollTop=
+chatMessages.scrollHeight;
 
-      <a href="${data.whatsapp}"
-         target="_blank"
-         style="
-            display:inline-block;
-            background:#25D366;
-            color:white;
-            padding:10px 18px;
-            border-radius:8px;
-            text-decoration:none;
-            font-weight:bold;
-        ">
+try{
 
-        📩 Request a Free Consultation
+const response = await fetch(
 
-      </a>
+"https://casestudy-ai-backend.onrender.com/chat",
 
-    </div>
-  `;
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+message:question,
+
+history:chatHistory
+
+})
 
 }
 
-chatMessages.scrollTop = chatMessages.scrollHeight;
-            
-      
+);
 
-      } catch (err) {
+const data =
+await response.json();
 
-        chatMessages.innerHTML += `
-          <div style="
-            color:red;
-            margin-top:10px;
-          ">
-            Unable to connect to the DeTLeng AI service. Please try again later.
-          </div>
-        `;
+const answer =
+data.answer || "No response.";
 
-      }
+chatHistory.push({
 
-      chatMessages.scrollTop =
-        chatMessages.scrollHeight;
-    };
+role:"user",
+content:question
 
-    chatInput.addEventListener(
-      "keypress",
-      function(e){
+});
 
-        if(e.key === "Enter"){
-          sendBtn.click();
-        }
+chatHistory.push({
 
-      }
-    );
+role:"assistant",
+content:answer
 
-  }, 500);
+});
+
+// AI Message
+
+chatMessages.innerHTML += `
+
+<div
+style="
+margin-top:14px;
+">
+
+<div
+style="
+display:inline-block;
+background:#f4f7fb;
+padding:12px;
+border-radius:12px;
+max-width:90%;
+border:1px solid #e5e7eb;
+">
+
+<div
+style="
+font-weight:700;
+color:#2563eb;
+margin-bottom:6px;
+">
+
+📊 DeTLeng Analytics AI
+
+</div>
+
+${makeLinksClickable(answer)}
+
+</div>
+
+</div>
+
+`;
+
+chatMessages.scrollTop=
+chatMessages.scrollHeight;
+
+}
+
+catch(err){
+
+chatMessages.innerHTML += `
+
+<div
+style="
+margin-top:15px;
+padding:12px;
+background:#fff5f5;
+border:1px solid #fecaca;
+border-radius:10px;
+color:#dc2626;
+">
+
+Unable to connect to the Analytics AI backend.
+
+</div>
+
+`;
+
+}
+
+chatMessages.scrollTop=
+chatMessages.scrollHeight;
+
+};
+
+// =====================================
+// ENTER KEY
+// =====================================
+
+chatInput.addEventListener(
+
+"keypress",
+
+function(e){
+
+if(e.key==="Enter"){
+
+sendBtn.click();
+
+}
+
+}
+
+);
+
+},500);
+
+// =====================================
+// END
+// =====================================
 
 })();
+ 
