@@ -426,7 +426,7 @@ try{
 
 const response = await fetch(
 
-"https://aapkaustaad-ai-backend.onrender.com/chat",
+"https://casestudy-ai-backend.onrender.com/chat",
 
 {
 
