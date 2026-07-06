@@ -1,1 +1,723 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="favicon2.png">
+<div style="height:90px;"></div>
 
+<nav class="detleng-nav">
+
+
+
+
+<div class="detleng-logo">
+
+<a href="index.html">
+
+<img src="logodl3.png"
+     alt="DeTLeng"
+     style="height:60px;width:auto;display:block;">
+
+</a>
+
+</div>
+
+
+
+
+
+
+
+
+<!-- ======================================================== -->
+<!-- DeTLeng Floating Menu START -->
+<!-- ======================================================== -->
+
+<input type="checkbox" id="menu-toggle">
+
+<label for="menu-toggle" class="menu-icon">
+☰ MENU
+</label>
+
+<div class="menu-links">
+
+<a href="https://casestudy.detleng.com/index.html" class="active">Home</a>
+
+<a href="https://casestudy.detleng.com/case-studies.html">Case Studies</a>
+
+<a href="https://casestudy.detleng.com/articles.html">Articles</a>
+
+<a href="https://www.detleng.com" target="_blank"
+style="color:#0F8A3B;font-weight:700;">
+DeTLeng Site →
+</a>
+
+<a href="https://insights.detleng.com/" target="_blank"
+style="color:#E67E22;font-weight:700;">
+DeTLeng Insights →
+</a>
+
+</div>
+
+<!-- ======================================================== -->
+<!-- DeTLeng Floating Menu END -->
+<!-- ======================================================== -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+</nav>
+
+<style>
+
+
+
+
+/* Hover Effect */
+nav a {
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: #26C6FF;
+}
+
+/* Active Menu Item */
+nav a.active {
+    color: #0047D6;
+    font-weight: 600;
+}
+
+
+
+
+
+
+
+     
+/* ===========================
+   DeTLeng Professional Menu
+=========================== */
+
+.detleng-nav{
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+
+    background:#ffffff;
+
+    border-bottom:1px solid #ddd;
+
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+
+    z-index:99999;
+
+    padding:15px 20px;
+
+    box-sizing:border-box;
+
+}
+
+.detleng-logo{
+
+    position:absolute;
+
+    left:20px;
+    top:15px;
+
+    z-index:999;
+
+}
+
+/* Hide Checkbox */
+
+#menu-toggle{
+
+    display:none;
+
+}
+
+/* Menu Icon */
+
+.menu-icon{
+
+    display:none;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    float:right;
+
+    font-weight:700;
+
+}
+
+/* Desktop Menu */
+
+.menu-links{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:25px;
+
+    margin-top:10px;
+
+}
+
+.menu-links a{
+
+    text-decoration:none;
+
+    color:#111;
+
+    font-weight:600;
+
+    font-family:"Segoe UI", Arial, sans-serif;
+
+}
+
+.menu-links a:hover{
+
+    color:#0066ff;
+
+}
+
+/* ===========================
+   Mobile Version
+=========================== */
+
+@media (max-width:768px){
+
+    .menu-icon{
+
+        display:block;
+
+        text-align:right;
+
+        font-size:28px;
+
+    }
+
+    .menu-links{
+
+        display:none;
+
+        flex-direction:column;
+
+        position:absolute;
+
+        top:70px;
+
+        right:15px;
+
+        background:#ffffff;
+
+        padding:20px;
+
+        border-radius:12px;
+
+        box-shadow:0 5px 20px rgba(0,0,0,0.15);
+
+        min-width:140px;
+
+        text-align:right;
+
+        gap:15px;
+
+        z-index:99999;
+
+    }
+
+    .menu-links a{
+
+        display:block;
+
+        font-size:18px;
+
+        color:#111;
+
+    }
+
+    #menu-toggle:checked ~ .menu-links{
+
+        display:flex;
+
+    }
+
+}
+/* ===========================
+   DeTLeng Readability
+=========================== */
+
+body{
+
+    font-family:"Segoe UI", Arial, sans-serif;
+
+    color:#222;
+
+    line-height:1.8;
+
+    font-size:18px;
+
+}
+
+/* Paragraphs */
+
+p{
+
+    font-size:18px;
+
+    line-height:1.9;
+
+    color:#333;
+
+    margin-bottom:20px;
+
+}
+
+/* Lists */
+
+li{
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    color:#333;
+
+}
+
+/* Headings */
+
+h1{
+
+    font-size:52px;
+
+    color:#111;
+
+}
+
+h2{
+
+    font-size:38px;
+
+    color:#111;
+
+}
+
+h3{
+
+    font-size:28px;
+
+    color:#111;
+
+}
+
+/* Mobile Headings */
+
+@media (max-width:768px){
+
+    h1{
+        font-size:42px;
+    }
+
+    h2{
+        font-size:32px;
+    }
+
+    h3{
+        font-size:24px;
+    }
+
+}
+
+</style>
+
+
+
+
+
+<style>
+
+/* ===========================
+   DeTLeng Content Layout
+=========================== */
+
+.detleng-content{
+    max-width:900px;
+    margin:0 auto;
+    padding:20px;
+}
+
+.detleng-content p{
+    max-width:850px;
+    font-size:18px;
+    line-height:1.9;
+    color:#333333;
+    margin-bottom:20px;
+}
+
+.detleng-content ul{
+    padding-left:25px;
+}
+
+.detleng-content li{
+    font-size:18px;
+    line-height:1.8;
+}
+
+h1{
+    margin-top:0;
+    margin-bottom:20px;
+}
+
+.detleng-content h1{
+    font-size:52px;
+    color:#111111;
+}
+
+.detleng-content h2{
+    font-size:38px;
+    color:#111111;
+    margin-top:50px;
+}
+
+.detleng-content h3{
+    font-size:28px;
+    color:#111111;
+    margin-top:20px;
+}
+
+.detleng-content h4{
+    font-size:22px;
+    color:#111111;
+    margin-top:25px;
+}
+
+.detleng-content hr{
+    margin:40px 0;
+    border:none;
+    border-top:1px solid #dddddd;
+}
+
+@media (max-width:768px){
+
+.detleng-content{
+    padding:15px;
+}
+
+.detleng-content h1{
+    font-size:42px;
+}
+
+.detleng-content h2{
+    font-size:30px;
+}
+
+.detleng-content h3{
+    font-size:24px;
+}
+
+.detleng-content p,
+.detleng-content li{
+    font-size:17px;
+}
+
+}
+
+</style>
+
+
+
+
+<section class="detleng-content">
+
+
+
+
+
+
+
+
+
+<!-- =======================================================
+CASE STUDY 03
+DeTLeng Case Studies
+======================================================= -->
+
+<section class="case-study-cover" id="cover-page">
+
+    <span class="case-study-number">CASE STUDY 03</span>
+
+    <h1>
+        From Raw Data to Conversational Business Intelligence
+    </h1>
+
+    <h2>
+        Building an AI-Powered Analytics Platform with Google BigQuery,
+        DeTLeng MCP Server, OpenAI & FastAPI
+    </h2>
+
+    <hr>
+
+    <p>
+        <strong>Dataset:</strong>
+        Brazilian E-Commerce Public Dataset by Olist
+    </p>
+
+    <p>
+        <strong>Source:</strong>
+        <a href="https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce"
+           target="_blank">
+            https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
+        </a>
+    </p>
+
+    <p>
+        <strong>Project Type:</strong>
+        Data Engineering • Analytics Engineering • Business Intelligence • Artificial Intelligence • MCP • FastAPI • BigQuery
+    </p>
+
+    <p>
+        <strong>Platform:</strong>
+        DeTLeng Case Studies
+    </p>
+
+</section>
+
+
+
+
+
+<!-- =======================================================
+TABLE OF CONTENTS
+======================================================= -->
+
+<section id="table-of-contents">
+
+    <h2>Table of Contents</h2>
+
+    <ul class="toc">
+
+        <li><a href="#executive-summary">1. Executive Summary</a></li>
+
+        <li><a href="#project-overview">2. Project Overview</a></li>
+
+        <li><a href="#business-challenge">3. Business Challenge</a></li>
+
+        <li><a href="#project-objectives">4. Project Objectives</a></li>
+
+        <li><a href="#technology-stack">5. Technology Stack</a></li>
+
+        <li><a href="#solution-architecture">6. Solution Architecture</a></li>
+
+        <li class="toc-heading">
+            IMPLEMENTATION PHASES
+        </li>
+
+        <li><a href="#phase1">7. Phase 1 — Dataset Selection (9 CSV Files)</a></li>
+
+        <li><a href="#phase2">8. Phase 2 — Google Cloud & BigQuery Setup</a></li>
+
+        <li><a href="#phase3">9. Phase 3 — Building the Raw Layer</a></li>
+
+        <li><a href="#phase4">10. Phase 4 — Building the Staging Layer</a></li>
+
+        <li><a href="#phase5">11. Phase 5 — Building the Analytics Layer</a></li>
+
+        <li><a href="#phase6">12. Phase 6 — Why We Stopped Before Building Dashboards</a></li>
+
+        <li><a href="#phase7">13. Phase 7 — Engineering the DeTLeng MCP Server</a></li>
+
+        <li><a href="#phase8">14. Phase 8 — Building Business Intelligence Tools</a></li>
+
+        <li><a href="#phase9">15. Phase 9 — FastAPI Backend</a></li>
+
+        <li><a href="#phase10">16. Phase 10 — OpenAI Integration</a></li>
+
+        <li><a href="#phase11">17. Phase 11 — Connecting Only the Analytics Layer</a></li>
+
+        <li><a href="#phase12">18. Phase 12 — GitHub Repository Structure</a></li>
+
+        <li><a href="#phase13">19. Phase 13 — Deployment on Render</a></li>
+
+        <li><a href="#phase14">20. Phase 14 — Technical Challenges & Engineering Decisions</a></li>
+
+        <li><a href="#phase15">21. Phase 15 — Live Demonstration</a></li>
+
+        <li class="toc-heading">
+            RESULTS
+        </li>
+
+        <li><a href="#business-outcomes">22. Business Outcomes</a></li>
+
+        <li><a href="#lessons-learned">23. Lessons Learned</a></li>
+
+        <li><a href="#future-roadmap">24. Future Roadmap</a></li>
+
+        <li><a href="#about-detleng">25. About DeTLeng</a></li>
+
+        <li><a href="#final-conclusion">26. Final Conclusion</a></li>
+
+    </ul>
+
+</section>
+
+
+
+
+
+
+  
+
+
+     
+
+
+
+</section>
+
+
+
+     
+
+   
+
+
+
+
+<div style="
+max-width:900px;
+margin:30px auto;
+text-align:center;
+">
+
+<a href="mailto:info@DeTLeng.com?subject=Data Project Inquiry&body=Hello DeTLeng Team,%0D%0A%0D%0AMy name is ________________.%0D%0A%0D%0AI would like assistance with a data-related project. Please find the project details below:%0D%0A%0D%0AProject Type: ________________%0D%0AData Source (CSV/Excel/Database): ________________%0D%0AExpected Outcome: ________________%0D%0ADeadline (Optional): ________________%0D%0AAdditional Requirements: ________________%0D%0A%0D%0AI look forward to hearing from you.%0D%0A%0D%0ARegards,"
+style="
+display:block;
+background:blue;
+color:#ffffff;
+font-size:28px;
+font-weight:bold;
+text-decoration:none;
+padding:25px;
+border-radius:8px;
+animation:blink 1.5s infinite;
+">
+
+
+<span class="detleng-finger">👉</span>
+Get Started with <strong style="color:yellow;">DeTLeng</strong>
+<span class="detleng-finger">👈</span>
+
+</a>
+
+</div>
+
+
+
+
+
+
+
+<br><br><br>
+
+
+
+<style>
+/* DeTLeng Sticky Consultation Button */
+
+.detleng-sticky-btn{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+
+    background:linear-gradient(
+        135deg,
+        #0033CC 0%,
+        #005BFF 50%,
+        #33D6FF 100%
+    );
+
+    color:#FFD700;
+
+    padding:12px 22px;
+
+    border-radius:10px;
+    text-decoration:none;
+
+    font-family:Inter,sans-serif;
+    font-size:18px;
+    font-weight:700;
+
+    box-shadow:
+    0 4px 15px rgba(0,91,255,0.35),
+    0 0 12px rgba(255,215,0,0.30);
+
+    z-index:99999;
+
+    transition:all .3s ease;
+}
+
+.detleng-sticky-btn:hover{
+    background: linear-gradient(
+    135deg,
+    #003FC7 0%,
+    #0A63FF 70%,
+    #F7941D 100%
+);
+    transform:translateY(-2px);
+}
+
+/* Mobile Friendly */
+@media (max-width:768px){
+
+.detleng-sticky-btn{
+    bottom:10px;
+    left:10px;
+
+    padding:14px 20px;
+
+    font-size:16px;
+
+    border-radius:10px;
+}
+}
+
+</style>
+
+<a class="detleng-sticky-btn"
+href="mailto:info@detleng.com?subject=Free%20Consultation%20Request&body=Hello%20DeTLeng%20Team,%0D%0A%0D%0AMy%20name%20is:%20________________%0D%0A%0D%0AI%20would%20like%20a%20free%20consultation%20regarding:%0D%0A%0D%0AProject%20Type:%20________________%0D%0AData%20Source:%20________________%0D%0AExpected%20Outcome:%20________________%0D%0ADeadline:%20________________%0D%0AAdditional%20Requirements:%20________________%0D%0A%0D%0ARegards,%0D%0A________________">
+
+👉 <span style="color:white;">Consult |</span> <span style="color:#FFD700;"> DeTLeng</span>
+
+</a>
+
+
+
+
+<script src="/chat-widget.js"></script>  
+</body>
+</html>
