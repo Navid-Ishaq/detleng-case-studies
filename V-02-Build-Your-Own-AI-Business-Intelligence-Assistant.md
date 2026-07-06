@@ -289,20 +289,28 @@ Whether you already use BigQuery, SQL, Power BI, Looker, Tableau, or another ana
 
 Looking to build an AI-powered Business Intelligence Assistant for your organization?
 
-Whether you use **BigQuery, SQL, Power BI, Looker, Tableau, or another analytics platform**, DeTLeng can help you transform your business data into an intelligent AI assistant that delivers real-time business insights through natural language.
+---
+
+# Learn More
+
+Interested in building an AI-powered Business Intelligence Assistant for your organization?
+
+Explore how DeTLeng combines **Data Engineering, BigQuery, MCP, OpenAI, and Business Intelligence** to build intelligent AI solutions that enable businesses to interact with their data using natural language.
 
 ### 🌐 DeTLeng
 https://www.detleng.com
 
-### 🤖 AI Solutions
-https://agents.detleng.com
+Professional Data Engineering, Analytics Engineering, Business Intelligence, AI, and Intelligent Business Systems.
 
-### 🚀 Featured Solution
-**Build Your Own AI Business Intelligence Assistant**
+### 🧠 Inteligencia DeTLeng
+https://inteligencia.detleng.com
 
-https://agents.detleng.com/ai-business-intelligence-assistant
+Research, insights, applied AI, analytics, and business intelligence articles.
 
-Discover how DeTLeng combines **Data Engineering, BigQuery, MCP, OpenAI, and Business Intelligence** to build enterprise AI assistants that help organizations interact with their business data through simple conversations.
+### 🤖 Agents DeTLeng
+https://agents.detleng.com *(Coming Soon)*
+
+Discover our AI-powered Business Intelligence Assistants, AI Agents, MCP Solutions, RAG Systems, and Intelligent Business Automation services.
 
 ### 📧 Contact
 info@detleng.com
