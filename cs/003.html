@@ -462,128 +462,258 @@ h1{
 
 
 
-<!-- =======================================================
-CASE STUDY 03
-DeTLeng Case Studies
-======================================================= -->
+/* ======================================================
+   CASE STUDY 03
+   TABLE OF CONTENTS
+====================================================== */
 
-<section class="case-study-cover" id="cover-page">
+html{
+    scroll-behavior:smooth;
+}
 
-    <span class="case-study-number">CASE STUDY 03</span>
-
-    <h1>
-        From Raw Data to Conversational Business Intelligence
-    </h1>
-
-    <h2>
-        Building an AI-Powered Analytics Platform with Google BigQuery,
-        DeTLeng MCP Server, OpenAI & FastAPI
-    </h2>
-
-    <hr>
-
-    <p>
-        <strong>Dataset:</strong>
-        Brazilian E-Commerce Public Dataset by Olist
-    </p>
-
-    <p>
-        <strong>Source:</strong>
-        <a href="https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce"
-           target="_blank">
-            https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
-        </a>
-    </p>
-
-    <p>
-        <strong>Project Type:</strong>
-        Data Engineering • Analytics Engineering • Business Intelligence • Artificial Intelligence • MCP • FastAPI • BigQuery
-    </p>
-
-    <p>
-        <strong>Platform:</strong>
-        DeTLeng Case Studies
-    </p>
-
-</section>
+/* Offset for fixed navbar */
+section{
+    scroll-margin-top:90px;
+}
 
 
+/* ======================================================
+   COVER
+====================================================== */
+
+.case-study-cover{
+
+    padding:45px 0;
+
+    margin-bottom:50px;
+
+    border-bottom:1px solid #e5e5e5;
+
+}
+
+.case-study-number{
+
+    display:inline-block;
+
+    padding:8px 18px;
+
+    background:#1f5fbf;
+
+    color:#ffffff;
+
+    border-radius:6px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+}
+
+.case-study-cover h1{
+
+    margin-top:20px;
+
+    margin-bottom:15px;
+
+}
+
+.case-study-cover h2{
+
+    color:#555;
+
+    font-weight:500;
+
+    line-height:1.6;
+
+}
 
 
 
-<!-- =======================================================
-TABLE OF CONTENTS
-======================================================= -->
+/* ======================================================
+   TABLE OF CONTENTS
+====================================================== */
 
-<section id="table-of-contents">
+#table-of-contents{
 
-    <h2>Table of Contents</h2>
+    background:#ffffff;
 
-    <ul class="toc">
+    border:1px solid #e5e5e5;
 
-        <li><a href="#executive-summary">1. Executive Summary</a></li>
+    border-radius:10px;
 
-        <li><a href="#project-overview">2. Project Overview</a></li>
+    padding:35px;
 
-        <li><a href="#business-challenge">3. Business Challenge</a></li>
+    margin:60px 0;
 
-        <li><a href="#project-objectives">4. Project Objectives</a></li>
+    box-shadow:0 3px 10px rgba(0,0,0,.05);
 
-        <li><a href="#technology-stack">5. Technology Stack</a></li>
+}
 
-        <li><a href="#solution-architecture">6. Solution Architecture</a></li>
+#table-of-contents h2{
 
-        <li class="toc-heading">
-            IMPLEMENTATION PHASES
-        </li>
+    color:#1f5fbf;
 
-        <li><a href="#phase1">7. Phase 1 — Dataset Selection (9 CSV Files)</a></li>
+    font-size:40px;
 
-        <li><a href="#phase2">8. Phase 2 — Google Cloud & BigQuery Setup</a></li>
+    font-weight:700;
 
-        <li><a href="#phase3">9. Phase 3 — Building the Raw Layer</a></li>
+    margin-bottom:30px;
 
-        <li><a href="#phase4">10. Phase 4 — Building the Staging Layer</a></li>
+    padding-bottom:10px;
 
-        <li><a href="#phase5">11. Phase 5 — Building the Analytics Layer</a></li>
+    border-bottom:4px solid #f4b400;
 
-        <li><a href="#phase6">12. Phase 6 — Why We Stopped Before Building Dashboards</a></li>
+}
 
-        <li><a href="#phase7">13. Phase 7 — Engineering the DeTLeng MCP Server</a></li>
 
-        <li><a href="#phase8">14. Phase 8 — Building Business Intelligence Tools</a></li>
 
-        <li><a href="#phase9">15. Phase 9 — FastAPI Backend</a></li>
+/* ======================================================
+   SECTION HEADINGS
+====================================================== */
 
-        <li><a href="#phase10">16. Phase 10 — OpenAI Integration</a></li>
+.toc-section-heading{
 
-        <li><a href="#phase11">17. Phase 11 — Connecting Only the Analytics Layer</a></li>
+    margin-top:45px;
 
-        <li><a href="#phase12">18. Phase 12 — GitHub Repository Structure</a></li>
+    margin-bottom:20px;
 
-        <li><a href="#phase13">19. Phase 13 — Deployment on Render</a></li>
+    padding-bottom:10px;
 
-        <li><a href="#phase14">20. Phase 14 — Technical Challenges & Engineering Decisions</a></li>
+    font-size:26px;
 
-        <li><a href="#phase15">21. Phase 15 — Live Demonstration</a></li>
+    font-weight:700;
 
-        <li class="toc-heading">
-            RESULTS
-        </li>
+    color:#1f5fbf;
 
-        <li><a href="#business-outcomes">22. Business Outcomes</a></li>
+    text-transform:uppercase;
 
-        <li><a href="#lessons-learned">23. Lessons Learned</a></li>
+    border-bottom:3px solid #f4b400;
 
-        <li><a href="#future-roadmap">24. Future Roadmap</a></li>
+    letter-spacing:.5px;
 
-        <li><a href="#about-detleng">25. About DeTLeng</a></li>
+}
 
-        <li><a href="#final-conclusion">26. Final Conclusion</a></li>
 
-    </ul>
 
-</section>
+/* ======================================================
+   LIST
+====================================================== */
+
+.toc{
+
+    list-style:none;
+
+    margin:0;
+
+    padding:0;
+
+}
+
+.toc li{
+
+    margin:12px 0;
+
+    padding-left:0;
+
+}
+
+
+
+/* ======================================================
+   LINKS
+====================================================== */
+
+.toc li a{
+
+    display:inline-block;
+
+    text-decoration:none;
+
+    color:#333;
+
+    font-size:17px;
+
+    font-weight:500;
+
+    transition:.25s;
+
+}
+
+.toc li a:hover{
+
+    color:#1f5fbf;
+
+    transform:translateX(6px);
+
+}
+
+
+
+/* ======================================================
+   NUMBER STYLE
+====================================================== */
+
+.toc li a::before{
+
+    color:#1f5fbf;
+
+    font-weight:700;
+
+}
+
+
+
+/* ======================================================
+   OPTIONAL CARD EFFECT
+====================================================== */
+
+#table-of-contents:hover{
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media(max-width:768px){
+
+    #table-of-contents{
+
+        padding:25px;
+
+    }
+
+    #table-of-contents h2{
+
+        font-size:30px;
+
+    }
+
+    .toc-section-heading{
+
+        font-size:22px;
+
+    }
+
+    .toc li a{
+
+        font-size:16px;
+
+        line-height:1.7;
+
+    }
+
+}
+
+
 
 
 
