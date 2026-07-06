@@ -854,6 +854,93 @@ TABLE OF CONTENTS
 
 </section>
 
+
+
+
+<!-- ======================================================
+1. EXECUTIVE SUMMARY
+====================================================== -->
+
+<section id="executive-summary" class="case-section">
+
+    <h2 class="section-title">
+        1. Executive Summary
+    </h2>
+
+    <p>
+        Business Intelligence has evolved significantly over the last decade. While organizations have invested heavily in data warehouses, ETL pipelines, reporting platforms, and dashboards, business users often continue to rely on analysts to answer routine business questions. This dependency creates delays, increases operational overhead, and slows decision-making.
+    </p>
+
+    <p>
+        This case study documents how
+        <span style="color:#0F52BA;font-weight:700;">DeTLeng</span>
+        designed and implemented an end-to-end Conversational Business Intelligence platform that combines modern Data Engineering practices with Artificial Intelligence to deliver trusted business insights through natural language.
+    </p>
+
+    <p>
+        Instead of beginning with Artificial Intelligence, the implementation started by engineering a robust analytical foundation. The publicly available Brazilian Olist E-Commerce Dataset was imported into Google BigQuery, organized into Raw, Staging, and Analytics layers, and transformed into reusable business models capable of supporting enterprise reporting and analytics.
+    </p>
+
+    <p>
+        Once the analytics layer had been fully engineered, a custom
+        <span style="color:#0F52BA;font-weight:700;">DeTLeng MCP Server</span>
+        was developed to provide governed access to approved business intelligence tools. Rather than allowing AI to generate arbitrary SQL queries, the platform exposes carefully designed business functions that retrieve trusted analytical metrics directly from the Analytics Layer.
+    </p>
+
+    <p>
+        The conversational experience was built using OpenAI, FastAPI, Google BigQuery, Python, and the Model Context Protocol (MCP). Business users can ask questions such as:
+    </p>
+
+    <ul>
+
+        <li>What is our total revenue?</li>
+
+        <li>How many customers do we have?</li>
+
+        <li>Which products generate the highest sales?</li>
+
+        <li>How is delivery performance changing over time?</li>
+
+        <li>Which states contribute the most revenue?</li>
+
+    </ul>
+
+    <p>
+        Every response is generated from trusted analytical datasets rather than model assumptions, ensuring consistency, governance, and business accuracy.
+    </p>
+
+    <p>
+        The completed solution demonstrates the engineering philosophy of
+        <span style="color:#0F52BA;font-weight:700;">DeTLeng</span>:
+    </p>
+
+    <blockquote class="detleng-quote">
+
+        <strong>
+            We do not build chatbots and connect them to data.
+            We first engineer trusted Data Engineering foundations, then extend them with Artificial Intelligence to create Intelligent Business Systems.
+        </strong>
+
+    </blockquote>
+
+    <p>
+        This implementation is more than a technical demonstration. It represents
+        <span style="color:#0F52BA;font-weight:700;">DeTLeng's</span>
+        approach to transforming raw business data into governed analytics and ultimately into conversational decision support for business managers, analysts, and enterprise stakeholders.
+    </p>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+     
 </section>
 
 
