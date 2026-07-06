@@ -447,7 +447,108 @@ h1{
 
 }
 
+
+
+
+
+
+/* ==========================================
+   TABLE OF CONTENTS
+========================================== */
+
+#table-of-contents{
+
+    margin:60px 0;
+
+    padding:35px;
+
+    background:#fff;
+
+    border:1px solid #e9ecef;
+
+    border-radius:10px;
+
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+
+}
+
+#table-of-contents h2{
+
+    color:#1f5fbf;
+
+    font-size:36px;
+
+    font-weight:700;
+
+    margin-bottom:25px;
+
+    padding-bottom:10px;
+
+    border-bottom:4px solid #f4b400;
+
+}
+
+.toc-section{
+
+    margin-top:35px;
+
+    margin-bottom:18px;
+
+    color:#1f5fbf;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    border-bottom:3px solid #f4b400;
+
+    padding-bottom:8px;
+
+}
+
+.toc{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0;
+
+}
+
+.toc li{
+
+    margin:10px 0;
+
+}
+
+.toc li a{
+
+    text-decoration:none;
+
+    color:#333;
+
+    font-size:17px;
+
+    font-weight:500;
+
+    transition:.25s;
+
+}
+
+.toc li a:hover{
+
+    color:#1f5fbf;
+
+    padding-left:6px;
+
+}
+
 </style>
+
+
 
 
 
@@ -455,7 +556,7 @@ h1{
 <section class="detleng-content">
 
     <div class="case-study-cover" id="cover-page">
-        <span class="case-study-number">CASE STUDY 000003</span>
+        <span class="case-study-number">CASE STUDY 03</span>
 
         <h1>From Raw Data to Conversational Business Intelligence</h1>
 
@@ -666,7 +767,99 @@ h1{
 </section>
      
 
-   
+
+<!-- ======================================================
+TABLE OF CONTENTS
+====================================================== -->
+
+<section id="table-of-contents">
+
+    <h2>Table of Contents</h2>
+
+    <ul class="toc">
+
+        <li><a href="#executive-summary">1. Executive Summary</a></li>
+        <li><a href="#project-overview">2. Project Overview</a></li>
+        <li><a href="#business-challenge">3. Business Challenge</a></li>
+        <li><a href="#project-objectives">4. Project Objectives</a></li>
+        <li><a href="#technology-stack">5. Technology Stack</a></li>
+        <li><a href="#solution-architecture">6. Solution Architecture</a></li>
+
+    </ul>
+
+    <h3 class="toc-section">
+        Implementation Journey
+    </h3>
+
+    <ul class="toc">
+
+        <li><a href="#phase1">7. Phase 1 — Dataset Selection (9 CSV Files)</a></li>
+
+        <li><a href="#phase2">8. Phase 2 — Google Cloud & BigQuery Setup</a></li>
+
+        <li><a href="#phase3">9. Phase 3 — Building the Raw Layer</a></li>
+
+        <li><a href="#phase4">10. Phase 4 — Building the Staging Layer</a></li>
+
+        <li><a href="#phase5">11. Phase 5 — Building the Analytics Layer</a></li>
+
+        <li><a href="#phase6">12. Phase 6 — Why We Stopped Before Building Dashboards</a></li>
+
+        <li><a href="#phase7">13. Phase 7 — Engineering the DeTLeng MCP Server</a></li>
+
+        <li><a href="#phase8">14. Phase 8 — Building Business Intelligence Tools</a></li>
+
+        <li><a href="#phase9">15. Phase 9 — FastAPI Backend</a></li>
+
+        <li><a href="#phase10">16. Phase 10 — OpenAI Integration</a></li>
+
+        <li><a href="#phase11">17. Phase 11 — Connecting Only the Analytics Layer</a></li>
+
+        <li><a href="#phase12">18. Phase 12 — GitHub Repository Structure</a></li>
+
+        <li><a href="#phase13">19. Phase 13 — Deployment on Render</a></li>
+
+        <li><a href="#phase14">20. Phase 14 — Technical Challenges & Engineering Decisions</a></li>
+
+        <li><a href="#phase15">21. Phase 15 — Live Demonstration</a></li>
+
+    </ul>
+
+    <h3 class="toc-section">
+        Business Outcomes & Impact
+    </h3>
+
+    <ul class="toc">
+
+        <li><a href="#business-outcomes">22. Business Outcomes</a></li>
+
+        <li><a href="#lessons-learned">23. Lessons Learned</a></li>
+
+        <li><a href="#future-roadmap">24. Future Roadmap</a></li>
+
+        <li><a href="#about-detleng">25. About DeTLeng</a></li>
+
+        <li><a href="#final-conclusion">26. Final Conclusion</a></li>
+
+    </ul>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
