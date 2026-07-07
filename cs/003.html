@@ -2047,7 +2047,300 @@ End-to-End Business Intelligence Workflow illustrating how trusted data engineer
 
 
 
+<!-- ======================================================
+6. SOLUTION ARCHITECTURE
+====================================================== -->
 
+<section id="solution-architecture" class="case-section">
+
+    <h2 class="section-title">
+        6. Solution Architecture
+    </h2>
+
+    <p>
+        Building a conversational Business Intelligence platform requires much more than connecting an AI model to a database. A reliable solution must begin with trusted data, follow disciplined Data Engineering practices, and expose only governed analytical models to Artificial Intelligence.
+    </p>
+
+    <p>
+        Throughout this implementation,
+        <span style="color:#0F52BA;font-weight:700;">DeTLeng</span>
+        deliberately adopted a layered architecture instead of allowing the AI assistant to interact directly with raw business data. This architectural decision ensured security, consistency, scalability, and reliable business responses.
+    </p>
+
+    <p>
+        Rather than treating Artificial Intelligence as the foundation, the implementation follows the
+        <span style="color:#0F52BA;font-weight:700;">DeTLeng Intelligent Business Systems Framework</span>,
+        where Data Engineering serves as the foundation and AI extends that foundation to support business decision-making.
+    </p>
+
+    <h3>Architecture Philosophy</h3>
+
+    <div class="detleng-quote">
+
+        <strong>
+
+        Raw Business Data
+
+        <br>↓<br>
+
+        Data Engineering
+
+        <br>↓<br>
+
+        Analytics Engineering
+
+        <br>↓<br>
+
+        Business Intelligence
+
+        <br>↓<br>
+
+        Artificial Intelligence
+
+        <br>↓<br>
+
+        Business Decisions
+
+        </strong>
+
+    </div>
+
+    <p>
+        Every layer of the architecture has a clearly defined responsibility. Business users never interact with raw operational tables. Instead, every question flows through governed analytical models before reaching the AI assistant.
+    </p>
+
+    <h3>Core Architectural Components</h3>
+
+    <ul>
+
+        <li>Public Brazilian Olist E-Commerce Dataset</li>
+
+        <li>Google BigQuery Cloud Data Warehouse</li>
+
+        <li>Raw Data Layer</li>
+
+        <li>Staging Layer for Data Transformation</li>
+
+        <li>Analytics Layer using Fact and Dimension Models</li>
+
+        <li>Business Intelligence SQL Models</li>
+
+        <li>DeTLeng MCP Server</li>
+
+        <li>Business Intelligence Tool Library</li>
+
+        <li>FastAPI Backend</li>
+
+        <li>OpenAI Integration</li>
+
+        <li>Conversational AI Business Assistant</li>
+
+    </ul>
+
+    <h3>Why This Architecture Matters</h3>
+
+    <p>
+        Many AI implementations connect Large Language Models directly to operational databases. While this may appear simple, it introduces significant risks including incorrect SQL generation, inconsistent business metrics, excessive cloud costs, and security concerns.
+    </p>
+
+    <p>
+        To avoid these risks,
+        <span style="color:#0F52BA;font-weight:700;">DeTLeng</span>
+        implemented an intermediary Business Intelligence layer through a custom-built MCP Server. Instead of generating SQL dynamically, the AI assistant invokes predefined Business Intelligence tools that execute validated analytical queries against the Analytics Layer only.
+    </p>
+
+    <div class="detleng-quote">
+
+        <strong>
+
+        Business User
+
+        <br>↓<br>
+
+        AI Chatbot
+
+        <br>↓<br>
+
+        FastAPI Backend
+
+        <br>↓<br>
+
+        DeTLeng MCP Server
+
+        <br>↓<br>
+
+        Business Intelligence Tools
+
+        <br>↓<br>
+
+        Analytics Layer
+
+        <br>↓<br>
+
+        Google BigQuery
+
+        <br>↓<br>
+
+        Trusted Business Response
+
+        </strong>
+
+    </div>
+
+    <p>
+        This architecture guarantees that every business response is generated from curated analytical models rather than directly from raw operational datasets.
+    </p>
+
+    <h3>Engineering Principles Applied</h3>
+
+    <ul>
+
+        <li>Separation of concerns across every architectural layer.</li>
+
+        <li>Governed Business Intelligence before Artificial Intelligence.</li>
+
+        <li>Reusable Business Intelligence tools.</li>
+
+        <li>Controlled MCP communication.</li>
+
+        <li>Secure Google Cloud authentication.</li>
+
+        <li>Scalable cloud-native deployment.</li>
+
+        <li>Production-ready API architecture.</li>
+
+        <li>Maintainable and extensible solution design.</li>
+
+    </ul>
+
+    <!-- ======================================================
+    FIGURE 6.1
+    ====================================================== -->
+
+    <h3 style="margin-top:55px;">
+        📸 Figure 6.1 — Complete Solution Architecture
+    </h3>
+
+    <p>
+        The following diagram illustrates the complete solution architecture developed during this implementation.
+    </p>
+
+    <div class="architecture-box">
+
+<pre>
+
+               Business Managers
+                      │
+                      ▼
+          DeTLeng AI Chatbot Website
+                      │
+                      ▼
+               FastAPI Backend
+                      │
+                      ▼
+            DeTLeng MCP Server
+                      │
+                      ▼
+       Business Intelligence Tools
+                      │
+                      ▼
+              Analytics Layer
+                      │
+         ┌────────────┼────────────┐
+         ▼            ▼            ▼
+     Fact Tables   Dimensions   SQL Models
+                      │
+                      ▼
+             Google BigQuery
+                      │
+                      ▼
+      Raw → Staging → Analytics
+
+</pre>
+
+    </div>
+
+    <p>
+        <strong>Figure 6.1.</strong>
+        Complete Solution Architecture showing how conversational Business Intelligence is delivered through governed Data Engineering rather than direct database access.
+    </p>
+
+    <!-- ======================================================
+    FIGURE 6.2
+    ====================================================== -->
+
+    <h3 style="margin-top:55px;">
+        📸 Figure 6.2 — Request Processing Workflow
+    </h3>
+
+    <p>
+        Every business question follows a controlled execution path before an answer is generated.
+    </p>
+
+    <div class="architecture-box">
+
+<pre>
+
+Business Question
+        │
+        ▼
+Question Classification
+        │
+        ▼
+Knowledge or Analytics?
+        │
+        ▼
+Analytics Request
+        │
+        ▼
+MCP Business Tool
+        │
+        ▼
+Analytics Layer
+        │
+        ▼
+Business Result
+        │
+        ▼
+OpenAI Explanation
+        │
+        ▼
+Final Business Response
+
+</pre>
+
+    </div>
+
+    <p>
+        <strong>Figure 6.2.</strong>
+        Controlled request processing workflow ensuring that AI responses are generated only after retrieving trusted analytical data.
+    </p>
+
+    <div class="key-takeaway">
+
+        <h4>Key Takeaway</h4>
+
+        <p>
+
+        The strength of this implementation does not lie in the chatbot itself. It lies in the architecture behind it. By combining Data Engineering, Business Intelligence, a governed MCP Server, and Artificial Intelligence into a single production-ready workflow,
+        <span style="color:#0F52BA;font-weight:700;">DeTLeng</span>
+        demonstrates how Intelligent Business Systems should be engineered for reliability, scalability, and long-term business value.
+
+        </p>
+
+    </div>
+
+    <div class="back-to-top">
+
+        <a href="#table-of-contents">
+            ↑ Back to Table of Contents
+        </a>
+
+    </div>
+
+    <hr class="section-divider">
+
+</section>
 
 
 
