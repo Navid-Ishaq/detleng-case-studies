@@ -1605,74 +1605,50 @@ philosophy that trustworthy AI depends on trustworthy Data Engineering.
 
             <h2>📸        Overall Project Workflow Diagram</h2>
  
-Brazilian Olist Dataset (9 CSV Files)
+<h3>📸 Figure 1 — Overall Project Workflow</h3>
 
-                │
+<div class="architecture-box">
 
-                ▼
+<pre>
+                    Brazilian Olist Dataset
+                         (9 CSV Files)
+                               │
+                               ▼
+                  Google Cloud Storage
+                   (Optional Import Layer)
+                               │
+                               ▼
+                      Google BigQuery
+                               │
+                               ▼
+                         Raw Layer
+                               │
+                               ▼
+                       Staging Layer
+                               │
+                               ▼
+                      Analytics Layer
+                               │
+                               ▼
+               Business Intelligence Models
+                               │
+                               ▼
+                    DeTLeng MCP Server
+                               │
+                               ▼
+                      FastAPI Backend
+                               │
+                               ▼
+                         OpenAI API
+                               │
+                               ▼
+         AI Conversational Business Intelligence
+                               │
+                               ▼
+          Business Managers & Decision Makers
+</pre>
 
-      Google Cloud Storage
-(optional import process)
-
-                │
-
-                ▼
-
-        Google BigQuery
-
-                │
-
-                ▼
-
-          Raw Layer
-
-                │
-
-                ▼
-
-        Staging Layer
-
-                │
-
-                ▼
-
-       Analytics Layer
-
-                │
-
-                ▼
-
- Business Intelligence Models
-
-                │
-
-                ▼
-
-      DeTLeng MCP Server
-
-                │
-
-                ▼
-
-      FastAPI Backend
-
-                │
-
-                ▼
-
-          OpenAI API
-
-                │
-
-                ▼
-
-   AI Business Intelligence Chatbot
-
-                │
-
-                ▼
-
- Business Managers & Decision Makers
+</div>
     </div>
 
       <hr>
@@ -1682,55 +1658,51 @@ Brazilian Olist Dataset (9 CSV Files)
 
                     <h2>📸        End-to-End Solution Architecture/h2>
 
-        +----------------------+
+<h3>📸 Figure 2 — End-to-End Solution Architecture</h3>
 
- Business User
+<div class="architecture-box">
 
-"Show total revenue"
+<pre>
 
-+----------+-----------+
++------------------------------+
+|      Business Manager        |
+|  "Show Total Revenue"        |
++--------------+---------------+
+               │
+               ▼
++------------------------------+
+|  DeTLeng AI Chatbot Website  |
++--------------+---------------+
+               │
+               ▼
++------------------------------+
+|       FastAPI Backend        |
++--------------+---------------+
+               │
+               ▼
++------------------------------+
+|     DeTLeng MCP Server       |
++--------------+---------------+
+               │
+               ▼
++------------------------------+
+| Business Intelligence Tools  |
++--------------+---------------+
+               │
+               ▼
++------------------------------+
+|      Analytics Layer         |
+| (Fact & Dimension Tables)    |
++--------------+---------------+
+               │
+               ▼
++------------------------------+
+|      Google BigQuery         |
++------------------------------+
 
-           │
+</pre>
 
-           ▼
-
- AI Chatbot (Website)
-
-           │
-
-           ▼
-
- FastAPI Backend
-
-           │
-
-           ▼
-
- DeTLeng MCP Server
-
-           │
-
-           ▼
-
- Business Intelligence Tools
-
-           │
-
-           ▼
-
- Analytics Layer
-
-           │
-
-           ▼
-
- Google BigQuery
-
-           │
-
-           ▼
-
- Fact & Dimension Tables
+</div>
 
     </div>
 
