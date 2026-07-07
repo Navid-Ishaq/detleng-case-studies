@@ -1906,21 +1906,116 @@ philosophy that trustworthy AI depends on trustworthy Data Engineering.
 
     <!-- INSERT SCREENSHOT -->
 
-    <div class="screenshot-placeholder">
+<!-- ======================================================
+FIGURE 5.1
+TECHNOLOGY STACK ARCHITECTURE
+====================================================== -->
 
-        📸 Insert Screenshot:
-        Technology Stack Architecture Overview
+<h3 style="margin-top:50px;">
+    📸 Figure 5.1 — Technology Stack Architecture
+</h3>
 
-    </div>
+<p>
+The following architecture illustrates the complete technology stack used throughout this implementation. It demonstrates how each technology contributes to transforming raw business data into an AI-powered conversational Business Intelligence platform.
+</p>
+
+<div class="architecture-box">
+
+<pre>
+
+                 Presentation Layer
+┌──────────────────────────────────────────────┐
+│      DeTLeng Case Study Website              │
+│      AI Business Intelligence Chatbot        │
+└──────────────────────────────────────────────┘
+                     │
+                     ▼
+                OpenAI API
+                     │
+                     ▼
+              FastAPI Backend
+                     │
+                     ▼
+           DeTLeng MCP Server
+                     │
+                     ▼
+      Business Intelligence Tools (Python)
+                     │
+                     ▼
+            Google BigQuery Warehouse
+                     │
+     ┌───────────────┼────────────────┐
+     ▼               ▼                ▼
+  Raw Layer     Staging Layer    Analytics Layer
+
+</pre>
+
+</div>
+
+<p>
+<strong>Figure 5.1.</strong>
+Technology Stack Architecture showing the relationship between the presentation layer, AI services, backend APIs, MCP server, and the governed Data Engineering layers inside Google BigQuery.
+</p>
 
     <!-- INSERT SCREENSHOT -->
 
-    <div class="screenshot-placeholder">
+<!-- ======================================================
+FIGURE 5.2
+END-TO-END DATA FLOW
+====================================================== -->
 
-        📸 Insert Screenshot:
-        Google BigQuery + FastAPI + MCP + OpenAI Workflow
+<h3 style="margin-top:60px;">
+    📸 Figure 5.2 — End-to-End Business Intelligence Workflow
+</h3>
 
-    </div>
+<p>
+The following workflow represents the complete engineering journey followed during this project, beginning with the public Olist dataset and ending with a conversational AI assistant capable of answering business questions using trusted analytics data.
+</p>
+
+<div class="architecture-box">
+
+<pre>
+
+Brazilian Olist Dataset (9 CSV Files)
+                 │
+                 ▼
+        Google BigQuery
+                 │
+                 ▼
+            Raw Layer
+                 │
+                 ▼
+          Staging Layer
+                 │
+                 ▼
+        Analytics Layer
+                 │
+                 ▼
+Business Intelligence Models
+                 │
+                 ▼
+      DeTLeng MCP Server
+                 │
+                 ▼
+         FastAPI Backend
+                 │
+                 ▼
+           OpenAI API
+                 │
+                 ▼
+AI Conversational Business Intelligence
+                 │
+                 ▼
+ Business Managers & Decision Makers
+
+</pre>
+
+</div>
+
+<p>
+<strong>Figure 5.2.</strong>
+End-to-End Business Intelligence Workflow illustrating how trusted data engineering enables reliable Artificial Intelligence by connecting only the Analytics Layer to the DeTLeng MCP Server.
+</p>
 
     <div class="key-takeaway">
 
