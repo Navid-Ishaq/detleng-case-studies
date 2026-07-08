@@ -3274,7 +3274,290 @@ This environment serves as the foundation for the complete Data Engineering and 
 
 
    
+<style>
 
+.dt-phase3{
+
+max-width:1200px;
+margin:40px auto;
+background:#ffffff;
+border-radius:24px;
+overflow:hidden;
+border:1px solid #d9f2df;
+box-shadow:0 18px 45px rgba(46,204,113,.12);
+
+}
+
+/* Header */
+
+.dt-phase3-header{
+
+padding:28px 45px;
+
+background:linear-gradient(90deg,#00b894,#27ae60,#7bed9f);
+
+}
+
+.dt-phase3-badge{
+
+display:inline-block;
+
+padding:8px 18px;
+
+background:#ffffff;
+
+color:#16a085;
+
+font-size:15px;
+
+font-weight:700;
+
+border-radius:40px;
+
+margin-bottom:16px;
+
+}
+
+.dt-phase3-header h2{
+
+margin:0;
+
+font-size:40px;
+
+font-weight:800;
+
+color:white;
+
+}
+
+/* Body */
+
+.dt-phase3-body{
+
+padding:45px;
+
+}
+
+.dt-phase3-text{
+
+font-size:21px;
+
+line-height:2;
+
+text-align:justify;
+
+color:#37495d;
+
+margin-bottom:35px;
+
+}
+
+/* Dataset Inventory */
+
+.dt-raw-title{
+
+font-size:28px;
+
+font-weight:700;
+
+color:#168b63;
+
+margin-bottom:22px;
+
+}
+
+.dt-raw-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+gap:18px;
+
+margin-bottom:35px;
+
+}
+
+.dt-raw-item{
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+padding:16px 18px;
+
+background:#f8fffb;
+
+border:2px solid #daf5e5;
+
+border-radius:14px;
+
+transition:.3s;
+
+}
+
+.dt-raw-item:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 10px 20px rgba(46,204,113,.12);
+
+}
+
+.dt-raw-icon{
+
+font-size:24px;
+
+}
+
+.dt-raw-name{
+
+font-size:17px;
+
+font-weight:700;
+
+color:#2f4858;
+
+word-break:break-word;
+
+}
+
+/* Bottom Note */
+
+.dt-phase3-note{
+
+background:#f4fff8;
+
+border-left:8px solid #27ae60;
+
+padding:28px;
+
+border-radius:18px;
+
+font-size:20px;
+
+line-height:1.9;
+
+font-weight:600;
+
+color:#30485b;
+
+}
+
+@media(max-width:768px){
+
+.dt-phase3-header{
+
+padding:22px;
+
+}
+
+.dt-phase3-header h2{
+
+font-size:30px;
+
+}
+
+.dt-phase3-body{
+
+padding:25px;
+
+}
+
+.dt-phase3-text{
+
+font-size:18px;
+
+line-height:1.8;
+
+}
+
+.dt-raw-title{
+
+font-size:22px;
+
+}
+
+.dt-phase3-note{
+
+font-size:18px;
+
+}
+
+}
+
+</style>
+
+
+
+<div class="dt-phase3">
+
+<div class="dt-phase3-header">
+
+<div class="dt-phase3-badge">
+
+Implementation Phase 03
+
+</div>
+
+<h2 style="color:white;">Building the Raw Layer</h2>
+
+</div>
+
+<div class="dt-phase3-body">
+
+<div class="dt-phase3-text">
+
+The nine CSV files were imported into the Raw Layer without any transformations. This layer serves as the system of record and preserves the original source data exactly as received.
+
+</div>
+
+<div class="dt-raw-title">
+
+Imported CSV Files
+
+</div>
+
+<div class="dt-raw-grid">
+
+<div class="dt-raw-item"><div class="dt-raw-icon">📄</div><div class="dt-raw-name">cs003_olist_raw</div></div>
+
+<div class="dt-raw-item"><div class="dt-raw-icon">📄</div><div class="dt-raw-name">cs003_olist_raw_category_translation</div></div>
+
+<div class="dt-raw-item"><div class="dt-raw-icon">📄</div><div class="dt-raw-name">cs003_olist_raw_customers</div></div>
+
+<div class="dt-raw-item"><div class="dt-raw-icon">📄</div><div class="dt-raw-name">cs003_olist_raw_geolocation</div></div>
+
+<div class="dt-raw-item"><div class="dt-raw-icon">📄</div><div class="dt-raw-name">cs003_olist_raw_order_items</div></div>
+
+<div class="dt-raw-item"><div class="dt-raw-icon">📄</div><div class="dt-raw-name">cs003_olist_raw_orders</div></div>
+
+<div class="dt-raw-item"><div class="dt-raw-icon">📄</div><div class="dt-raw-name">cs003_olist_raw_payments</div></div>
+
+<div class="dt-raw-item"><div class="dt-raw-icon">📄</div><div class="dt-raw-name">cs003_olist_raw_products</div></div>
+
+<div class="dt-raw-item"><div class="dt-raw-icon">📄</div><div class="dt-raw-name">cs003_olist_raw_reviews</div></div>
+
+<div class="dt-raw-item"><div class="dt-raw-icon">📄</div><div class="dt-raw-name">cs003_olist_raw_sellers</div></div>
+
+</div>
+
+<div class="dt-phase3-note">
+
+Keeping an untouched copy of the imported data provides traceability, simplifies debugging, and supports future transformation requirements.
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+   
 
    
    
