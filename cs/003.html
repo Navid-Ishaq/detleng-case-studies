@@ -4571,7 +4571,311 @@ The Analytics Layer contains validated business models instead of raw operationa
 
 
 
-   
+<style>
+
+.dt-dimension{
+
+max-width:1200px;
+margin:40px auto;
+background:#ffffff;
+border-radius:24px;
+overflow:hidden;
+border:1px solid #e5e7ff;
+box-shadow:0 18px 45px rgba(103,58,183,.12);
+
+}
+
+/* Header */
+
+.dt-dim-header{
+
+padding:28px 45px;
+background:linear-gradient(90deg,#5e35b1,#7e57c2,#9575cd);
+
+}
+
+.dt-dim-badge{
+
+display:inline-block;
+padding:8px 18px;
+background:#ffffff;
+color:#5e35b1;
+font-size:15px;
+font-weight:700;
+border-radius:40px;
+margin-bottom:16px;
+
+}
+
+.dt-dim-header h2{
+
+margin:0;
+font-size:40px;
+font-weight:800;
+color:white;
+
+}
+
+/* Body */
+
+.dt-dim-body{
+
+padding:45px;
+
+}
+
+.dt-dim-text{
+
+font-size:21px;
+line-height:2;
+text-align:justify;
+color:#37495d;
+margin-bottom:35px;
+
+}
+
+/* Grid */
+
+.dt-dim-grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:20px;
+
+}
+
+.dt-dim-card{
+
+background:#fcfbff;
+border:2px solid #ece6ff;
+border-radius:18px;
+padding:22px;
+transition:.30s;
+
+}
+
+.dt-dim-card:hover{
+
+transform:translateY(-4px);
+box-shadow:0 12px 24px rgba(94,53,177,.12);
+
+}
+
+.dt-dim-icon{
+
+font-size:34px;
+margin-bottom:12px;
+
+}
+
+.dt-dim-name{
+
+font-size:20px;
+font-weight:700;
+color:#512da8;
+margin-bottom:10px;
+
+}
+
+.dt-dim-desc{
+
+font-size:16px;
+line-height:1.8;
+color:#4d5d6d;
+
+}
+
+/* Bottom */
+
+.dt-dim-footer{
+
+margin-top:35px;
+
+padding:28px;
+
+background:linear-gradient(90deg,#faf7ff,#ffffff);
+
+border-left:8px solid #673ab7;
+
+border-radius:18px;
+
+font-size:21px;
+line-height:1.9;
+font-weight:600;
+color:#32475c;
+
+}
+
+.dt-dim-footer strong{
+
+color:#512da8;
+
+}
+
+@media(max-width:768px){
+
+.dt-dim-header{
+
+padding:22px;
+
+}
+
+.dt-dim-header h2{
+
+font-size:30px;
+
+}
+
+.dt-dim-body{
+
+padding:25px;
+
+}
+
+.dt-dim-text{
+
+font-size:18px;
+line-height:1.8;
+
+}
+
+.dt-dim-footer{
+
+font-size:18px;
+
+}
+
+}
+
+</style>
+
+
+
+<div class="dt-dimension">
+
+<div class="dt-dim-header">
+
+<div class="dt-dim-badge">
+
+Implementation Phase 05 • Part 02
+
+</div>
+
+<h2 style="color:white;">Dimension Tables</h2>
+
+</div>
+
+
+
+<div class="dt-dim-body">
+
+<div class="dt-dim-text">
+
+Dimension tables provide the business context required for reporting and analytics. They describe <strong>who</strong>, <strong>what</strong>, <strong>where</strong>, and <strong>when</strong>, allowing fact tables to be analyzed from multiple business perspectives. These reusable dimensions create a consistent and governed analytical model across the entire Business Intelligence platform.
+
+</div>
+
+
+
+<div class="dt-dim-grid">
+
+<div class="dt-dim-card">
+
+<div class="dt-dim-icon">👤</div>
+
+<div class="dt-dim-name">dim_customers</div>
+
+<div class="dt-dim-desc">
+
+Customer master information used for customer-based analytics and segmentation.
+
+</div>
+
+</div>
+
+
+
+<div class="dt-dim-card">
+
+<div class="dt-dim-icon">📅</div>
+
+<div class="dt-dim-name">dim_dates</div>
+
+<div class="dt-dim-desc">
+
+Calendar dimension supporting daily, monthly, quarterly, and yearly reporting.
+
+</div>
+
+</div>
+
+
+
+<div class="dt-dim-card">
+
+<div class="dt-dim-icon">🌍</div>
+
+<div class="dt-dim-name">dim_geography</div>
+
+<div class="dt-dim-desc">
+
+Location hierarchy used for regional, city, and state level analysis.
+
+</div>
+
+</div>
+
+
+
+<div class="dt-dim-card">
+
+<div class="dt-dim-icon">📦</div>
+
+<div class="dt-dim-name">dim_products</div>
+
+<div class="dt-dim-desc">
+
+Product information supporting product categories and sales performance analysis.
+
+</div>
+
+</div>
+
+
+
+<div class="dt-dim-card">
+
+<div class="dt-dim-icon">🏪</div>
+
+<div class="dt-dim-name">dim_sellers</div>
+
+<div class="dt-dim-desc">
+
+Seller master information used for supplier and seller performance reporting.
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="dt-dim-footer">
+
+<strong>Dimension Tables answer the business questions:</strong><br><br>
+
+👤 <strong>Who?</strong> → Customers<br>
+📦 <strong>What?</strong> → Products<br>
+🌍 <strong>Where?</strong> → Geography<br>
+📅 <strong>When?</strong> → Dates<br>
+🏪 <strong>Which Seller?</strong> → Sellers
+
+</div>
+
+</div>
+
+</div>   
    
    
 
