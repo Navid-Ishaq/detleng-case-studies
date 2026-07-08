@@ -3857,7 +3857,445 @@ The Staging Layer was developed to clean, standardize, and prepare the raw datas
 
 
 
+<style>
 
+.dt-stg-work{
+
+max-width:1200px;
+margin:40px auto;
+background:#ffffff;
+border-radius:24px;
+border:1px solid #dfe9f5;
+box-shadow:0 18px 45px rgba(52,152,219,.12);
+overflow:hidden;
+
+}
+
+.dt-stg-head{
+
+padding:28px 40px;
+background:linear-gradient(90deg,#00bcd4,#2196f3,#3f51b5);
+
+}
+
+.dt-stg-head h2{
+
+margin:0;
+font-size:38px;
+font-weight:800;
+color:#fff;
+
+}
+
+.dt-stg-body{
+
+padding:40px;
+
+}
+
+.dt-stg-intro{
+
+display:flex;
+justify-content:space-between;
+gap:20px;
+flex-wrap:wrap;
+margin-bottom:35px;
+
+}
+
+.dt-intro-box{
+
+flex:1;
+min-width:280px;
+
+padding:22px;
+
+background:#f7fcff;
+
+border-left:6px solid #00bcd4;
+
+border-radius:15px;
+
+}
+
+.dt-intro-box h3{
+
+margin:0 0 12px;
+
+font-size:20px;
+
+color:#1565c0;
+
+}
+
+.dt-intro-box p{
+
+margin:0;
+
+font-size:18px;
+
+line-height:1.8;
+
+color:#425466;
+
+}
+
+.dt-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
+gap:22px;
+
+}
+
+.dt-card{
+
+background:#ffffff;
+
+border:2px solid #e5eef8;
+
+border-radius:18px;
+
+padding:22px;
+
+transition:.30s;
+
+}
+
+.dt-card:hover{
+
+transform:translateY(-4px);
+
+box-shadow:0 10px 22px rgba(0,120,255,.12);
+
+}
+
+.dt-card h3{
+
+margin:0 0 18px;
+
+font-size:21px;
+
+color:#0d63c7;
+
+}
+
+.dt-label{
+
+font-size:15px;
+
+font-weight:700;
+
+color:#00a884;
+
+text-transform:uppercase;
+
+margin-bottom:8px;
+
+letter-spacing:.5px;
+
+}
+
+.dt-text{
+
+font-size:17px;
+
+line-height:1.8;
+
+color:#425466;
+
+margin-bottom:16px;
+
+}
+
+.dt-card ul{
+
+margin:0;
+padding-left:20px;
+
+}
+
+.dt-card li{
+
+font-size:16px;
+
+line-height:1.8;
+
+color:#4d5d6d;
+
+margin-bottom:6px;
+
+}
+
+@media(max-width:768px){
+
+.dt-stg-head{
+
+padding:22px;
+
+}
+
+.dt-stg-head h2{
+
+font-size:30px;
+
+}
+
+.dt-stg-body{
+
+padding:22px;
+
+}
+
+}
+
+</style>
+
+
+
+<div class="dt-stg-work">
+
+<div class="dt-stg-head">
+
+<h2 style="color:white;">Raw ➜ Staging Engineering Work</h2>
+
+</div>
+
+<div class="dt-stg-body">
+
+<div class="dt-stg-intro">
+
+<div class="dt-intro-box">
+
+<h3>📂 Raw Layer</h3>
+
+<p>
+
+Raw Layer was <strong>never modified</strong>. It preserves the original imported datasets exactly as received.
+
+</p>
+
+</div>
+
+<div class="dt-intro-box">
+
+<h3>⚙️ Staging Layer</h3>
+
+<p>
+
+Every transformation, validation, cleaning, and standardization was performed inside the Staging Layer before analytical modelling.
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<div class="dt-grid">
+
+<div class="dt-card">
+
+<h3>📄 stg_category_translation</h3>
+
+<div class="dt-label">Purpose</div>
+
+<div class="dt-text">Map Portuguese product categories into readable English categories.</div>
+
+<div class="dt-label">Engineering Work</div>
+
+<ul>
+<li>Prepared category translation lookup</li>
+<li>Identified missing mappings</li>
+<li>Maintained standard category naming</li>
+</ul>
+
+</div>
+
+
+
+<div class="dt-card">
+
+<h3>👤 stg_customers</h3>
+
+<div class="dt-label">Purpose</div>
+
+<div class="dt-text">Standardize customer master data.</div>
+
+<div class="dt-label">Engineering Work</div>
+
+<ul>
+<li>Corrected data types</li>
+<li>Validated null values</li>
+<li>Reviewed duplicate records</li>
+<li>Applied standard column naming</li>
+<li>Cleaned customer location fields</li>
+</ul>
+
+</div>
+
+
+
+<div class="dt-card">
+
+<h3>🌍 stg_geolocation</h3>
+
+<div class="dt-label">Purpose</div>
+
+<div class="dt-text">Prepare geographical data for analytical processing.</div>
+
+<div class="dt-label">Engineering Work</div>
+
+<ul>
+<li>Validated latitude and longitude</li>
+<li>Reviewed duplicate ZIP coordinates</li>
+<li>Standardized state and city names</li>
+<li>Improved geographic consistency</li>
+</ul>
+
+</div>
+
+
+
+<div class="dt-card">
+
+<h3>📦 stg_order_items</h3>
+
+<div class="dt-label">Purpose</div>
+
+<div class="dt-text">Prepare order line items for analytics.</div>
+
+<div class="dt-label">Engineering Work</div>
+
+<ul>
+<li>Converted numeric fields</li>
+<li>Validated prices</li>
+<li>Standardized freight values</li>
+<li>Verified foreign keys</li>
+</ul>
+
+</div>
+
+
+
+<div class="dt-card">
+
+<h3>🛒 stg_orders</h3>
+
+<div class="dt-label">Purpose</div>
+
+<div class="dt-text">Prepare business-ready orders.</div>
+
+<div class="dt-label">Engineering Work</div>
+
+<ul>
+<li>Converted date columns</li>
+<li>Validated timestamps</li>
+<li>Standardized order status</li>
+<li>Validated delivery dates</li>
+</ul>
+
+</div>
+
+
+
+<div class="dt-card">
+
+<h3>💳 stg_payments</h3>
+
+<div class="dt-label">Purpose</div>
+
+<div class="dt-text">Prepare payment transactions.</div>
+
+<div class="dt-label">Engineering Work</div>
+
+<ul>
+<li>Standardized payment types</li>
+<li>Validated currency values</li>
+<li>Maintained numeric precision</li>
+<li>Reviewed installment values</li>
+</ul>
+
+</div>
+
+
+
+<div class="dt-card">
+
+<h3>📦 stg_products</h3>
+
+<div class="dt-label">Purpose</div>
+
+<div class="dt-text">Clean and prepare product information.</div>
+
+<div class="dt-label">Engineering Work</div>
+
+<ul>
+<li>Validated product dimensions</li>
+<li>Standardized weight fields</li>
+<li>Prepared category mapping</li>
+<li>Reviewed missing values</li>
+</ul>
+
+</div>
+
+
+
+<div class="dt-card">
+
+<h3>⭐ stg_reviews</h3>
+
+<div class="dt-label">Purpose</div>
+
+<div class="dt-text">Prepare customer review data.</div>
+
+<div class="dt-label">Engineering Work</div>
+
+<ul>
+<li>Validated review dates</li>
+<li>Checked rating consistency</li>
+<li>Reviewed duplicate reviews</li>
+<li>Validated review text quality</li>
+</ul>
+
+</div>
+
+
+
+<div class="dt-card">
+
+<h3>🏪 stg_sellers</h3>
+
+<div class="dt-label">Purpose</div>
+
+<div class="dt-text">Prepare seller master data.</div>
+
+<div class="dt-label">Engineering Work</div>
+
+<ul>
+<li>Cleaned seller location</li>
+<li>Reviewed duplicate records</li>
+<li>Normalized state values</li>
+<li>Applied standard naming</li>
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+   
    
 
    
