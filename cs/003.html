@@ -1287,6 +1287,284 @@ This project reflects DeTLeng's engineering philosophy:
 
 
 
+  <style>
+
+.dt-project-overview{
+
+max-width:1200px;
+margin:40px auto;
+background:#ffffff;
+border-radius:22px;
+overflow:hidden;
+box-shadow:0 18px 45px rgba(0,120,180,.12);
+border:1px solid #d9eef8;
+
+}
+
+.dt-po-header{
+
+padding:28px 45px;
+
+background:linear-gradient(90deg,#00b8d9,#1b8cff,#6457ff);
+
+color:#fff;
+
+}
+
+.dt-po-header h2{
+
+margin:0;
+font-size:42px;
+font-weight:800;
+
+}
+
+.dt-po-body{
+
+padding:45px;
+
+}
+
+/* Dataset Card */
+
+.dt-dataset{
+
+display:flex;
+flex-wrap:wrap;
+gap:30px;
+
+background:#f7fcff;
+
+border:2px solid #d9effa;
+
+border-left:8px solid #00b8d9;
+
+border-radius:18px;
+
+padding:28px;
+
+margin-bottom:40px;
+
+}
+
+.dt-data-block{
+
+flex:1;
+min-width:280px;
+
+}
+
+.dt-label{
+
+font-size:14px;
+font-weight:700;
+letter-spacing:1px;
+text-transform:uppercase;
+color:#00a0c6;
+
+margin-bottom:10px;
+
+}
+
+.dt-value{
+
+font-size:22px;
+font-weight:700;
+color:#23415d;
+line-height:1.6;
+
+}
+
+.dt-value a{
+
+color:#1565c0;
+font-weight:700;
+text-decoration:none;
+word-break:break-word;
+
+}
+
+.dt-value a:hover{
+
+text-decoration:underline;
+
+}
+
+/* Content */
+
+.dt-po-text{
+
+font-size:21px;
+
+line-height:2;
+
+color:#374b61;
+
+text-align:justify;
+
+}
+
+.dt-po-text p{
+
+margin-bottom:28px;
+
+}
+
+/* Closing Box */
+
+.dt-po-final{
+
+margin-top:20px;
+
+padding:25px;
+
+border-radius:16px;
+
+background:linear-gradient(90deg,#eefcff,#f7fbff);
+
+border-left:8px solid #4caf50;
+
+font-size:22px;
+
+line-height:1.8;
+
+font-weight:600;
+
+color:#24415b;
+
+}
+
+@media(max-width:768px){
+
+.dt-po-header{
+
+padding:22px;
+
+}
+
+.dt-po-header h2{
+
+font-size:32px;
+
+}
+
+.dt-po-body{
+
+padding:25px;
+
+}
+
+.dt-po-text{
+
+font-size:18px;
+
+line-height:1.8;
+
+}
+
+.dt-po-final{
+
+font-size:18px;
+
+}
+
+}
+
+</style>
+
+
+
+<div class="dt-project-overview">
+
+<div class="dt-po-header">
+
+<h2>Project Overview</h2>
+
+</div>
+
+<div class="dt-po-body">
+
+<div class="dt-dataset">
+
+<div class="dt-data-block">
+
+<div class="dt-label">
+
+Dataset Name
+
+</div>
+
+<div class="dt-value">
+
+Brazilian E-Commerce Public Dataset by Olist
+
+</div>
+
+</div>
+
+
+
+<div class="dt-data-block">
+
+<div class="dt-label">
+
+Source URL
+
+</div>
+
+<div class="dt-value">
+
+<a href="https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce"
+target="_blank"
+rel="noopener noreferrer">
+
+https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="dt-po-text">
+
+<p>
+
+The project began with the publicly available Brazilian Olist E-Commerce Dataset, which contains nine CSV files representing customers, orders, products, payments, sellers, reviews, and geographical information. Instead of using the dataset directly for reporting, the complete Data Engineering lifecycle was implemented.
+
+</p>
+
+<p>
+
+The CSV files were imported into Google BigQuery, organized into Raw, Staging, and Analytics layers, and transformed into reusable business models using SQL. Once the Analytics Layer was complete, a custom DeTLeng MCP Server was developed to expose approved Business Intelligence tools. A FastAPI backend and OpenAI integration were then added, allowing users to interact with the analytics layer through a conversational AI chatbot.
+
+</p>
+
+</div>
+
+<div class="dt-po-final">
+
+The final solution demonstrates how enterprise data can be transformed into an Intelligent Business System that combines trusted analytics with natural language interaction.
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
    
 
 
