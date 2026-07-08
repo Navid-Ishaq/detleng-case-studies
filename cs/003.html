@@ -876,260 +876,268 @@ article,
 <hr>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>AI Analytics Platform - Introduction</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+   <style>
 
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+.ai-banner-01{
+max-width:1200px;
+margin:40px auto;
+padding:45px;
+background:#ffffff;
+border-radius:22px;
+border:4px solid #dff5ff;
+box-shadow:0 10px 35px rgba(0,140,255,.18);
+position:relative;
+overflow:hidden;
+font-family:'Segoe UI',sans-serif;
 }
 
-body{
-    background:#eefcff;
-    font-family:'Poppins',sans-serif;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
-    padding:40px;
-}
-
-.banner{
-
-    width:1300px;
-    border-radius:35px;
-
-    background:
-    linear-gradient(135deg,#ffffff 0%,#e8fbff 20%,#eef4ff 40%,#fff2fd 70%,#fff8ec 100%);
-
-    border:6px solid white;
-
-    box-shadow:
-    0 0 20px #7de8ff,
-    0 0 45px #8f9cff,
-    0 0 70px rgba(255,120,200,.35);
-
-    padding:60px;
-
-    position:relative;
-    overflow:hidden;
-}
-
-/* Decorative Glow */
-
-.banner:before{
-
+.ai-banner-01:before{
 content:"";
-
 position:absolute;
+top:-120px;
+right:-120px;
+width:320px;
+height:320px;
+background:radial-gradient(circle,#8be8ff,#ffffff00 70%);
+}
 
-width:450px;
-height:450px;
-
-background:radial-gradient(circle,#5be7ff,transparent 70%);
-
-top:-180px;
+.ai-banner-01:after{
+content:"";
+position:absolute;
+bottom:-140px;
 left:-120px;
-
-opacity:.35;
-
+width:320px;
+height:320px;
+background:radial-gradient(circle,#ffd86b,#ffffff00 70%);
 }
 
-.banner:after{
-
-content:"";
-
-position:absolute;
-
-width:500px;
-height:500px;
-
-background:radial-gradient(circle,#ff77c9,transparent 70%);
-
-bottom:-220px;
-right:-150px;
-
-opacity:.30;
-
-}
-
-.tag{
+.ai-series{
 
 display:inline-block;
 
-background:linear-gradient(90deg,#ff8a00,#ff4dc4);
+background:linear-gradient(90deg,#ff9800,#ff5aa5);
 
-color:white;
+color:#fff;
 
-padding:10px 28px;
+padding:8px 20px;
 
-border-radius:50px;
+border-radius:40px;
 
-font-size:16px;
+font-size:14px;
 
 font-weight:700;
 
 letter-spacing:1px;
 
-box-shadow:0 0 18px rgba(255,80,180,.45);
+margin-bottom:22px;
 
-margin-bottom:28px;
+position:relative;
 
-}
-
-.title{
-
-font-size:54px;
-
-font-weight:900;
-
-line-height:1.18;
-
-background:linear-gradient(90deg,#0066ff,#00bfff,#6f00ff,#ff0077);
-
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-
-margin-bottom:25px;
+z-index:2;
 
 }
 
-.subtitle{
+.ai-title{
 
-font-size:24px;
+font-size:48px;
 
-font-weight:600;
+font-weight:800;
 
-line-height:1.8;
+line-height:1.2;
 
-color:#1c2d5b;
+color:#1557d6;
 
-margin-bottom:35px;
+margin-bottom:22px;
+
+position:relative;
+
+z-index:2;
 
 }
 
-.tech{
+.ai-title span{
+
+color:#7a2cff;
+
+}
+
+.ai-subtitle{
+
+font-size:22px;
+
+line-height:1.7;
+
+font-weight:500;
+
+color:#2c3e50;
+
+margin-bottom:30px;
+
+position:relative;
+
+z-index:2;
+
+}
+
+.ai-tech{
 
 display:flex;
 
 flex-wrap:wrap;
 
-gap:15px;
+gap:14px;
 
-margin-bottom:40px;
+margin-bottom:35px;
+
+position:relative;
+
+z-index:2;
 
 }
 
-.tech span{
+.ai-tech span{
 
-background:white;
+background:#f4fbff;
 
-padding:14px 22px;
+border:2px solid #d8efff;
+
+padding:12px 18px;
 
 border-radius:40px;
 
 font-weight:700;
 
-color:#004aad;
+color:#1565c0;
 
-box-shadow:
-0 8px 18px rgba(0,130,255,.18);
+font-size:15px;
 
 }
 
-.footer{
+.ai-footer{
 
-background:linear-gradient(90deg,#00c9ff,#4f7cff,#8d5bff,#ff5bbd);
+background:linear-gradient(90deg,#16b8ff,#4c79ff,#8b4dff,#ff53ae);
 
 padding:22px 28px;
 
-border-radius:18px;
+border-radius:16px;
 
-color:white;
+color:#fff;
 
-font-size:21px;
+position:relative;
 
-font-weight:700;
-
-line-height:1.7;
-
-box-shadow:
-0 12px 25px rgba(0,90,255,.30);
+z-index:2;
 
 }
 
-.highlight{
+.ai-footer h3{
 
-color:#ffe86b;
+margin:0;
 
-font-weight:900;
+font-size:24px;
+
+font-weight:800;
+
+margin-bottom:8px;
+
+}
+
+.ai-footer p{
+
+margin:0;
+
+font-size:18px;
+
+line-height:1.7;
+
+font-weight:500;
+
+}
+
+@media(max-width:768px){
+
+.ai-banner-01{
+
+padding:28px;
+
+}
+
+.ai-title{
+
+font-size:34px;
+
+}
+
+.ai-subtitle{
+
+font-size:18px;
+
+}
+
+.ai-footer h3{
+
+font-size:20px;
+
+}
+
+.ai-footer p{
+
+font-size:16px;
+
+}
 
 }
 
 </style>
 
-</head>
 
-<body>
 
-<div class="banner">
+<div class="ai-banner-01">
 
-<div class="tag">
+<div class="ai-series">
 🚀 AI Analytics Master Series • Part 01
 </div>
 
-<div class="title">
-From Raw Data to Conversational Business Intelligence
-</div>
+<div class="ai-title">
 
-<div class="subtitle">
-
-Building an <b>AI-Powered Analytics Platform</b> using modern Data Engineering,
-Business Intelligence and Artificial Intelligence technologies that transform
-raw business data into intelligent, conversational insights.
+From Raw Data to <span>Conversational Business Intelligence</span>
 
 </div>
 
-<div class="tech">
+<div class="ai-subtitle">
+
+Building an <strong>AI-Powered Analytics Platform</strong> using modern cloud technologies to transform business data into intelligent, trusted, and conversational insights.
+
+</div>
+
+<div class="ai-tech">
 
 <span>📊 Google BigQuery</span>
 
-<span>⚡ DeTLeng MCP Server</span>
+<span>⚙️ DeTLeng MCP Server</span>
 
 <span>🚀 FastAPI</span>
 
 <span>🤖 OpenAI</span>
 
-<span>📈 Business Intelligence</span>
+</div>
 
-<span>🧠 AI Analytics</span>
+<div class="ai-footer">
+
+<h3>Developed by DeTLeng</h3>
+
+<p>
+
+Engineering Intelligent Business Systems through
+<strong>Data Engineering</strong>,
+<strong>Business Intelligence</strong> &
+<strong>Artificial Intelligence</strong>.
+
+</p>
 
 </div>
 
-<div class="footer">
-
-Developed by <span class="highlight">DeTLeng Engineering</span><br>
-
-Intelligent Business Systems through
-<span class="highlight">
-Data Engineering • Business Intelligence • Artificial Intelligence
-</span>
-
 </div>
-
-</div>
-
-</body>
-</html>  
-
 
 
 
