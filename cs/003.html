@@ -3032,7 +3032,248 @@ Before importing any data, each dataset was studied to understand its business p
 
 
    
+<style>
 
+.dt-phase2{
+
+max-width:1200px;
+margin:40px auto;
+background:#ffffff;
+border-radius:24px;
+overflow:hidden;
+border:1px solid #d8e8ff;
+box-shadow:0 18px 45px rgba(33,150,243,.12);
+
+}
+
+.dt-phase2-header{
+
+padding:28px 45px;
+
+background:linear-gradient(90deg,#1565c0,#1e88e5,#42a5f5);
+
+}
+
+.dt-phase2-badge{
+
+display:inline-block;
+
+padding:8px 18px;
+
+background:#ffffff;
+
+color:#1565c0;
+
+border-radius:40px;
+
+font-size:15px;
+
+font-weight:700;
+
+margin-bottom:16px;
+
+}
+
+.dt-phase2-header h2{
+
+margin:0;
+
+font-size:40px;
+
+font-weight:800;
+
+color:white;
+
+}
+
+.dt-phase2-body{
+
+padding:45px;
+
+}
+
+.dt-phase2-text{
+
+font-size:21px;
+
+line-height:2;
+
+color:#37495c;
+
+text-align:justify;
+
+margin-bottom:35px;
+
+}
+
+.dt-phase2-note{
+
+display:flex;
+
+gap:18px;
+
+background:#f5fbff;
+
+border-left:8px solid #2196f3;
+
+padding:26px;
+
+border-radius:18px;
+
+box-shadow:0 8px 18px rgba(33,150,243,.08);
+
+}
+
+.dt-phase2-note span{
+
+font-size:40px;
+
+}
+
+.dt-phase2-note p{
+
+margin:0;
+
+font-size:20px;
+
+line-height:1.8;
+
+font-weight:600;
+
+color:#31475a;
+
+}
+
+@media(max-width:768px){
+
+.dt-phase2-header{
+
+padding:22px;
+
+}
+
+.dt-phase2-header h2{
+
+font-size:30px;
+
+}
+
+.dt-phase2-body{
+
+padding:25px;
+
+}
+
+.dt-phase2-text{
+
+font-size:18px;
+
+line-height:1.8;
+
+}
+
+.dt-phase2-note{
+
+display:block;
+
+}
+
+.dt-phase2-note span{
+
+display:block;
+
+margin-bottom:15px;
+
+}
+
+.dt-phase2-note p{
+
+font-size:18px;
+
+}
+
+}
+
+</style>
+
+<div class="dt-phase2">
+
+<div class="dt-phase2-header">
+
+<div class="dt-phase2-badge">
+
+Implementation Phase 02
+
+</div>
+
+<h2 style="color:white;">Google Cloud &amp; BigQuery Setup</h2>
+
+</div>
+
+<div class="dt-phase2-body">
+
+<div class="dt-phase2-text">
+
+The implementation started by creating a dedicated Google Cloud project, followed by configuring Google BigQuery as the central cloud data warehouse. Separate datasets were designed to support the Raw, Staging, and Analytics layers.
+
+</div>
+
+<div class="dt-phase2-note">
+
+<span>☁️</span>
+
+<p>
+
+IAM permissions, authentication, and service accounts were configured to enable secure access for backend services while maintaining proper governance throughout the implementation.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div style="max-width:1200px;margin:35px auto;text-align:center;">
+
+<img
+src="https://github.com/user-attachments/assets/f13e3d4e-625b-4bbd-9367-22049ab92dd3"
+alt="Google Cloud BigQuery Project Setup"
+style="
+width:100%;
+border-radius:18px;
+border:2px solid #d8e9ff;
+box-shadow:0 15px 35px rgba(0,120,255,.15);
+">
+
+<div style="
+margin-top:18px;
+padding:16px 22px;
+background:#f7fbff;
+border-left:6px solid #2196f3;
+border-radius:12px;
+font-size:18px;
+line-height:1.8;
+color:#455a64;
+text-align:left;
+">
+
+<strong>Figure 1.</strong>
+Google Cloud Console showing the dedicated project with separate
+<strong>Raw</strong>,
+<strong>Staging</strong>, and
+<strong>Analytics</strong> datasets configured inside
+<strong>Google BigQuery</strong>.
+This environment serves as the foundation for the complete Data Engineering and Conversational Business Intelligence implementation.
+
+</div>
+
+</div>
+
+
+
+   
 
 
    
