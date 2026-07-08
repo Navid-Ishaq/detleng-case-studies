@@ -4294,7 +4294,284 @@ Every transformation, validation, cleaning, and standardization was performed in
 
 
 
+<style>
 
+.dt-phase5{
+
+max-width:1200px;
+margin:40px auto;
+background:#ffffff;
+border-radius:24px;
+overflow:hidden;
+border:1px solid #dbe8ff;
+box-shadow:0 18px 45px rgba(63,81,181,.12);
+
+}
+
+/* Header */
+
+.dt-phase5-header{
+
+padding:28px 45px;
+background:linear-gradient(90deg,#3949ab,#5c6bc0,#42a5f5);
+
+}
+
+.dt-phase5-badge{
+
+display:inline-block;
+padding:8px 18px;
+background:#ffffff;
+color:#3949ab;
+font-size:15px;
+font-weight:700;
+border-radius:40px;
+margin-bottom:16px;
+
+}
+
+.dt-phase5-header h2{
+
+margin:0;
+font-size:40px;
+font-weight:800;
+color:white;
+
+}
+
+/* Body */
+
+.dt-phase5-body{
+
+padding:45px;
+
+}
+
+.dt-phase5-text{
+
+font-size:21px;
+line-height:2;
+text-align:justify;
+color:#37495d;
+margin-bottom:35px;
+
+}
+
+/* Pipeline */
+
+.dt-flow{
+
+display:flex;
+justify-content:center;
+align-items:center;
+flex-wrap:wrap;
+gap:15px;
+margin:35px 0 40px;
+
+}
+
+.dt-step{
+
+min-width:180px;
+padding:20px;
+
+background:#f8fbff;
+
+border:2px solid #dce8ff;
+
+border-radius:16px;
+
+text-align:center;
+
+}
+
+.dt-step-icon{
+
+font-size:34px;
+margin-bottom:10px;
+
+}
+
+.dt-step-title{
+
+font-size:20px;
+font-weight:700;
+color:#1b4fa8;
+
+}
+
+.dt-arrow{
+
+font-size:34px;
+font-weight:bold;
+color:#4a73d8;
+
+}
+
+/* Highlight */
+
+.dt-phase5-highlight{
+
+padding:28px;
+
+background:linear-gradient(90deg,#f5f8ff,#fbfdff);
+
+border-left:8px solid #3949ab;
+
+border-radius:18px;
+
+font-size:21px;
+line-height:1.9;
+font-weight:600;
+color:#32475c;
+
+}
+
+.dt-phase5-highlight strong{
+
+color:#1f3fb6;
+
+}
+
+@media(max-width:768px){
+
+.dt-phase5-header{
+
+padding:22px;
+
+}
+
+.dt-phase5-header h2{
+
+font-size:30px;
+
+}
+
+.dt-phase5-body{
+
+padding:25px;
+
+}
+
+.dt-phase5-text{
+
+font-size:18px;
+line-height:1.8;
+
+}
+
+.dt-flow{
+
+flex-direction:column;
+
+}
+
+.dt-arrow{
+
+transform:rotate(90deg);
+
+}
+
+.dt-phase5-highlight{
+
+font-size:18px;
+
+}
+
+}
+
+</style>
+
+
+
+<div class="dt-phase5">
+
+<div class="dt-phase5-header">
+
+<div class="dt-phase5-badge">
+
+Implementation Phase 05 • Part 01
+
+</div>
+
+<h2 style="color:white;">Building the Analytics Layer</h2>
+
+</div>
+
+
+
+<div class="dt-phase5-body">
+
+<div class="dt-phase5-text">
+
+The Analytics Layer transforms prepared data into business-ready analytical models. Unlike the Raw and Staging layers, this layer is specifically designed to support reporting, KPI calculations, dashboards, and conversational business intelligence. Instead of exposing operational tables, all Business Intelligence tools and AI services interact only with this governed analytical layer, ensuring trusted, secure, and consistent business insights.
+
+</div>
+
+
+
+<div class="dt-flow">
+
+<div class="dt-step">
+
+<div class="dt-step-icon">📂</div>
+
+<div class="dt-step-title">
+
+Raw Layer
+
+</div>
+
+</div>
+
+<div class="dt-arrow">➜</div>
+
+<div class="dt-step">
+
+<div class="dt-step-icon">⚙️</div>
+
+<div class="dt-step-title">
+
+Staging Layer
+
+</div>
+
+</div>
+
+<div class="dt-arrow">➜</div>
+
+<div class="dt-step">
+
+<div class="dt-step-icon">📊</div>
+
+<div class="dt-step-title">
+
+Analytics Layer
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="dt-phase5-highlight">
+
+<strong>Why BI &amp; AI use this layer?</strong><br><br>
+
+The Analytics Layer contains validated business models instead of raw operational data. This enables Business Intelligence dashboards, KPI reporting, and AI-powered conversational analytics to deliver trusted, governed, and business-ready insights without exposing the underlying source tables.
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+   
    
    
 
