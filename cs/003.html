@@ -1557,7 +1557,237 @@ The final solution demonstrates how enterprise data can be transformed into an I
 </div>
 
 
+<style>
 
+.dt-business-challenge{
+
+max-width:1200px;
+margin:40px auto;
+background:#ffffff;
+border-radius:22px;
+overflow:hidden;
+box-shadow:0 18px 45px rgba(220,70,30,.12);
+border:1px solid #ffe2d6;
+
+}
+
+/* Header */
+
+.dt-bc-header{
+
+padding:30px 45px;
+
+background:linear-gradient(90deg,#ff7043,#ff8f00,#ffca28);
+
+color:#ffffff;
+
+}
+
+.dt-bc-header h2{
+
+margin:0;
+font-size:42px;
+font-weight:800;
+
+}
+
+/* Body */
+
+.dt-bc-body{
+
+padding:45px;
+
+}
+
+/* Timeline */
+
+.dt-bc-row{
+
+display:flex;
+align-items:flex-start;
+margin-bottom:35px;
+
+}
+
+.dt-bc-icon{
+
+flex:0 0 70px;
+
+height:70px;
+border-radius:50%;
+
+background:linear-gradient(135deg,#ff7043,#ff9800);
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:30px;
+
+color:#ffffff;
+
+box-shadow:0 8px 20px rgba(255,120,40,.25);
+
+margin-right:25px;
+
+}
+
+.dt-bc-content{
+
+flex:1;
+
+font-size:21px;
+
+line-height:2;
+
+color:#35475b;
+
+text-align:justify;
+
+}
+
+/* Objective Box */
+
+.dt-bc-objective{
+
+margin-top:15px;
+
+padding:28px;
+
+background:#fff8ef;
+
+border-left:8px solid #ff9800;
+
+border-radius:18px;
+
+font-size:22px;
+
+line-height:1.8;
+
+font-weight:600;
+
+color:#2d3f53;
+
+box-shadow:0 8px 18px rgba(255,170,40,.12);
+
+}
+
+.dt-bc-objective strong{
+
+color:#d35400;
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.dt-bc-header{
+
+padding:22px;
+
+}
+
+.dt-bc-header h2{
+
+font-size:32px;
+
+}
+
+.dt-bc-body{
+
+padding:25px;
+
+}
+
+.dt-bc-row{
+
+display:block;
+
+}
+
+.dt-bc-icon{
+
+margin-bottom:20px;
+
+}
+
+.dt-bc-content{
+
+font-size:18px;
+line-height:1.8;
+
+}
+
+.dt-bc-objective{
+
+font-size:18px;
+
+}
+
+}
+
+</style>
+
+
+
+<div class="dt-business-challenge">
+
+<div class="dt-bc-header">
+
+<h2>Business Challenge</h2>
+
+</div>
+
+<div class="dt-bc-body">
+
+<div class="dt-bc-row">
+
+<div class="dt-bc-icon">
+
+📊
+
+</div>
+
+<div class="dt-bc-content">
+
+Most organizations already have dashboards, reports, and large amounts of business data. However, business managers often depend on technical teams to answer even simple analytical questions. Every request requires SQL queries, dashboard modifications, or manual reporting, slowing down decision-making.
+
+</div>
+
+</div>
+
+
+
+<div class="dt-bc-row">
+
+<div class="dt-bc-icon">
+
+🔒
+
+</div>
+
+<div class="dt-bc-content">
+
+The challenge was not to build another reporting system but to remove the dependency between business users and technical teams. At the same time, security, governance, and data quality had to be preserved. Allowing an AI model to access raw operational data directly was never considered a reliable solution.
+
+</div>
+
+</div>
+
+
+
+<div class="dt-bc-objective">
+
+<strong>Objective:</strong>
+
+Build a trusted Data Engineering foundation first, then enable Artificial Intelligence to consume only validated analytical models.
+
+</div>
+
+</div>
+
+</div>
 
 
 
