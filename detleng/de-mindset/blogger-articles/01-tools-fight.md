@@ -8,7 +8,7 @@ Aur Data Engineers to is par aur zyada hasenge.
 
 ---
 
-# **When `tools.py` Says: "Main Akela Kitno Ko Sambhalun?"**
+# **When `tools.py` Says: "I'm Overloaded... Please Split Me Up!"**
 
 ### *The Day 30 Business Intelligence Tools Started Fighting for Their Own Homes*
 Thirty Business Intelligence Tools. One Python File. Total Chaos.
@@ -153,7 +153,7 @@ The meeting starts.
 >
 > I'm just one Python file...
 >
-> **Main akela kitno ko sambhalun?**
+> **I'm Overloaded... Please Split Me Up!**
 
 Silence...
 
