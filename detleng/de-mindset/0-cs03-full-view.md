@@ -1,9 +1,3 @@
-Bilkul. Agar kisi AI engineer, Codex, contractor ya client ko dena hai, to guesswork nahi hona chahiye. Sirf verified information aur clear unknowns hone chahiye.
-
-Main is tarah document dunga.
-
----
-
 # AI Business Assistant (Case Study 003)
 
 ## Project Overview
