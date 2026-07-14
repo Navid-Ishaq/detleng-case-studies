@@ -313,6 +313,9 @@ And if sharing that journey helps even one person build with more confidence, th
 
 ---
 
-"I never measured intelligence by the number of lines of code someone could write. I measured it by the ability to turn an idea into reality. Today, AI helps write the code, but curiosity still starts the journey, reasoning still guides the direction, and responsibility still decides what deserves to be deployed. I don't compete with AI—I collaborate with it. Together, we build what neither of us could create alone."
+> **"I never measured intelligence by the number of lines of code someone could write. I measured it by the ability to turn an idea into reality. Today, AI helps write the code, but curiosity still starts the journey, reasoning still guides the direction, and responsibility still decides what deserves to be deployed. I don't compete with AI—I collaborate with it. Together, we build what neither of us could create alone."**
 
-"Yesterday it was only an idea. Today it is a running system. Not because I knew every command, but because I refused to stop learning until the idea became real. Alhamdulillah."
+---
+
+> **"Yesterday it was only an idea. Today it is a running system. Not because I knew every command, but because I refused to stop learning until the idea became real. Alhamdulillah."**
+
