@@ -1,12 +1,20 @@
-😂 Janab, challenge qabool.
-
-Magar ek condition hai. Main "AI is everything" ya "AI will replace humans" wali cliché post nahi likhunga. Agar world-class likhni hai, to woh aisi honi chahiye jo **10 saal baad bhi relevant lage**.
-
-Main title thoda refine karta hoon.
-
 # **Reasoning: The Last Competitive Advantage in the Age of AI**
 
 ### *Why Data Engineering, Analytics, and Every Knowledge Profession Now Depends More on Thinking Than Knowing*
+
+---
+
+## diagram:
+
+```text
+            Past
+Knowledge ─────► Value
+
+            Today
+Knowledge ─► AI ─► Commodity
+
+Reasoning ─► Judgment ─► Trust ─► Value
+```
 
 ---
 
@@ -300,16 +308,3 @@ It is **thinking better**.
 
 ---
 
-😄 Aur ek blogger wali advice. Is post ko sirf publish mat karna. Ismein ek simple diagram bhi add karna:
-
-```text
-            Past
-Knowledge ─────► Value
-
-            Today
-Knowledge ─► AI ─► Commodity
-
-Reasoning ─► Judgment ─► Trust ─► Value
-```
-
-Mujhe lagta hai ye diagram post ko aur yaadgar bana dega. Jab readers article band karenge, unke zehan mein ye flow reh jayega—aur aksar wahi cheez ek achhi post ko yaad rehne layak banati hai.
