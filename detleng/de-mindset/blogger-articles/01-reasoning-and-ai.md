@@ -238,11 +238,7 @@ At **DeTLeng**, we engineer trusted analytical foundations so businesses can con
 
 ---
 
-# The Most Dangerous Person in the AI Era
-
-Is not someone who cannot code.
-
-It is someone who accepts AI output without thinking.
+# Reasoning Is the Last Line of Quality Control
 
 AI can hallucinate.
 
@@ -252,7 +248,17 @@ Metrics can mislead.
 
 Models can drift.
 
+Accepting AI output without questioning it is one of the fastest ways to make poor decisions.
+
+Technology can generate answers.
+
+Only human reasoning can validate whether those answers deserve to be trusted.
+
 Reasoning is quality control for intelligence.
+
+Without reasoning, AI becomes automation without accountability.
+
+Reasoning is what transforms AI output into trusted business decisions.
 
 ---
 
