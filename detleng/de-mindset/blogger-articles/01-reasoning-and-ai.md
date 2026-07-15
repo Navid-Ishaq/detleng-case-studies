@@ -54,6 +54,8 @@ The real question is:
 
 > **"Can you reason?"**
 
+At **DeTLeng**, we believe that modern Data Engineering is no longer measured by how much code you can write—it is measured by how well you transform trusted data into business decisions.
+
 ---
 
 # AI Changed the Cost of Knowledge
@@ -78,6 +80,8 @@ But something became more expensive.
 
 **Good judgment.**
 
+This is why organizations investing in Artificial Intelligence increasingly need trusted Data Engineering and Analytics foundations before AI can deliver real business value.
+
 ---
 
 # Information Is No Longer the Bottleneck
@@ -96,6 +100,8 @@ Now AI can write most SQL functions.
 
 Understanding the business problem cannot be outsourced that easily.
 
+Business understanding remains the foundation of every successful analytics solution.
+
 ---
 
 # Data Does Not Create Decisions
@@ -113,6 +119,12 @@ People do.
 Data only reduces uncertainty.
 
 Reasoning converts uncertainty into action.
+
+This philosophy is at the heart of **DeTLeng**:
+
+> **Trusted Data → Business Intelligence → Artificial Intelligence → Business Decisions**
+
+AI should explain trusted analytics—not replace it.
 
 ---
 
@@ -134,6 +146,8 @@ The hardest questions are:
 * Who is responsible for incorrect data?
 
 These questions have no autocomplete.
+
+This is where experienced Data Engineering becomes business engineering.
 
 ---
 
@@ -198,6 +212,8 @@ AI can list possibilities.
 
 Reasoning identifies the most probable explanation.
 
+Context is where business value is created.
+
 ---
 
 # Data Engineering Is Quiet Reasoning
@@ -217,6 +233,8 @@ Every schema represents assumptions about reality.
 Data pipelines are not technical assets.
 
 They are organizational memory.
+
+At **DeTLeng**, we engineer trusted analytical foundations so businesses can confidently build Business Intelligence, AI Assistants, and Intelligent Business Platforms on top of reliable data.
 
 ---
 
@@ -278,6 +296,8 @@ Today, reasoning is becoming scarce.
 
 And scarcity creates value.
 
+Organizations that combine trusted analytics with human reasoning will consistently outperform those that rely on AI alone.
+
 ---
 
 # Final Thought
@@ -296,6 +316,18 @@ AI can summarize documents.
 
 But only reasoning can decide **what should be built, why it matters, and whether the answer deserves to be trusted.**
 
+That is why the future belongs to organizations that invest in trusted Data Engineering, Analytics Engineering, Business Intelligence, and AI working together—not in isolation.
+
+At **DeTLeng**, this is more than a philosophy.
+
+It is the engineering approach behind every solution we build:
+
+**Transform Data into Decisions.**
+
+**Transform Knowledge into Business Value.**
+
+**Build Intelligent Business Systems That Businesses Trust.**
+
 In the age of artificial intelligence, the greatest competitive advantage is no longer knowing more.
 
 It is **thinking better**.
@@ -306,5 +338,4 @@ It is **thinking better**.
 
 > **"AI democratizes knowledge. Reasoning differentiates people."**
 
----
-
+**— DeTLeng Insights**
