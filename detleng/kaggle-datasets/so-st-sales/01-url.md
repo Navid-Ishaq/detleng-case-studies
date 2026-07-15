@@ -4,7 +4,7 @@
 
 GitHub Repository:
 
-https://github.com/Navid-Ishaq/detleng-case-studies/tree/main/detleng/kaggle-datasets
+[https://github.com/Navid-Ishaq/detleng-case-studies/tree/main/detleng/kaggle-datasets](https://www.kaggle.com/datasets/rohitsahoo/sales-forecasting?resource=download)
 
 ---
 
