@@ -4,10 +4,6 @@
 
 GitHub Repository:
 
-<img width="1054" height="1492" alt="ChatGPT Image Jul 17, 2026, 09_16_22 PM" src="https://github.com/user-attachments/assets/485bf6d7-e07c-4d23-b03b-4d7c538b58fc" />
-
-
-
 [https://github.com/Navid-Ishaq/detleng-case-studies/tree/main/detleng/kaggle-datasets](https://www.kaggle.com/datasets/rohitsahoo/sales-forecasting?resource=download)
 
 ---
