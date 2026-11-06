@@ -126,7 +126,7 @@
       const evidence = data.verification;
       if (evidence && evidence.tool && evidence.metrics && (!tool || evidence.tool === tool)) {
         const supported = ["total_revenue","total_orders","total_products","product_count","average_order_value","delivery_success_rate","on_time_deliveries","executive_dashboard","business_summary","sales_summary","delivery_summary"];
-        if (supported.includes(evidence.tool)) {
+        if (supported.includes(evidence.tool) || Array.isArray(evidence.records)) {
           const verifyButton = document.createElement("button");
           verifyButton.type = "button";
           verifyButton.className = "dt-ai-proofsql-button";

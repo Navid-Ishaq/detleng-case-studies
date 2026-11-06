@@ -65,6 +65,20 @@ function addComparison(target, report) {
 }
 
 export async function openVerification({tool, taskNumber, originalAnswer, evidence, trigger}) {
+  // Prefer the 100-task engine only when the nine-table approved snapshot is
+  // actually published. Otherwise leave the successful five-KPI pilot intact.
+  if (Array.isArray(evidence?.records)) {
+    const [{fullQueryForTool},{fullManifestExists}] = await Promise.all([
+      import("./full-registry.js"), import("./full-loader.js"),
+    ]);
+    if (fullQueryForTool(tool)) {
+      const fullAvailable = await fullManifestExists();
+      if (fullAvailable || !queryForTool(tool) || !evidence?.metrics) {
+        const {openFullVerification} = await import("./full-verifier.js");
+        return openFullVerification({tool,taskNumber,originalAnswer,evidence,trigger});
+      }
+    }
+  }
   const definition = queryForTool(tool);
   if (!definition || !evidence || evidence.tool !== tool || typeof originalAnswer !== "string") {
     throw new Error("No structured verification data is available for this result.");

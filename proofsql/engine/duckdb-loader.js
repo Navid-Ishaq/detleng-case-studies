@@ -37,7 +37,7 @@ async function initialize() {
   }
 }
 
-function getConnection() {
+export function getConnection() {
   if (!connectionPromise) connectionPromise = initialize().catch(error => {
     connectionPromise = undefined;
     throw error;
@@ -45,7 +45,7 @@ function getConnection() {
   return connectionPromise;
 }
 
-async function fetchChecked(url, signal) {
+export async function fetchChecked(url, signal) {
   const response = await fetch(url, {cache:"no-store", signal});
   if (!response.ok) throw new Error(`Could not load ${new URL(url).pathname} (${response.status}).`);
   return response;
@@ -66,7 +66,7 @@ async function getManifest(signal) {
   return manifestPromise;
 }
 
-async function sha256(bytes) {
+export async function sha256(bytes) {
   if (!globalThis.crypto?.subtle) throw new Error("Secure browser hashing is unavailable.");
   const digest = await crypto.subtle.digest("SHA-256", bytes);
   return [...new Uint8Array(digest)].map(b => b.toString(16).padStart(2,"0")).join("").toUpperCase();
@@ -92,7 +92,7 @@ async function loadTable(tableName, manifest, signal, onProgress) {
   loadedTables.add(tableName);
 }
 
-function numberFromArrow(raw) {
+export function numberFromArrow(raw) {
   if (typeof raw === "number") return Number.isFinite(raw) ? raw : null;
   if (typeof raw === "bigint") return Number.isSafeInteger(Number(raw)) ? Number(raw) : null;
   if (typeof raw === "string" && raw.trim() !== "") {

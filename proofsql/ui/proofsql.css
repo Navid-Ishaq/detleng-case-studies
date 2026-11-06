@@ -47,3 +47,9 @@
   .dt-proofsql-table td:nth-child(4)::before{content:'Difference';display:block;font-size:10px;color:#567284;font-weight:800;margin-bottom:3px}
   .dt-proofsql-table td:nth-child(5)::before{content:'Status';display:block;font-size:10px;color:#567284;font-weight:800;margin-bottom:3px}
 }
+
+/* Expanded tools: categorical/identifier rankings are numeric partial matches, not certified identities. */
+.dt-proofsql-result-partial-match{background:#fff7df;color:#805200;border:1px solid #e9cf8b}
+@media(max-width:600px){
+ .dt-proofsql-full-table td:nth-child(4)::before{content:'Status'}
+}

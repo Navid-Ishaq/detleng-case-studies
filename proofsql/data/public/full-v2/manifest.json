@@ -1,0 +1,159 @@
+{
+  "project": "DeTLeng ProofSQL",
+  "version": "full-v2",
+  "created_at_utc": "2026-11-06T22:56:00.203215+00:00",
+  "source_dataset": "detleng-case-studies.cs003_olist_analytics",
+  "source_license": "CC BY-NC-SA 4.0",
+  "status": "static_non_live_snapshot",
+  "data_policy": "pseudonymized_row_level__NOT_ANONYMOUS__owner_public_release_review_required",
+  "files": [
+    {
+      "name": "dim_customers.csv",
+      "size_bytes": 11271160,
+      "sha256": "095CC1EFDA01FE684E62CF8F0AA9855FA392DB387926828D83F4C3BC6C61DBAF",
+      "row_count": 99441,
+      "columns": [
+        "customer_key",
+        "customer_id",
+        "customer_unique_id",
+        "customer_city",
+        "customer_state"
+      ]
+    },
+    {
+      "name": "dim_dates.csv",
+      "size_bytes": 196531,
+      "sha256": "BEBFCB0164F1E1CFC66A012A5D292CD1248EC6417A74A0330499A1E409265EF6",
+      "row_count": 3653,
+      "columns": [
+        "date_key",
+        "calendar_date",
+        "calendar_year",
+        "calendar_quarter",
+        "calendar_month",
+        "month_name",
+        "calendar_week",
+        "day_of_month",
+        "weekday_name",
+        "day_type"
+      ]
+    },
+    {
+      "name": "dim_products.csv",
+      "size_bytes": 3427525,
+      "sha256": "23494E8D5E51B005C03F758DC0D0A04584B932AD6CB4C5FD53A36604CAE6D257",
+      "row_count": 32951,
+      "columns": [
+        "product_key",
+        "product_id",
+        "product_category_name",
+        "product_name_length",
+        "product_description_length",
+        "product_photos_qty",
+        "product_weight_g",
+        "product_length_cm",
+        "product_height_cm",
+        "product_width_cm"
+      ]
+    },
+    {
+      "name": "dim_sellers.csv",
+      "size_bytes": 248170,
+      "sha256": "E7A79642F02A862BE1202A05CFDCFD97AC3AE17CE716056067FCCAB497E4778F",
+      "row_count": 3095,
+      "columns": [
+        "seller_key",
+        "seller_id",
+        "seller_city",
+        "seller_state"
+      ]
+    },
+    {
+      "name": "fact_delivery.csv",
+      "size_bytes": 10823876,
+      "sha256": "B2D1B7D175FCA177609E5D36E5CA8ED2CAE384094F860A749EE1B67EB43A1F7E",
+      "row_count": 99441,
+      "columns": [
+        "order_id",
+        "customer_key",
+        "date_key",
+        "order_status",
+        "purchase_date",
+        "delivery_days",
+        "delivery_variance_days",
+        "delivery_status",
+        "late_delivery_flag",
+        "on_time_delivery_flag"
+      ]
+    },
+    {
+      "name": "fact_orders.csv",
+      "size_bytes": 12433394,
+      "sha256": "F208E5227D68C9EC32E0488565569C43FA51C98B66E28A0263BF93F0CA22ACF1",
+      "row_count": 99441,
+      "columns": [
+        "order_id",
+        "customer_key",
+        "date_key",
+        "order_status",
+        "purchase_date",
+        "purchase_year",
+        "purchase_month",
+        "purchase_quarter",
+        "purchase_weekday",
+        "purchase_hour",
+        "delivery_days",
+        "delivery_variance_days",
+        "delivery_status"
+      ]
+    },
+    {
+      "name": "fact_payments.csv",
+      "size_bytes": 7481563,
+      "sha256": "FC966187215707E7AB1856E8F106098C2DC571E7790CE09DFD090CE370227CC6",
+      "row_count": 103886,
+      "columns": [
+        "order_id",
+        "date_key",
+        "payment_sequential",
+        "payment_type",
+        "payment_installments",
+        "payment_value",
+        "installment_category"
+      ]
+    },
+    {
+      "name": "fact_reviews.csv",
+      "size_bytes": 13283246,
+      "sha256": "448FE07C073A9EF6AACB968A30C2D463892F60A476BB6FE2AC2B55DD4EFC7197",
+      "row_count": 99224,
+      "columns": [
+        "review_id",
+        "order_id",
+        "date_key",
+        "review_score",
+        "sentiment_category",
+        "comment_status",
+        "comment_length",
+        "review_creation_date",
+        "review_answer_timestamp"
+      ]
+    },
+    {
+      "name": "fact_sales.csv",
+      "size_bytes": 14879990,
+      "sha256": "A05463569DDE0F2C12AA77E1BFFEC32C3B0A2F83C63A2B5BCDFE417A54A8D4BD",
+      "row_count": 112650,
+      "columns": [
+        "order_id",
+        "order_item_id",
+        "product_key",
+        "seller_key",
+        "price",
+        "freight_value",
+        "total_sale_value",
+        "shipping_limit_date"
+      ]
+    }
+  ]
+}

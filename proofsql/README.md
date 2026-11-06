@@ -1,3 +1,5 @@
+> **All-100-task extension:** [FULL_100_TASKS.md](FULL_100_TASKS.md). This package includes all 100 approved SQL definitions and structured comparator logic, but the new nine-table browser dataset is NOT in the ZIP. Prepare/audit/publish it on the owner's PC before claiming all 100 are live-verified. The existing pilot remains functional.
+
 # DeTLeng ProofSQL — Independent Browser SQL Verification (pilot-1)
 
 **Aim:** Let visitors reproduce approved CS-003 KPI calculations independently in their browser from a static, integrity-checked snapshot. The existing FastAPI/BigQuery/OpenAI chatbot remains responsible for the original live answer.
