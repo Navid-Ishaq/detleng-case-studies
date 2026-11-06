@@ -1,0 +1,17 @@
+# Sensitive local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*service-account*.json
+credentials.json
+# Python and local environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+# Editors and OS
+.DS_Store
+Thumbs.db
+.vscode/
