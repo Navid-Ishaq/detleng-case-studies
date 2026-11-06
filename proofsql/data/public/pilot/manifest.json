@@ -1,0 +1,30 @@
+{
+  "project": "DeTLeng ProofSQL",
+  "version": "pilot-1",
+  "snapshot_date": "2026-11-06",
+  "source_dataset": "detleng-case-studies.cs003_olist_analytics",
+  "source_license": "CC BY-NC-SA 4.0",
+  "status": "static_non_live_snapshot",
+  "files": [
+    {
+      "name": "fact_sales.csv",
+      "size_bytes": 4812372,
+      "sha256": "F8F8D473A68E03CED14AD0097366CD06B12DECD3C0DB692461860E974E0C7971"
+    },
+    {
+      "name": "fact_orders.csv",
+      "size_bytes": 3381004,
+      "sha256": "2E41B68EC5B9E7E050E9C39C24AAEFECECF1366C55E69B3E5F0FCE23BF689F4F"
+    },
+    {
+      "name": "dim_products.csv",
+      "size_bytes": 1120347,
+      "sha256": "A82B58F484C0897C3468429D710B60A4C59283AB0BC5F7D1EBCD3DB52B73152A"
+    },
+    {
+      "name": "fact_delivery.csv",
+      "size_bytes": 3579908,
+      "sha256": "AE12EC6F05A1C96D15C48DAAE13E726BA80E1F5085BFC7DEAEA086C3CBA3F1EF"
+    }
+  ]
+}
