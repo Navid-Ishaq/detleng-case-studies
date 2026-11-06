@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI Analytics Tasks — DeTLeng Case Study CS-003</title>
+  <meta name="description" content="Explore 100 verified analytics tasks connected to the Case Study CS-003 BigQuery evidence layer.">
+  <link rel="icon" type="image/png" href="/favicon2.png">
+  <link rel="stylesheet" href="/site.css">
+</head>
+<body class="modern-page ai-tasks-page">
+  <nav class="detleng-nav" aria-label="Primary navigation"></nav>
+  <main>
+    <section class="tasks-hero">
+      <div class="tasks-wrap">
+        <p class="tasks-kicker">CASE STUDY CS-003 · VERIFIED ANALYTICS</p>
+        <h1>Ask the data.<br><span>Understand the evidence.</span></h1>
+        <p class="tasks-lead">Browse all 100 analytics tasks registered in the DeTLeng BigQuery MCP layer. Choose a question, review the prepared prompt in Analytics AI, then press Enter when you are ready.</p>
+        <div class="tasks-note"><strong>How it works</strong><span>Choose a task → prompt opens in Analytics AI → you submit it → the answer is grounded in the connected CS-003 analytics layer.</span></div>
+      </div>
+    </section>
+    <section class="tasks-library" aria-labelledby="tasks-heading">
+      <div class="tasks-wrap">
+        <div class="tasks-toolbar">
+          <div><p class="tasks-kicker">ANALYTICS CAPABILITY LIBRARY</p><h2 id="tasks-heading">100 questions the system can answer</h2></div>
+          <label class="tasks-search"><span>Find a task</span><input id="taskSearch" type="search" placeholder="Search revenue, delivery, products…"></label>
+        </div>
+        <div class="tasks-summary"><span id="taskCount">100 tasks</span><span>12 evidence categories</span><span>Clicking never auto-submits</span></div>
+        <div id="taskGroups"></div>
+        <p id="taskEmpty" class="tasks-empty" hidden>No matching analytics task was found. Try a broader word.</p>
+      </div>
+    </section>
+  </main>
+  <script src="/site-shell.js"></script>
+  <script src="/chat-widget.js"></script>
+  <script src="/ai-tasks.js"></script>
+</body>
+</html>
