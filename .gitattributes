@@ -1,0 +1,3 @@
+# Published ProofSQL snapshots are checksum-pinned binary byte streams.
+# Never convert CSV line endings during checkout on Windows.
+proofsql/data/public/pilot/*.csv -text

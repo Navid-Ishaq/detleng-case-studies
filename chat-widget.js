@@ -2,6 +2,7 @@
   const API = "https://detleng-case-studies.onrender.com";
   const style = document.createElement("style");
   style.textContent = `
+  .dt-ai-proofsql-button{display:block;margin-top:12px;padding:10px 13px;border:1px solid #126b65;border-radius:9px;background:#eaf8f3;color:#07534d;font:800 13px/1.3 Inter,"Segoe UI",Arial,sans-serif;cursor:pointer}.dt-ai-proofsql-button:hover{background:#d8f4e8}.dt-ai-proofsql-button:disabled{opacity:.62;cursor:progress}
   .dt-ai-retry{margin-top:8px;padding:8px 12px;border:1px solid #a4bad1;border-radius:8px;background:#fff;color:#155eef;font-weight:800;cursor:pointer}
   .dt-ai-launcher{position:fixed;right:22px;bottom:22px;z-index:999999;border:0;border-radius:999px;background:linear-gradient(135deg,#155eef,#087f78);color:#fff;padding:13px 18px;display:flex;align-items:center;gap:9px;font:800 15px/1.2 Inter,"Segoe UI",Arial,sans-serif;box-shadow:0 12px 30px rgba(21,94,239,.28);cursor:pointer}.dt-ai-launcher:hover{transform:translateY(-2px)}
   .dt-ai-panel{position:fixed;right:22px;bottom:88px;z-index:999999;width:min(470px,calc(100vw - 28px));height:min(700px,calc(100vh - 112px));display:none;grid-template-rows:auto auto 1fr auto;background:#fff;border:1px solid #cedde5;border-radius:18px;overflow:hidden;box-shadow:0 24px 70px rgba(18,48,70,.24);font-family:Inter,"Segoe UI",Arial,sans-serif;color:#17384d}.dt-ai-panel.is-open{display:grid}.dt-ai-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 17px;background:#143b57;color:#fff}.dt-ai-title{font-size:16px;font-weight:900}.dt-ai-close{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.1);color:#fff;width:36px;height:36px;border-radius:9px;font-size:20px;font-weight:800;cursor:pointer}.dt-ai-context{padding:11px 16px;background:#edf7f4;border-bottom:1px solid #d7e8e2;font-size:14px;line-height:1.5;color:#234f49}.dt-ai-context a{color:#075f59;font-weight:900}.dt-ai-messages{overflow-y:auto;padding:16px;background:#fbfdfe}.dt-ai-welcome{background:#fff;border:1px solid #dce7ed;border-radius:14px;padding:16px}.dt-ai-welcome h2{font-size:20px!important;color:#155eef!important;margin:0 0 8px!important}.dt-ai-welcome p{font-size:15px!important;line-height:1.6!important;color:#3d596a!important}.dt-ai-questions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.quick-question{padding:8px 11px;border:1px solid #cfe0ee;border-radius:999px;background:#f1f7ff;color:#114eac;cursor:pointer;font-size:13px;font-weight:800}.dt-ai-message{margin-top:14px}.dt-ai-user{text-align:right}.dt-ai-bubble{display:inline-block;max-width:90%;padding:11px 14px;border-radius:12px}.dt-ai-user .dt-ai-bubble{background:#155eef;color:#fff}.dt-ai-assistant .dt-ai-bubble{background:#f4f7fb;border:1px solid #dce7ed;text-align:left}.dt-ai-speaker{font-weight:850;color:#155eef;margin-bottom:7px}.dt-ai-answer{font-size:15px;line-height:1.58;color:#17384d}.dt-ai-answer h3{font-size:16px!important;margin:13px 0 5px!important;color:#17384d!important}.dt-ai-answer ul{margin:7px 0;padding-left:21px}.dt-ai-answer p{margin:0 0 9px}.dt-ai-error{background:#fff5f5!important;border-color:#fecaca!important;color:#9f261e!important}.dt-ai-wait{display:block!important;max-width:100%!important;background:#f4f2ff!important;border:1px solid #c8c1ff!important}.dt-ai-wait-row{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center}.dt-ai-spinner{width:24px;height:24px;border:3px solid #d6d1ff;border-top-color:#6657e8;border-radius:50%;animation:dtspin .85s linear infinite}.dt-ai-wait strong{display:block;color:#263b64;margin-bottom:3px}.dt-ai-elapsed{color:#4c5f86;font-weight:750}.dt-ai-thanks{margin:9px 0 0;color:#4c5f86;line-height:1.5}.dt-ai-cancel{margin-top:11px;padding:7px 10px;border:1px solid #b9b1ef;border-radius:8px;background:#fff;color:#3e347f;font-weight:800;cursor:pointer}.dt-ai-form{padding:12px;border-top:1px solid #dce7ed;display:flex;gap:8px;background:#fff}.dt-ai-form input{min-width:0;flex:1;padding:11px;border:1px solid #9fb8c7;border-radius:9px;font-size:15px;color:#17384d}.dt-ai-form button{padding:10px 15px;border:0;border-radius:9px;background:#155eef;color:#fff;font-weight:800;cursor:pointer}.dt-ai-form button:disabled{opacity:.58;cursor:wait}@keyframes dtspin{to{transform:rotate(360deg)}}
@@ -30,6 +31,7 @@
   let history = [];
   let activeController = null;
   let selectedTool = null;
+  let selectedTaskNumber = null;
   let lastFocus = null;
   const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[char]);
 
@@ -41,7 +43,7 @@
   }
 
   function toggle(force) { const open = force !== undefined ? force : !panel.classList.contains("is-open"); if (open && !panel.classList.contains("is-open")) lastFocus = document.activeElement; panel.classList.toggle("is-open", open); document.body.classList.toggle("dt-ai-open", open); launcher.setAttribute("aria-expanded", String(open)); if (open) input.focus(); else { if (activeController) activeController.abort(); if (lastFocus && lastFocus.isConnected) lastFocus.focus(); else launcher.focus(); } }
-  function prefill(prompt, tool) { toggle(true); selectedTool = tool || null; input.value = prompt; input.focus(); input.setSelectionRange(input.value.length, input.value.length); }
+  function prefill(prompt, tool, taskNumber) { toggle(true); selectedTool = tool || null; selectedTaskNumber = Number.isInteger(taskNumber) && taskNumber > 0 ? taskNumber : null; input.value = prompt; input.focus(); input.setSelectionRange(input.value.length, input.value.length); }
   function waitingMessage(seconds) { if (seconds >= 60) return "The first request can take longer while the free Render service starts."; if (seconds >= 30) return "Still gathering verified evidence—thank you for your patience."; if (seconds >= 8) return "The analytics service may be waking up. Please keep this page open."; return "Connecting to the verified analytics service…"; }
 
   const COLD_START_MS = 95000;
@@ -82,7 +84,7 @@
   }
   async function sendQuestion() {
     const question = input.value.trim(); if (!question || activeController) return;
-    const tool = selectedTool; selectedTool = null;
+    const tool = selectedTool; const taskNumber = selectedTaskNumber; selectedTool = null; selectedTaskNumber = null;
     messages.insertAdjacentHTML("beforeend", `<div class="dt-ai-message dt-ai-user"><div class="dt-ai-bubble">${escapeHtml(question)}</div></div>`);
     input.value = ""; sendButton.disabled = true; sendButton.textContent = "Working…";
     const controller = new AbortController(); activeController = controller;
@@ -118,8 +120,41 @@
       const answer = data.answer || "No response was returned.";
       history.push({role:"user",content:question},{role:"assistant",content:answer});
       waitElement.insertAdjacentHTML("afterend", `<div class="dt-ai-message dt-ai-assistant"><div class="dt-ai-bubble"><div class="dt-ai-speaker">📊 DeTLeng Analytics AI — CS-003</div><div class="dt-ai-answer">${renderMarkdown(answer)}</div></div></div>`);
+      // Keep the original answer unchanged. Only attach verification when the
+      // backend supplies exact numeric KPI evidence for this allowlisted tool.
+      const answerElement = waitElement.nextElementSibling;
+      const evidence = data.verification;
+      if (evidence && evidence.tool && evidence.metrics && (!tool || evidence.tool === tool)) {
+        const supported = ["total_revenue","total_orders","total_products","product_count","average_order_value","delivery_success_rate","on_time_deliveries","executive_dashboard","business_summary","sales_summary","delivery_summary"];
+        if (supported.includes(evidence.tool)) {
+          const verifyButton = document.createElement("button");
+          verifyButton.type = "button";
+          verifyButton.className = "dt-ai-proofsql-button";
+          verifyButton.textContent = "⚖ Verify with SQL";
+          verifyButton.setAttribute("aria-label", "Verify this AI result using independent browser SQL");
+          answerElement.querySelector(".dt-ai-bubble").appendChild(verifyButton);
+          verifyButton.addEventListener("click", async () => {
+            verifyButton.disabled = true;
+            const oldLabel = verifyButton.textContent;
+            verifyButton.textContent = "Opening ProofSQL…";
+            try {
+              const module = await import("/proofsql/engine/proofsql-verifier.js");
+              await module.openVerification({
+                tool: evidence.tool, taskNumber, originalAnswer: answer,
+                evidence, trigger: verifyButton,
+              });
+            } catch (error) {
+              console.error("ProofSQL popup could not open", error);
+              window.alert("ProofSQL could not open. Check your connection and retry.");
+            } finally {
+              verifyButton.disabled = false;
+              verifyButton.textContent = oldLabel;
+            }
+          });
+        }
+      }
     } catch (error) {
-      input.value = question; selectedTool = tool;
+      input.value = question; selectedTool = tool; selectedTaskNumber = taskNumber;
       const cancelled = controller.signal.aborted;
       const errorElement=document.createElement("div");errorElement.className="dt-ai-message dt-ai-assistant";
       errorElement.innerHTML=`<div class="dt-ai-bubble dt-ai-error"><p>${cancelled ? "Request cancelled. Your question is ready to retry." : "The request could not be completed automatically. Your question has been preserved."}</p>${cancelled ? "" : '<button type="button" class="dt-ai-retry">Retry original question</button>'}</div>`;

@@ -8,23 +8,24 @@
   "files": [
     {
       "name": "fact_sales.csv",
-      "size_bytes": 4812372,
-      "sha256": "F8F8D473A68E03CED14AD0097366CD06B12DECD3C0DB692461860E974E0C7971"
+      "size_bytes": 4699721,
+      "sha256": "8D18635D5EF08902EB8088027497110F6054DCD745C27D4C2F831BAE82C7DF8B"
     },
     {
       "name": "fact_orders.csv",
-      "size_bytes": 3381004,
-      "sha256": "2E41B68EC5B9E7E050E9C39C24AAEFECECF1366C55E69B3E5F0FCE23BF689F4F"
+      "size_bytes": 3281562,
+      "sha256": "D95555C5B1E0DC43A558722E359CC0829546CCA2FD6BC8FF8D4E24A0AB2795DE"
     },
     {
       "name": "dim_products.csv",
-      "size_bytes": 1120347,
-      "sha256": "A82B58F484C0897C3468429D710B60A4C59283AB0BC5F7D1EBCD3DB52B73152A"
+      "size_bytes": 1087395,
+      "sha256": "A8C58443A0574E1097CD9B0B211A51B6158E083789713F640BBD92591C9C6C48"
     },
     {
       "name": "fact_delivery.csv",
-      "size_bytes": 3579908,
-      "sha256": "AE12EC6F05A1C96D15C48DAAE13E726BA80E1F5085BFC7DEAEA086C3CBA3F1EF"
+      "size_bytes": 3480466,
+      "sha256": "7C8EE20DFBBB7950C1C43AD7256C3E332C0144836A7D94F726D38E4902157CB7"
     }
-  ]
+  ],
+  "integrity_note": "SHA-256 digests describe GitHub-served LF-normalized CSV bytes. Regenerate after any CSV edit."
 }

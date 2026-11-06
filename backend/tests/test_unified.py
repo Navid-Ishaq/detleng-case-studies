@@ -104,7 +104,7 @@ def test_frontend_contract_and_paths():
     assert 'message:question,history,tool' in js
     assert 'controller.abort()' in js
     assert 'Retry original question' in js
-    assert 'window.detlengAnalyticsAI.prefill(promptFor(button.dataset.tool), button.dataset.tool)' in (ROOT/'ai-tasks.js').read_text()
+    assert 'window.detlengAnalyticsAI.prefill(promptFor(button.dataset.tool), button.dataset.tool,' in (ROOT/'ai-tasks.js').read_text()
     for page in ('index.html','case-studies.html','articles.html','ai-tasks.html','cs/002.html','cs/003.html'):
         assert (ROOT/page).is_file()
     assert (ROOT/'CNAME').read_text().strip()

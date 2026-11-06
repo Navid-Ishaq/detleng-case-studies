@@ -49,7 +49,7 @@
   groups.addEventListener("click", event => {
     const button = event.target.closest("[data-tool]");
     if (!button || !window.detlengAnalyticsAI) return;
-    window.detlengAnalyticsAI.prefill(promptFor(button.dataset.tool), button.dataset.tool);
+    window.detlengAnalyticsAI.prefill(promptFor(button.dataset.tool), button.dataset.tool, Object.values(CATEGORIES).flat().indexOf(button.dataset.tool) + 1);
   });
   search.addEventListener("input", () => render(search.value));
   render("");

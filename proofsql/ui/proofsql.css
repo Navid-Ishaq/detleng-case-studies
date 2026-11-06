@@ -1,0 +1,49 @@
+/* Namespaced styles only. No changes to site.css or the existing chatbot theme. */
+.dt-proofsql-overlay{position:fixed;inset:0;z-index:1000010;display:flex;justify-content:center;align-items:center;padding:18px;background:rgba(11,28,45,.70);font-family:Inter,"Segoe UI",Arial,sans-serif;color:#17384d}
+.dt-proofsql-dialog{display:flex;flex-direction:column;width:min(930px,100%);max-height:min(850px,calc(100dvh - 36px));min-height:250px;background:#fff;border:1px solid #d8e6ee;border-radius:18px;box-shadow:0 28px 80px rgba(0,0,0,.35);overflow:hidden}
+.dt-proofsql-heading{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:17px 22px;background:#143b57;color:#fff}
+.dt-proofsql-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.095em;font-weight:800;margin:0 0 5px;color:#b5f5e4}
+.dt-proofsql-heading h2{margin:0!important;color:#fff!important;font-size:26px!important;line-height:1.12!important}
+.dt-proofsql-close{border:1px solid #779caf;border-radius:11px;background:#ffffff22;color:#fff;font-size:26px;min-width:40px;min-height:40px;cursor:pointer}
+.dt-proofsql-close:hover{background:#ffffff44}
+.dt-proofsql-body{padding:20px 22px 26px;overflow-y:auto;min-height:0}
+.dt-proofsql-task{color:#085f59;background:#edf8f6;border:1px solid #c6e9e3;padding:10px 12px;border-radius:9px;font-size:14px;font-weight:750;overflow-wrap:anywhere;margin:0 0 16px}
+.dt-proofsql-section{background:#fff;border:1px solid #dbe6ed;border-radius:13px;padding:16px;margin:12px 0}
+.dt-proofsql-section h3,.dt-proofsql-meta h3{font-size:17px!important;font-weight:800;margin:0 0 10px!important;color:#143b57!important}
+.dt-proofsql-answer{white-space:pre-wrap;overflow-wrap:anywhere;max-height:240px;overflow-y:auto;font:14px/1.65 Inter,"Segoe UI",Arial,sans-serif;color:#23445a;background:#f5f9fc;padding:14px;border-radius:10px;margin:0}
+.dt-proofsql-progress{font-size:14px;color:#255e82;font-weight:700;line-height:1.6}
+.dt-proofsql-result{font-size:14px;font-weight:900;padding:10px 12px;border-radius:10px;margin:12px 0}
+.dt-proofsql-result-match{background:#e7f7ee;color:#08603b;border:1px solid #b3e4c9}
+.dt-proofsql-result-mismatch{background:#fff1e8;color:#8a3614;border:1px solid #f7c2a4}
+.dt-proofsql-result-not-verifiable{background:#f2f4f7;color:#39475b;border:1px solid #d1d9e2}
+.dt-proofsql-table-wrap{width:100%;overflow-x:auto}
+.dt-proofsql-table{width:100%;border-collapse:collapse;font-size:13px;text-align:left;min-width:565px}
+.dt-proofsql-table th,.dt-proofsql-table td{padding:11px 9px;border-bottom:1px solid #d8e5e9;vertical-align:top;white-space:nowrap}
+.dt-proofsql-table th{background:#edf4f8;color:#1c4961;font-weight:800}
+.dt-proofsql-table td:first-child{font-weight:750}
+.dt-proofsql-cell-match{color:#06713e;font-weight:900}
+.dt-proofsql-cell-mismatch{color:#af411e;font-weight:900}
+.dt-proofsql-cell-not-verifiable{color:#6c7280;font-weight:900}
+.dt-proofsql-footnote{color:#4f6271;line-height:1.6;font-size:12px;margin:10px 0 0}
+.dt-proofsql-meta{background:#f5f8fa;border:1px solid #dbe5e9;border-radius:10px;padding:14px;margin-top:14px}
+.dt-proofsql-meta p{margin:7px 0;font-size:13px;line-height:1.5;color:#364f60;overflow-wrap:anywhere}
+.dt-proofsql-meta details{margin-top:12px}
+.dt-proofsql-meta summary{cursor:pointer;color:#0a645f;font-weight:800;font-size:13px}
+.dt-proofsql-sql{font:12px/1.6 "Cascadia Code",Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;padding:12px;background:#ecf2f5;color:#244051;border-radius:8px;max-height:250px;overflow:auto}
+.dt-proofsql-error{color:#9d2e2e;background:#fff1f1;padding:12px;border-radius:8px;overflow-wrap:anywhere}
+.dt-proofsql-retry{padding:10px 14px;border:0;border-radius:9px;color:#fff;background:#126c65;font-weight:800;cursor:pointer}
+@media(max-width:600px){.dt-proofsql-overlay{padding:7px;align-items:stretch}.dt-proofsql-dialog{max-height:none;height:calc(100dvh - 14px);border-radius:12px}.dt-proofsql-heading{padding:13px 15px}.dt-proofsql-heading h2{font-size:22px!important}.dt-proofsql-body{padding:11px}.dt-proofsql-section{padding:11px}.dt-proofsql-answer{font-size:13px;max-height:180px}}
+@media(prefers-reduced-motion:reduce){.dt-proofsql-dialog{scroll-behavior:auto}}
+/* Mobile KPI cards show both evidence values without horizontal swiping. */
+@media(max-width:600px){
+  .dt-proofsql-table{display:block;width:100%;min-width:0}
+  .dt-proofsql-table thead{display:none}
+  .dt-proofsql-table tbody{display:block}
+  .dt-proofsql-table tr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2px 8px;border:1px solid #d4e3e9;border-radius:10px;padding:10px;margin:9px 0;background:#f9fbfc}
+  .dt-proofsql-table td{display:block;min-width:0;white-space:normal;overflow-wrap:anywhere;border:0;padding:5px 2px;font-size:13px}
+  .dt-proofsql-table td:first-child{grid-column:1/-1;border-bottom:1px solid #d7e2e7;font-size:14px;padding-bottom:9px}
+  .dt-proofsql-table td:nth-child(2)::before{content:'AI / BigQuery';display:block;font-size:10px;color:#567284;font-weight:800;margin-bottom:3px}
+  .dt-proofsql-table td:nth-child(3)::before{content:'Browser SQL';display:block;font-size:10px;color:#567284;font-weight:800;margin-bottom:3px}
+  .dt-proofsql-table td:nth-child(4)::before{content:'Difference';display:block;font-size:10px;color:#567284;font-weight:800;margin-bottom:3px}
+  .dt-proofsql-table td:nth-child(5)::before{content:'Status';display:block;font-size:10px;color:#567284;font-weight:800;margin-bottom:3px}
+}
