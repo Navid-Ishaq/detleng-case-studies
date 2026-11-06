@@ -37,7 +37,7 @@
     if (list) output.push("</ul>"); return output.join("");
   }
 
-  function toggle(force) { const open = force !== undefined ? force : !panel.classList.contains("is-open"); panel.classList.toggle("is-open", open); launcher.setAttribute("aria-expanded", String(open)); if (open) input.focus(); }
+  function toggle(force) { const open = force !== undefined ? force : !panel.classList.contains("is-open"); panel.classList.toggle("is-open", open); document.body.classList.toggle("dt-ai-open", open); launcher.setAttribute("aria-expanded", String(open)); if (open) input.focus(); }
   function prefill(prompt) { toggle(true); input.value = prompt; input.focus(); input.setSelectionRange(input.value.length, input.value.length); }
   function waitingMessage(seconds) { if (seconds >= 60) return "The first request can take longer while the free Render service starts."; if (seconds >= 30) return "Still gathering verified evidence—thank you for your patience."; if (seconds >= 8) return "The analytics service may be waking up. Please keep this page open."; return "Connecting to the verified analytics service…"; }
 
