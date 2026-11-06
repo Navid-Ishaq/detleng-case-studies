@@ -66,7 +66,7 @@ def config_status():
 @app.post('/warmup')
 def warmup():
     global _warm_ok
-    if time.monotonic()-_warm_ok<WARM_TTL: return {'status':'ready'}
+    if _warm_ok and time.monotonic()-_warm_ok<WARM_TTL: return {'status':'ready'}
     if not _warm_lock.acquire(blocking=False): return {'status':'warming'}
     try:
         missing=config_status()
