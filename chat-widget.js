@@ -1,5 +1,5 @@
 (function () {
-  const API = "https://casestudy-ai-backend.onrender.com";
+  const API = "https://detleng-case-studies.onrender.com";
   const style = document.createElement("style");
   style.textContent = `
   .dt-ai-retry{margin-top:8px;padding:8px 12px;border:1px solid #a4bad1;border-radius:8px;background:#fff;color:#155eef;font-weight:800;cursor:pointer}
